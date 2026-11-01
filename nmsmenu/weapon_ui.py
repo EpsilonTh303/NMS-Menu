@@ -16,7 +16,7 @@ class WeaponPanel:
         ttk.Label(parent, text='Ekleme / silme için oyunu kaydedip tamamen kapatın. Liste oyun açıkken de okunabilir.').pack(anchor='w', pady=5)
         bar = ttk.Frame(parent)
         bar.pack(fill='x', pady=6)
-        ttk.Button(bar, text='Taze silah listesini oku', command=self.refresh).pack(side='left')
+        ttk.Label(bar, text='Ortak disk kayıt listesi').pack(side='left')
         self.save_choice = ttk.Combobox(bar, state='readonly', width=16)
         self.save_choice.pack(side='left', padx=8)
         self.save_choice.bind('<<ComboboxSelected>>', lambda _: self.populate())
@@ -60,21 +60,31 @@ class WeaponPanel:
         self.report.configure(state='disabled')
 
     def refresh(self):
-        def loaded(saves):
-            self.saves = saves
-            self.save_choice.configure(values=[s['file'] for s in saves])
-            if saves:
-                self.save_choice.current(0)
-            self.populate()
-        self.host.run(self.backend.inspect, loaded)
+        self.host.refresh_all()
+
+    def load_saves(self, saves):
+        previous = self.save_choice.get()
+        self.saves = saves
+        names = [s['file'] for s in saves]
+        self.save_choice.configure(values=names)
+        if names:
+            choice = names.index(previous) if previous in names else max(range(len(saves)), key=lambda i: saves[i].get('mtime_ns', 0))
+            self.save_choice.current(choice)
+        else:
+            self.save_choice.set('')
+        self.populate()
 
     def populate(self):
+        selected = self.tree.selection()
+        previous = self.tools[int(selected[0])] if selected else None
         self.tree.delete(*self.tree.get_children())
         index = self.save_choice.current()
         self.tools = self.saves[index]['multitools'] if index >= 0 else []
         for i, tool in enumerate(self.tools):
             self.tree.insert('', 'end', iid=str(i), values=(tool['slot'], tool['name'], tool['seed'],
                 tool['class'], tool['slots'], 'Evet' if tool['active'] else ''))
+            if previous and (tool['slot'], tool['seed']) == (previous['slot'], previous['seed']):
+                self.tree.selection_set(str(i))
 
     def prepare(self, operation):
         if self.host.busy:

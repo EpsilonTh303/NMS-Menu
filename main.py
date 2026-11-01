@@ -8,7 +8,7 @@ if __name__ == '__main__':
         if stream is not None:
             stream.reconfigure(encoding='utf-8', errors='replace')
     parser = argparse.ArgumentParser(description='No Man’s Sky masaüstü kontrol paneli')
-    parser.add_argument('--connect', action='store_true', help='Açılışta oyuna salt okunur ilk bağlantıyı kur')
+    parser.add_argument('--connect', action='store_true', help='Uyumluluk seçeneği; bağlantı artık açılışta otomatik')
     tabs = parser.add_mutually_exclusive_group()
     tabs.add_argument('--fleet', action='store_true', help='Canlı filo sekmesini aç')
     tabs.add_argument('--weapons', action='store_true', help='Silah koleksiyonu sekmesini aç')

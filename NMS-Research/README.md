@@ -7,6 +7,7 @@ aday notları saklar. Henüz dışarıya gönderim yapılmadı. Çalışma tarih
 - [179666 canlı veri profili](build-179666.md)
 - [179666 canlı filo ve envanter bulguları](live-fleet-179666.md)
 - [179666 silah koleksiyonu ve istasyon araştırması](weapons-179666.md)
+- [İstasyon NPC hasarı: ikinci inceleme ve başarısız aday testi](station-combat-investigation.md)
 - [Kaynaklar ve upstream adayları](upstream-notes.md)
 
 Ham araştırma indirmeleri `../runtime/research` içinde Git dışında tutulur.

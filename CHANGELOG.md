@@ -1,5 +1,14 @@
 # Değişiklikler
 
+## 0.5.0 — 2 Kasım 2026
+
+- Açılışta otomatik süreç bağlantısı, ortak canlı yenileme ve yeniden bağlanma.
+- Filo / silah disk listeleri için tek codec okuması ve değişen dosya cache'i.
+- Uzun disk okumasını canlı bağlantıdan ayırma; seçimi / hedef girdilerini koruma.
+- Tek Tümünü yenile düğmesi; bölüm başına okuma düğmeleri kaldırıldı.
+- İstasyon silah adayı kontrollü testte başarısız oldu ve geri alındı.
+- NPC entity bileşenleri ve HGPAKtool API çıkarımı için yeni araştırma notları.
+
 ## 0.4.0 — 2 Kasım 2026
 
 - Oyun kapalıyken çok amaçlı alet ekleme / kaldırma ve taze kayıt listesi.

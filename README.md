@@ -1,6 +1,6 @@
 # No Man’s Sky — Menu
 
-Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.4 oyun açıkken
+Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.5 oyun açıkken
 çalışan canlı veri kontrolleri içerir; ayrı masaüstü penceresidir.** Python 3.12
 ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekmez.
 
@@ -10,12 +10,38 @@ ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekm
 Mevcut CapsLockFix oyun başlatıcısını normal şekilde kullanmaya devam edin.
 Menu oyunu başlatmaz veya kapatmaz.
 
+## Otomatik ortak bağlantı ve tarama
+
+Menu açılınca bağlantı kendiliğinden kurulur; `--connect` artık gerekli değildir
+(eski komutlar için kabul edilir). Bölüm başına ayrı okuma düğmeleri kaldırıldı.
+Üstteki **Tümünü yenile** bütün bölümleri ortak veriden günceller.
+
+- Para / canlı ayarlar ve canlı filo yaklaşık 2 saniyede bir tek süreç bağlantısı
+  üzerinden okunur. Oyun sonlanırsa durum gösterilir, yeniden açılınca tekrar
+  bağlanılır. Ana menüde oyuncu kontrolleri kilitli kalır.
+- Filo ve silah **disk listesi** aynı kayıt çözümlemesini paylaşır. Her değişen
+  dosya bir kez okunur; değişmeyen kayıt tekrar codec'e gönderilmez. Auto/manual
+  farklı dosyalar olarak korunur. Uzun okuma ayrı arka planda çalışır.
+- Garaj ve işlem geçmişi de aynı ortak sonuçla otomatik dolar. Yeni transaction
+  veya garaj kaydı listeleri güncellerken değişmeyen oyun kaydı tekrar çözülmez.
+- Testte canlı filo hızlıca geldi; iki disk kaydının ilk okumasıyla bütün
+  listelerin dolması yaklaşık 18.4 saniye sürdü. Silah koleksiyonu disk görünümüdür;
+  oyun henüz kaydetmediyse o ilerlemeyi anlık bellek verisi gibi göstermez.
+- Otomatik yenileme listelerdeki seçimi ve girilen hedef miktarları korur.
+  Bir yazma işlemi sırasında canlı okuma aynı işçide sıraya girer; eski sonuç
+  yeni yazım sonucunun üzerine çizilmez.
+- Üstteki otomatik bağlantı kutusunu kapatarak yenilemeyi durdurabilirsiniz.
+  **Ayarları geri al ve bağlantıyı kes** otomatik yeniden bağlanmayı da durdurur.
+
+İşlem hazırlama yine her istek için yeni kaynak / plan / codec doğrulaması yapar.
+Ortak görüntü cache'i yazma sırasında doğrulama veya yedek yerine kullanılmaz.
+
 ## Silah koleksiyonu: çok amaçlı alet ekle / kaldır
 
 **Bu bölüm oyun kapalıyken çalışır.** Canlı silah sahipliği ve istasyon savaş
 modu henüz desteklenmiyor. Liste oyun açıkken salt okunur görüntülenebilir.
 
-1. **Silah koleksiyonu → Taze silah listesini oku**. Kaydı seçip aleti
+1. **Silah koleksiyonu** bölümünde ortak listenin dolmasını bekleyin. Kaydı seçip aleti
    yuva / tohum kimliğiyle doğrulayın; prosedürel isimler boş olabilir.
 2. Yeni alet için mevcut bir aleti kaynak seçin, ad girin ve **Seçili aletin
    donanımıyla yeni alet** planını hazırlayın. Kaynağın model ailesi, sınıfı,
@@ -41,13 +67,13 @@ mevcut bulguları ve açık kalan işleri açıklar.
 ## Oyun açıkken kullanım
 
 1. Oyunu normal CapsLockFix başlatıcısıyla açıp kaydınızı yükleyin.
-2. Menu'yu açın; **Canlı kontroller → Açık oyuna bağlan** seçin.
+2. Menu'yu açın; **Canlı kontroller** bölümünde otomatik bağlantıyı bekleyin.
 3. Units / nanit / quicksilver için yeni miktarı ayraçsız tam sayı girip
    **Miktarı ayarla** seçin. Oyun kaydederse bu değer kalıcı olabilir.
    Para göstergesi yenilenmezse oyun envanterini kapatıp yeniden açın.
 4. Alt listeden hız, jetpack, dayanıklılık, yaşam desteği veya kalkan yenilenmesi
    ayarı seçin, yeni değer girip **Oyunda hemen uygula** seçin.
-5. **Canlı değerleri yenile** ile yeniden okuyun. Menü otomatik miktar dondurmaz.
+5. Değerler otomatik yenilenir; gerekirse üstteki **Tümünü yenile** seçin. Menü otomatik miktar dondurmaz.
 6. **Ayarları geri al ve bağlantıyı kes** geçici ayarları özgün değerlerine
    döndürür. Normal pencere kapanışı da bunu yapar. Para otomatik geri alınmaz;
    ayrı **Son para işlemini geri al** düğmesi vardır.
@@ -92,7 +118,7 @@ kaynak tahsisi ve spawn / mesh yenileme işlemlerinin doğrulanmasını gerektir
 
 Canlı yazma yalnız doğrulanmış **179666 GOG EXE hash'i** ve kod kontrolüyle
 açılır. Ana menüde para kontrolleri kilitli kalır. Kayıt yükledikten sonra
-**Canlı değerleri yenile** seçin. Yeni oyun sürümünde profil yeniden doğrulanmalı.
+otomatik yenilemeyi bekleyin. Yeni oyun sürümünde profil yeniden doğrulanmalı.
 DLL enjeksiyonu, uzak thread, instruction patch veya canlı kayıt dosyasına yazma
 yapılmaz. İşlemler `runtime/live-audit.jsonl` içine byte düzeyinde kaydedilir.
 
@@ -124,7 +150,7 @@ ve [NMS-Research](NMS-Research/README.md) doğrulanan canlı bulguları açıkla
 ## Oyun kapalıyken filo / kayıt düzenleme
 
 1. Oyunda kaydedin ve oyunu tamamen kapatın.
-2. Panelde **Kayıtları yenile** ile doğru kayıt yuvasını seçin.
+2. Ortak listeden doğru kayıt yuvasını seçin; gerekirse üstteki **Tümünü yenile** seçin.
 3. Gerekiyorsa gemiyi tür / tohum / yuva ile doğrulayarak seçin.
    Prosedürel adın kayıtta bulunmaması normaldir; panel ad tahmini yapmaz.
 4. Eylem ve gerekiyorsa katalog / donanım / garaj kaydını seçin.

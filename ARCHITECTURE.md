@@ -1,5 +1,23 @@
 # Modüler tasarım
 
+## v0.5 ortak tarama
+
+SharedScan tek LiveBackend / ProcessMemory oturumunu para, ayar ve canlı filo
+görünümleri için paylaşır. Canlı okuma ve kullanıcı yazımları aynı executor'da
+seri çalışır. Kullanıcı eylemi nesli değişirse eski read sonucu çizilmez.
+Yazma doğrulamaları cache kullanmaz; kendi taze capture / hash kontrolleri korunur.
+
+DiskScanner her kayıt + metadata imzasını (mtime_ns, boyut) izler; değişen dosyayı
+yerel geçici kopyaya alırken hash'leri doğrular, codec ile yalnız bir kez okur.
+Aynı decoded player hem filo hem çok amaçlı alet listesine dağıtılır. Cache
+çıktıları deep-copy ile döner. Disk okuması ayrı executor'dadır. Okuma hataları
+modal istem olmadan durum alanına gider ve tekrar denemede 5 saniye beklenir.
+
+Tk güncellemeleri ana thread'de, future polling ile yapılır. Bir render sonucu
+devam eden yazma veya inceleme sonucunu ezmez. Oyun yokken bağlantı sessizce
+yeniden denenir. Yenilemeyi kapatma ve normal pencere kapanışı otomatik
+bağlanmayı durdurur; geçici ayarların eski geri alma davranışı korunur.
+
 ## v0.4 silah koleksiyonu
 
 `WeaponPanel → WeaponBackend → python -m nmsmenu.weapon_cli → weapons.mutate →

@@ -1,5 +1,6 @@
 """Tk desktop shell; workers never access Tk widgets."""
 from concurrent.futures import ThreadPoolExecutor
+import time
 import json
 from pathlib import Path
 import tkinter as tk
@@ -11,6 +12,7 @@ from .modules import MODULES, OPERATIONS, build_plan
 from .live_ui import LivePanel
 from .live_fleet_ui import LiveFleetPanel
 from .weapon_ui import WeaponPanel
+from .shared_scan import SharedScan
 
 
 def formatted(value):
@@ -22,6 +24,16 @@ class MenuApp:
         self.root = root
         self.backend = backend or FleetBackend()
         self.pool = ThreadPoolExecutor(max_workers=1)
+        self.scan_pool = ThreadPoolExecutor(max_workers=1)
+        self.action_generation = 0
+        self.shared_started = False
+        self.live_future = None
+        self.disk_future = None
+        self.disk_signature = None
+        self.next_live = 0
+        self.next_disk = 0
+        self.force_disk = True
+        self.disk_error = ''
         self.busy = False
         self.review = None
         self.saves = []
@@ -30,7 +42,7 @@ class MenuApp:
         self.transactions = []
         self.catalog = self.backend.catalog()
         self.loadouts = self.backend.loadouts()
-        root.title("No Man's Sky • Menu 0.4 • Silah Koleksiyonu")
+        root.title("No Man's Sky • Menu 0.5 • Ortak Canlı Bağlantı")
         root.geometry('1160x810')
         root.minsize(920, 680)
         style = ttk.Style(root)
@@ -41,7 +53,14 @@ class MenuApp:
         shell.pack(fill='both', expand=True)
         ttk.Label(shell, text='NO MAN’S SKY  /  KONTROL MERKEZİ', font=('Segoe UI', 19, 'bold')).pack(anchor='w')
         ttk.Label(shell, text='Offline GOG • Canlı filo: Esc duraklatma menüsünde • Kayıt dosyası düzenleme: oyun kapalıyken.').pack(anchor='w', pady=(4, 12))
-        self.status = tk.StringVar(value='Hazır. İlk adım: kayıtları yenileyin. Oyun kayıtlarına henüz yazılmadı.')
+        self.status = tk.StringVar(value='Otomatik bağlantı başlatılıyor; ortak listeler arka planda dolduruluyor.')
+        controls = ttk.Frame(shell)
+        controls.pack(fill='x', pady=(0, 6))
+        self.scan_enabled = tk.BooleanVar(value=True)
+        ttk.Checkbutton(controls, text='Otomatik bağlantı ve ortak yenileme', variable=self.scan_enabled).pack(side='left')
+        ttk.Button(controls, text='Tümünü yenile', command=self.refresh_all).pack(side='left', padx=10)
+        self.scan_status = tk.StringVar(value='Açılışta otomatik bağlanır • Canlı veriler ~2 sn • Disk listeleri autosave değişince yenilenir')
+        ttk.Label(shell, textvariable=self.scan_status, wraplength=1050).pack(anchor='w', pady=(0, 6))
         book = ttk.Notebook(shell)
         self.book = book
         book.pack(fill='both', expand=True)
@@ -61,6 +80,7 @@ class MenuApp:
         self.live_panel = LivePanel(live, self)
         self.live_fleet_panel = LiveFleetPanel(live_fleet, self, self.live_panel.backend)
         self.weapon_panel = WeaponPanel(weapons, self)
+        self.shared = SharedScan(self.live_panel.backend, self.live_fleet_panel.backend)
         self.make_history(history)
         self.make_roadmap(roadmap)
         ttk.Label(shell, textvariable=self.status, wraplength=1060).pack(anchor='w', pady=(10, 0))
@@ -70,6 +90,7 @@ class MenuApp:
         if self.busy:
             messagebox.showinfo('İşlem sürüyor', 'Kayıt işlemi tamamlanınca pencereyi kapatın.')
             return
+        self.scan_enabled.set(False)
         backend = self.live_panel.backend
         if backend.memory:
             def disconnect():
@@ -80,12 +101,79 @@ class MenuApp:
             self.run(disconnect, lambda _: self.close())
             return
         self.pool.shutdown(wait=False)
+        self.scan_pool.shutdown(wait=False, cancel_futures=True)
         self.root.destroy()
+
+    def start_shared_scan(self):
+        if not self.shared_started:
+            self.shared_started = True
+            self.root.after(0, self.shared_tick)
+
+    def refresh_all(self):
+        self.scan_enabled.set(True)
+        self.next_live = 0
+        self.next_disk = 0
+        self.force_disk = True
+        self.start_shared_scan()
+
+    def shared_tick(self):
+        if not self.busy:
+            if self.live_future and self.live_future.done():
+                future, self.live_future = self.live_future, None
+                try:
+                    result = future.result()
+                    if self.live_scan_generation == self.action_generation:
+                        if result['live']:
+                            self.live_panel.render(result['live'])
+                        else:
+                            self.live_panel.render_disconnected()
+                        self.live_fleet_panel.load_ships(result['fleet'])
+                        self.scan_status.set('Canlı: ' + (result['error'] or 'bağlı ve güncel') +
+                            ' • ' + (self.disk_error or 'Ortak disk listesi autosave değişince yenilenir'))
+                except Exception as exc:
+                    self.scan_status.set('Ortak canlı tarama: ' + str(exc))
+            if self.disk_future and self.disk_future.done():
+                future, self.disk_future = self.disk_future, None
+                try:
+                    result = future.result()
+                    self.loaded(result['saves'])
+                    self.weapon_panel.load_saves(result['saves'])
+                    self.load_garage(result['garage'])
+                    self.load_history(result['history'])
+                    self.disk_signature = self.requested_disk_signature
+                    self.disk_error = '; '.join(result['errors'])
+                    if self.action_generation == 0:
+                        self.status.set(f"Ortak listeler hazır: {len(result['saves'])} kayıt, {len(result['garage'])} garaj gemisi, {len(result['history'])} işlem.")
+                    if result['errors']:
+                        self.disk_signature = None
+                        self.next_disk = time.monotonic() + 5
+                        self.scan_status.set('Disk kaydı: ' + '; '.join(result['errors']))
+                except Exception as exc:
+                    self.next_disk = time.monotonic() + 5
+                    self.scan_status.set('Ortak kayıt taraması: ' + str(exc))
+            if self.scan_enabled.get():
+                now = time.monotonic()
+                if self.live_future is None and now >= self.next_live:
+                    self.live_scan_generation = self.action_generation
+                    self.live_future = self.pool.submit(self.shared.fast)
+                    self.next_live = now + 2
+                if self.disk_future is None and now >= self.next_disk:
+                    try:
+                        signature = self.shared.disk.signature()
+                        if self.force_disk or signature != self.disk_signature:
+                            force, self.force_disk = self.force_disk, False
+                            self.requested_disk_signature = signature
+                            self.disk_future = self.scan_pool.submit(self.shared.disk.scan, force)
+                    except Exception as exc:
+                        self.next_disk = now + 5
+                        self.scan_status.set('Kayıt konumu: ' + str(exc))
+        self.root.after(200, self.shared_tick)
 
     def run(self, work, success):
         if self.busy:
             return
         self.busy = True
+        self.action_generation += 1
         self.status.set('İşlem sürüyor…')
         future = self.pool.submit(work)
 
@@ -115,7 +203,7 @@ class MenuApp:
     def make_fleet(self, parent):
         bar = ttk.Frame(parent)
         bar.pack(fill='x')
-        ttk.Button(bar, text='Kayıtları yenile', command=self.refresh).pack(side='left')
+        ttk.Label(bar, text='Ortak disk kayıt listesi').pack(side='left')
         ttk.Label(bar, text='   Kayıt yuvası:').pack(side='left')
         self.slot = tk.StringVar(value='1')
         self.slot_box = ttk.Combobox(bar, textvariable=self.slot, state='readonly', width=5,
@@ -147,7 +235,7 @@ class MenuApp:
         self.garage_choice = tk.StringVar()
         self.garage_box = ttk.Combobox(controls, textvariable=self.garage_choice, state='readonly', width=48)
         self.garage_box.grid(row=2, column=0, columnspan=2, sticky='w')
-        ttk.Button(controls, text='Garajı listele', command=self.refresh_garage).grid(row=1, column=2)
+        ttk.Label(controls, text='Garaj otomatik listelenir').grid(row=1, column=2)
         ttk.Button(controls, text='Filoyu garaja arşivle', command=self.snapshot).grid(row=2, column=2)
         self.update_profiles()
         ttk.Label(parent, text='Hazırlanan işlem: eylemler, değişen JSON yolları ve sonuç filosu. Uygulamadan önce inceleyin.').pack(anchor='w')
@@ -164,7 +252,7 @@ class MenuApp:
         self.profile.set(preferred)
 
     def refresh(self):
-        self.run(self.backend.inspect, self.loaded)
+        self.refresh_all()
 
     def loaded(self, saves):
         self.saves = saves
@@ -173,19 +261,20 @@ class MenuApp:
             self.status.set('DefaultUser altında kayıt bulunamadı.')
 
     def populate_ships(self):
+        previous = self.selected_ship()
         self.tree.delete(*self.tree.get_children())
         slot = int(self.slot.get())
         stems = {'save' if n == 1 else f'save{n}' for n in (2 * slot - 1, 2 * slot)}
         candidates = [s for s in self.saves if Path(s['file']).stem in stems]
         # Display newest of auto/manual; engine still edits each independently.
-        import os
-        live = Path(os.environ.get('APPDATA', '')) / 'HelloGames/NMS/DefaultUser'
-        chosen = max(candidates, key=lambda s: (live / s['file']).stat().st_mtime, default=None)
+        chosen = max(candidates, key=lambda s: s.get('mtime_ns', 0), default=None)
         self.ships = chosen['fleet'] if chosen else []
         self.save_info.configure(text=f"Görünüm: {chosen['file']} • {len(self.ships)}/12 gemi" if chosen else 'Bu yuvada kayıt yok')
         for i, ship in enumerate(self.ships):
             self.tree.insert('', 'end', iid=str(i), values=(ship['slot'], ship['name'], ship['type'],
                              ship['seed'], ship['cargo_slots'], ship['tech_slots']))
+            if previous and (ship['slot'], ship['seed']) == (previous['slot'], previous['seed']):
+                self.tree.selection_set(str(i))
 
     def selected_ship(self):
         selected = self.tree.selection()
@@ -237,12 +326,19 @@ class MenuApp:
                  lambda output: self.output(self.report, output + '\nYedek: ' + str(path / 'before')))
 
     def refresh_garage(self):
-        def loaded(entries):
-            self.garage_entries = entries
-            self.garage_box.configure(values=[f"{e['name'] or '(prosedürel)'} | {e['type']} | {e['seed']} | {e['id']}" for e in entries])
+        self.refresh_all()
+
+    def load_garage(self, entries):
+        index = self.garage_box.current()
+        previous = self.garage_entries[index]['id'] if index >= 0 else None
+        self.garage_entries = entries
+        values = [f"{e['name'] or '(prosedürel)'} | {e['type']} | {e['seed']} | {e['id']}" for e in entries]
+        self.garage_box.configure(values=values)
+        chosen = next((i for i, e in enumerate(entries) if e['id'] == previous), None)
+        if chosen is not None:
+            self.garage_box.current(chosen)
+        else:
             self.garage_choice.set('')
-            self.output(self.report, entries)
-        self.run(self.backend.garage, loaded)
 
     def snapshot(self):
         if self.busy or not self.closed_confirmation():
@@ -254,7 +350,7 @@ class MenuApp:
         ttk.Label(parent, text='Tam kayıt geri alma, seçilen işlemin zamanına döner. Sonraki ilerleme bu eski kayıtta bulunmaz.',
                   wraplength=1000).pack(anchor='w')
         ttk.Label(parent, text='Güncel durum geri almadan önce ayrıca yedeklenir. Yalnız uygulanmış işlemler geri alınabilir.').pack(anchor='w', pady=6)
-        ttk.Button(parent, text='İşlem geçmişini yenile', command=self.refresh_history).pack(anchor='w')
+        ttk.Label(parent, text='İşlem geçmişi ortak taramadan otomatik güncellenir.').pack(anchor='w')
         self.history_list = tk.Listbox(parent, height=13, exportselection=False, font=('Consolas', 11))
         self.history_list.pack(fill='both', expand=True, pady=10)
         ttk.Button(parent, text='Seçili işlemin raporunu göster', command=self.show_history).pack(anchor='w')
@@ -263,12 +359,17 @@ class MenuApp:
         ttk.Button(parent, text='Seçili işlemi tam geri al', command=self.restore).pack(anchor='e')
 
     def refresh_history(self):
-        def loaded(entries):
-            self.transactions = entries
-            self.history_list.delete(0, 'end')
-            for path, state in entries:
-                self.history_list.insert('end', f'{path.name}   [{state}]')
-        self.run(self.backend.history, loaded)
+        self.refresh_all()
+
+    def load_history(self, entries):
+        selected = self.history_list.curselection()
+        previous = self.transactions[selected[0]][0] if selected else None
+        self.transactions = entries
+        self.history_list.delete(0, 'end')
+        for i, (path, state) in enumerate(entries):
+            self.history_list.insert('end', f'{path.name}   [{state}]')
+            if path == previous:
+                self.history_list.selection_set(i)
 
     def selected_transaction(self):
         selected = self.history_list.curselection()
@@ -324,9 +425,7 @@ def main(connect=False, fleet=False, weapons=False):
             app.book.select(1)
         if weapons:
             app.book.select(3)
-        if connect:
-            refresh = app.weapon_panel.refresh if weapons else app.live_fleet_panel.refresh if fleet else app.live_panel.connect
-            root.after(250, refresh)
+        app.start_shared_scan()
     except Exception as exc:
         messagebox.showerror('Menu başlatılamadı', str(exc))
         root.destroy()

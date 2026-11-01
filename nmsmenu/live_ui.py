@@ -14,8 +14,7 @@ class LivePanel:
         self.state_label.pack(anchor='w')
         bar = ttk.Frame(parent)
         bar.pack(fill='x', pady=10)
-        ttk.Button(bar, text='Açık oyuna bağlan', command=self.connect).pack(side='left')
-        ttk.Button(bar, text='Canlı değerleri yenile', command=self.refresh).pack(side='left', padx=5)
+        ttk.Label(bar, text='Ortak bağlantıdan otomatik yenilenir.').pack(side='left', padx=(0, 10))
         ttk.Button(bar, text='Ayarları geri al ve bağlantıyı kes', command=self.disconnect).pack(side='left')
         self.topmost = tk.BooleanVar(value=False)
         ttk.Checkbutton(bar, text='Menü üstte kalsın', variable=self.topmost,
@@ -65,12 +64,20 @@ class LivePanel:
         ttk.Label(parent, text='Canlı onarım / gemi yuvaları: Canlı filo sekmesi. Gemi ekleme / kaldırma: Filo ve envanter, oyun kapalıyken.').pack(anchor='w', pady=(6, 0))
 
     def connect(self):
-        if self.host.busy:
-            return
-        self.host.run(self.backend.connect, self.render)
+        self.host.refresh_all()
 
     def refresh(self):
-        self.host.run(self.backend.snapshot, self.render)
+        self.host.refresh_all()
+
+    def render_disconnected(self):
+        self.state = None
+        self.state_label.configure(text='Oyun bağlantısı bekleniyor; otomatik yeniden denenecek.')
+        for button in [*self.money_buttons, self.undo_button, self.setting_button, self.restore_button]:
+            button.configure(state='disabled')
+        for label, _ in self.money_values.values():
+            label.configure(text='—')
+        for key in SETTINGS:
+            self.tree.set(key, 'value', '—')
 
     def render(self, state):
         self.state = state
@@ -121,6 +128,7 @@ class LivePanel:
         self.host.run(lambda: self.backend.set_currency(key, value), self.render)
 
     def disconnect(self):
+        self.host.scan_enabled.set(False)
         def work():
             if self.backend.memory and not self.backend.memory.alive():
                 self.backend.forget_closed_session()

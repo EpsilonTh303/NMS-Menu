@@ -17,7 +17,7 @@ class LiveFleetPanel:
                   font=('Segoe UI', 12, 'bold')).pack(anchor='w')
         ttk.Label(parent, text='Önce Canlı kontroller sekmesinden bağlanın. Oyunda Esc duraklatma menüsünü açın; hazırlama / uygulama / geri alma boyunca açık tutun.',
                   wraplength=1000).pack(anchor='w', pady=(5, 10))
-        ttk.Button(parent, text='Oyuna bağlan / canlı filoyu yenile', command=self.refresh).pack(anchor='w')
+        ttk.Label(parent, text='Ortak canlı bağlantıdan otomatik yenilenir.').pack(anchor='w')
         self.tree = ttk.Treeview(parent, columns=('slot', 'type', 'seed', 'cargo', 'tech', 'active'),
                                  show='headings', height=12, selectmode='browse')
         for key, title, width in [('slot', 'Yuva', 60), ('type', 'Tür', 140), ('seed', 'Tohum / kesin kimlik', 260),
@@ -49,19 +49,18 @@ class LiveFleetPanel:
         self.report.configure(state='disabled')
 
     def refresh(self):
-        def work():
-            state = self.live.snapshot() if self.live.memory else self.live.connect()
-            return self.backend.inspect(), state
+        self.host.refresh_all()
 
-        def loaded(result):
-            ships, state = result
-            self.host.live_panel.render(state)
-            self.ships = ships
-            self.tree.delete(*self.tree.get_children())
-            for i, ship in enumerate(ships):
-                self.tree.insert('', 'end', iid=str(i), values=(ship['slot'], ship['type'], ship['seed'],
-                    ship['cargo'], ship['tech'], 'Evet' if ship['active'] else ''))
-        self.host.run(work, loaded)
+    def load_ships(self, ships):
+        selected = self.tree.selection()
+        previous = self.ships[int(selected[0])] if selected else None
+        self.ships = ships
+        self.tree.delete(*self.tree.get_children())
+        for i, ship in enumerate(ships):
+            self.tree.insert('', 'end', iid=str(i), values=(ship['slot'], ship['type'], ship['seed'],
+                ship['cargo'], ship['tech'], 'Evet' if ship['active'] else ''))
+            if previous and (ship['slot'], ship['seed']) == (previous['slot'], previous['seed']):
+                self.tree.selection_set(str(i))
 
     def prepare(self, operation):
         if self.host.busy:
