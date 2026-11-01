@@ -5,6 +5,7 @@ aday notları saklar. Henüz dışarıya gönderim yapılmadı. Çalışma tarih
 2 Kasım 2026 (Asia/Baku).
 
 - [179666 canlı veri profili](build-179666.md)
+- [179666 canlı filo ve envanter bulguları](live-fleet-179666.md)
 - [Kaynaklar ve upstream adayları](upstream-notes.md)
 
 Ham araştırma indirmeleri `../runtime/research` içinde Git dışında tutulur.

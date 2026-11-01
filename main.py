@@ -9,4 +9,6 @@ if __name__ == '__main__':
             stream.reconfigure(encoding='utf-8', errors='replace')
     parser = argparse.ArgumentParser(description='No Man’s Sky masaüstü kontrol paneli')
     parser.add_argument('--connect', action='store_true', help='Açılışta oyuna salt okunur ilk bağlantıyı kur')
-    main(connect=parser.parse_args().connect)
+    parser.add_argument('--fleet', action='store_true', help='Canlı filo sekmesini aç')
+    args = parser.parse_args()
+    main(connect=args.connect, fleet=args.fleet)

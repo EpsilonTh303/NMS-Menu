@@ -12,6 +12,7 @@ class Module:
 
 MODULES = (
     Module('fleet', 'Gemi filosu', 'Hazır', 'Katalogdan ekle, kesin kimlikle kaldır, onar, donanım paketi kur.'),
+    Module('live_fleet', 'Canlı filo envanteri', 'Hazır / 179666', 'Oyun açık ve Esc ile duraklatılmışken mevcut gemiyi onar / şarj et; tüm gemilere maksimum yuva planı. Ekleme / silme / model değişimi kapalı.'),
     Module('inventory', 'Envanter ve kalkış', 'Hazır', 'Karakter / gemi yuvalarını aç, normal kalkış otomatik şarj teknolojisi ekle.'),
     Module('garage', 'Harici garaj', 'Hazır', 'Tam gemi kopyalarını arşivle, listele, boş yuvaya veya seçilen geminin yerine al.'),
     Module('transactions', 'Yedek ve geri alma', 'Hazır', 'Taze plan, codec kontrolü, fark incelemesi, kaynak hash kontrolü, tam kayıt geri alma.'),

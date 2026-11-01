@@ -1,5 +1,28 @@
 # Modüler tasarım
 
+## v0.3 canlı filo projeksiyonu
+
+`LiveFleetPanel → LiveFleet → canlı capture + taze disk kopyası → fleet.mutate →
+GOG codec round-trip → izinli sabit byte diff → LiveBackend.write_checked`
+
+Sabit 12 sahiplik girişi salt okunur kimlik kaynağıdır. Üç envanter dizisi,
+öğe / özel yuva vektörleri ve aktif gemi numarası yakalanır. Eski kaynakta
+yanlış olan teknoloji dizi offset'i bu build'de `0xAB28` olarak doğrulandı.
+Pasif teknolojilerin `Amount=-1` işareti ve boyut dışı eski bitler korunur.
+
+Onarımda yalnız mevcut teknoloji miktarı / hasarı / kurulu bayrağı; genişletmede
+yalnız grid maskesi / boyut / kapasite yazılır. Pointer, vektör uzunluğu, eşya
+kimliği, konum, model ve sahiplik yazımı yoktur. FleetManager işlem motoru
+değiştirilmeden doğrudan yeniden kullanılır. Kopya codec çıktısı hiçbir zaman
+DefaultUser'a uygulanmaz; auto/manual dosyalarına yazılmaz.
+
+Offline ve duraklatılmış motor, değişmeyen oturum / aktif gemi ve capture
+eşitliği her yazım öncesi kontrol edilir. Kendi yazımları shadow capture'a
+işlenir. Hata geri alması pointer / yapı eşitliğini ve beklenen byte'ları
+doğrular. Çok alanlı yazım güç kesintisinde atomik değildir; kısmi hata ve geri
+alma çakışmaları manifestte kalır. Kullanıcı yeni ilerleme yaptıysa normal geri
+alma reddedilir. Bu, tüm kaydı eski zamana döndüren FleetManager.restore'dan farklıdır.
+
 ## v0.2 canlı veri yolu
 
 `LivePanel → LiveBackend → ProcessMemory → Windows Read/WriteProcessMemory`

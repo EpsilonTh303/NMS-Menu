@@ -1,5 +1,15 @@
 # Değişiklikler
 
+## 0.3.0 — 2 Kasım 2026
+
+- Doğrudan bellekten 12 girişlik filo listesi; model / tohum / yuva kimliği.
+- Oyun kapanmadan, Esc duraklatma menüsünde mevcut gemi onarma / şarj etme.
+- Aynı koşullarda bütün mevcut gemilerin yuvalarını FleetManager tür sınırlarıyla açma.
+- Taze kaynak kopyası, canlı envanter projeksiyonu, gerçek codec round-trip ve rapor incelemesi.
+- Alan bazlı, koşullu canlı geri alma; kargo / pointer / sahiplik korunması.
+- 179666 teknoloji dizi offset'i, pasif teknoloji -1 değeri ve boyut dışı bitler için araştırma notları.
+- Canlı gemi ekleme, silme, model / tohum değiştirme henüz uygulanmadı.
+
 ## 0.2.0 — 2 Kasım 2026
 
 - Oyun açıkken bağlanan ayrı canlı kontrol sekmesi.

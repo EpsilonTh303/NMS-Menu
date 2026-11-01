@@ -7,6 +7,7 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 | Alan | Aday kontroller | Durum / koşul |
 |---|---|---|
 | Filo | Ekle, kaldır, onar, donanım kur | v0.1 hazır; doğrulanmış katalog / motor |
+| Canlı filo | Listele, mevcut gemiyi onar / şarj et, tüm gemilerin yuvalarını aç | v0.3; oyun açık, offline, Esc duraklatma menüsünde |
 | Envanter | Karakter ve gemi yuvaları | v0.1 hazır; tür kapasitesi korunur |
 | Kalkış | Otomatik şarj teknolojisi | v0.1 hazır; normal oyun mekaniği |
 | Garaj | Arşiv, liste, içe aktar, değiştir | v0.1 hazır; 12 aktif gemi korunur |
@@ -34,11 +35,14 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
    para birimleri ve 12 global ayar, yazım günlüğü ve koşullu geri alma. Canlı
    yazma / okuma / özgün değere dönüş yürüme hızıyla doğrulandı. Araştırma arşivi
    `NMS-Research` altında. Diğer ayarların oyun içi davranışı kullanıcıyla denenebilir.
-3. **v0.3 adayı:** arama yapılabilir eşya / teknoloji kataloğu ve envanter
+3. **v0.3 tamamlandı:** mevcut gemilere canlı envanter projeksiyonu, FleetManager
+   kuralları / codec kontrolü, duraklatma doğrulaması ve koşullu alan bazlı geri alma.
+   Sahiplik ekleme / silme ve model değiştirme henüz canlı desteklenmiyor.
+4. **Sonraki aday:** arama yapılabilir eşya / teknoloji kataloğu ve envanter
    hedefi. Mevcut eşya ve teknolojileri koruyan işlemler geliştir.
-4. **Sonraki:** çok amaçlı alet, yük gemisi, fırkateyn; her biri kendi test
+5. **Sonraki:** çok amaçlı alet, yük gemisi, fırkateyn; her biri kendi test
    fixture'ları ve ön koşullarıyla bağımsız modül olarak eklenir.
-5. **Araştırma:** seyahat, üs, ilerleme ve canlı overlay. Teknik olarak
+6. **Araştırma:** seyahat, üs, ilerleme, canlı sahiplik işlemleri ve overlay. Teknik olarak
    doğrulanamayan kontroller arayüzde çalışır gibi gösterilmez.
 
 Hiçbir aşama mevcut CapsLockFix başlatıcısını değiştirmeyi gerektirmez.

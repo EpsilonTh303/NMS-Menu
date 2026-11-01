@@ -1,6 +1,6 @@
 # No Man’s Sky — Menu
 
-Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.2 oyun açıkken
+Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.3 oyun açıkken
 çalışan canlı veri kontrolleri içerir; ayrı masaüstü penceresidir.** Python 3.12
 ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekmez.
 
@@ -29,6 +29,38 @@ itişi/dolumu, dayanıklılık tüketimi/yenilenmesi, beş yaşam desteği tüke
 ve karakter kalkan yenilenmesi. Dayanıklılık / yaşam desteği tüketim alanlarında
 0 tüketim katsayısını sıfırlar; jetpack dolumunu artırmak sınırsız jetpack değildir.
 Bu sürüm ölümsüzlük, canlı gemi ekleme veya sınırsız gemi yakıtı sağlamaz.
+
+## Canlı filo: oyun kapanmadan onarım ve gemi yuvaları
+
+1. Oyunda kayıt içine girin. **Esc ile duraklatma menüsünü açın**; hazırlama,
+   uygulama ve geri alma boyunca bu menüde kalın. Motorun duraklatma bayrağı
+   ayrıca kontrol edilir; multiplayer etkinse işlem açılmaz.
+2. **Canlı filo → Oyuna bağlan / canlı filoyu yenile** seçin. Liste doğrudan
+   bellekten okunur; seçimi gemi yuvası + tür + tohum ile doğrulayın.
+3. **Seçili gemiyi onar / şarj et** veya **Tüm gemilere maksimum yuva** için
+   plan hazırlayın. İkinci seçenek bütün mevcut gemileri kapsar.
+4. İşlem, taze GOG kayıt kopyasındaki canlı envanter projeksiyonunu FleetManager
+   kurallarıyla düzenler. Gerçek codec yeniden okuma eşitliği doğrulanır.
+   Bu aşamada canlı kayıt veya belleğe yazılmaz. Yeni gemi henüz kayda geçmemişse
+   önce oyunda kaydetmeniz istenir; oyunu kapatmanız gerekmez.
+5. Raporu inceleyip **İncelediğim canlı filo planını uygula** seçin. Her yazımdan
+   önce duraklatma, oturum, gemi kimliği, envanter başlıkları ve içerikleri
+   kontrol edilir. Değişiklik varsa yeni plan gerekir.
+6. **Son canlı filo işlemini geri al**, ilgili filo verisi hâlâ aynıysa yalnız
+   yazılan alanları geri döndürür. Oyun normal şekilde kaydederse değişiklikler
+   kalıcı olabilir. Envanter görünümü gerekiyorsa kapatılıp açılabilir.
+
+Kargo öğelerine, teknoloji kimliklerine / konumlarına, vektör pointer'larına,
+sahiplik dizilerine ve gemi modellerine yazılmaz. Açık yuvalar azaltılmaz.
+Geçici yapılandırma ayarlarından farklı olarak filo işlemleri pencere kapanırken
+otomatik geri alınmaz. Uygulama anındaki bellek görüntüsü, taze kaynak kopyası,
+staged codec çıktısı ve manifest `runtime/live-fleet/<işlem>` altında tutulur.
+Bu kaynak .hg yedeği son disk kaydının zamanına aittir; canlı ilerlemenin tamamını
+içerdiği iddia edilmez. JSON projeksiyonu yalnız filo envanterlerini canlandırır.
+
+**Canlı gemi ekleme / silme, model / tohum değiştirme, gemi değiştirme ve yeni
+teknoloji ekleme henüz desteklenmiyor.** Bunlar oyun thread'inde sahiplik,
+kaynak tahsisi ve spawn / mesh yenileme işlemlerinin doğrulanmasını gerektirir.
 
 Canlı yazma yalnız doğrulanmış **179666 GOG EXE hash'i** ve kod kontrolüyle
 açılır. Ana menüde para kontrolleri kilitli kalır. Kayıt yükledikten sonra
@@ -91,6 +123,8 @@ Geri alınmış işlemler yeniden geri alınamaz. Yeni istek için daima yeni pl
 - `nmsmenu/live.py`: build'e bağlı canlı ayar / para işlemleri ve geri alma.
 - `nmsmenu/winmem.py`: dar kapsamlı Windows süreç bellek adaptörü.
 - `nmsmenu/live_ui.py`: oyun açıkken kullanılabilen kontrol sekmesi.
+- `nmsmenu/live_fleet.py`: FleetManager kurallarıyla taze canlı envanter projeksiyonu.
+- `nmsmenu/live_fleet_ui.py`: canlı filo inceleme / uygulama / koşullu geri alma sekmesi.
 - `tests/test_live.py`: build, oturum, byte eşitliği, günlük ve canlı geri alma testleri.
 - `tests/test_safety.py`: kimlik, kargo, işlem yolu, inceleme ve taze plan kontrolleri.
 - `runtime/`: üretilen istekler; Git dışında. Asıl yedekler FleetManager'da kalır.

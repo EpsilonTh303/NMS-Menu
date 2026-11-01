@@ -62,7 +62,7 @@ class LivePanel:
         self.restore_button.pack(side='left')
         self.note = ttk.Label(parent, text='Listeden ayar seçin. Geçici ayarlar bağlantı kesilirken geri alınır.', wraplength=1000)
         self.note.pack(anchor='w')
-        ttk.Label(parent, text='Gemi ekleme/kaldırma ve yuva genişletme: Filo ve envanter sekmesi; oyun kapalı olmalı.').pack(anchor='w', pady=(6, 0))
+        ttk.Label(parent, text='Canlı onarım / gemi yuvaları: Canlı filo sekmesi. Gemi ekleme / kaldırma: Filo ve envanter, oyun kapalıyken.').pack(anchor='w', pady=(6, 0))
 
     def connect(self):
         if self.host.busy:

@@ -20,6 +20,10 @@
 
 ## Aday katkılar — henüz hata raporu veya PR değil
 
+Yeni ek: [canlı filo bulguları](live-fleet-179666.md) teknoloji dizisi sürüm
+farkı (`0xAA28` → `0xAB28`), vector header biçimi, pasif teknoloji `-1`
+işareti ve grid boyutları dışındaki eski bitler için doğrulama notları içerir.
+
 1. **GOG 179666 uyumluluk notu:** PlayerState para offset'leri ve yukarıdaki
    global alanların 179105 tanımlarıyla eşleştiğine dair build-hash'li gözlem.
    Bu yalnız belirtilen alanlar için kanıttır; tüm yapının uyumlu olduğu anlamına gelmez.
