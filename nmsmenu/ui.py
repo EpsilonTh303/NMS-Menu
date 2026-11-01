@@ -8,6 +8,7 @@ from tkinter.scrolledtext import ScrolledText
 
 from .backend import FleetBackend
 from .modules import MODULES, OPERATIONS, build_plan
+from .live_ui import LivePanel
 
 
 def formatted(value):
@@ -27,7 +28,7 @@ class MenuApp:
         self.transactions = []
         self.catalog = self.backend.catalog()
         self.loadouts = self.backend.loadouts()
-        root.title("No Man's Sky • Menu 0.1")
+        root.title("No Man's Sky • Menu 0.2 • Canlı Kontroller")
         root.geometry('1160x810')
         root.minsize(920, 680)
         style = ttk.Style(root)
@@ -37,17 +38,20 @@ class MenuApp:
         shell = ttk.Frame(root, padding=18)
         shell.pack(fill='both', expand=True)
         ttk.Label(shell, text='NO MAN’S SKY  /  KONTROL MERKEZİ', font=('Segoe UI', 19, 'bold')).pack(anchor='w')
-        ttk.Label(shell, text='Offline GOG • DefaultUser • Kayıt düzenleme için oyunu tamamen kapatın.').pack(anchor='w', pady=(4, 12))
+        ttk.Label(shell, text='Offline GOG • Canlı kontroller oyun açıkken çalışır • Filo kayıt düzenlemeleri oyun kapalıyken.').pack(anchor='w', pady=(4, 12))
         self.status = tk.StringVar(value='Hazır. İlk adım: kayıtları yenileyin. Oyun kayıtlarına henüz yazılmadı.')
         book = ttk.Notebook(shell)
         book.pack(fill='both', expand=True)
+        live = ttk.Frame(book, padding=12)
         fleet = ttk.Frame(book, padding=12)
         history = ttk.Frame(book, padding=12)
         roadmap = ttk.Frame(book, padding=12)
+        book.add(live, text='Canlı kontroller')
         book.add(fleet, text='Filo ve envanter')
         book.add(history, text='Yedek / geri alma')
         book.add(roadmap, text='Özellikler ve yol haritası')
         self.make_fleet(fleet)
+        self.live_panel = LivePanel(live, self)
         self.make_history(history)
         self.make_roadmap(roadmap)
         ttk.Label(shell, textvariable=self.status, wraplength=1060).pack(anchor='w', pady=(10, 0))
@@ -56,6 +60,15 @@ class MenuApp:
     def close(self):
         if self.busy:
             messagebox.showinfo('İşlem sürüyor', 'Kayıt işlemi tamamlanınca pencereyi kapatın.')
+            return
+        backend = self.live_panel.backend
+        if backend.memory:
+            def disconnect():
+                if backend.memory.alive():
+                    backend.disconnect()
+                else:
+                    backend.forget_closed_session()
+            self.run(disconnect, lambda _: self.close())
             return
         self.pool.shutdown(wait=False)
         self.root.destroy()
@@ -287,17 +300,19 @@ class MenuApp:
         for module in MODULES:
             text.insert('end', f'{module.title}  —  {module.status}\n{module.features}\n\n')
         text.insert('end', 'AKIŞ\nOyunu kaydet ve kapat → kayıtları yenile → yeni plan hazırla → raporu incele → uygula.\n\n'
-                    'Bu ilk sürümde para / eşya / görev / overlay kontrolleri çalıştırılamaz. '
+                    'Canlı para ve yapılandırma kontrolleri ilk sekmededir. Eşya / görev / overlay kontrolleri uygulanmadı. '
                     'Oyunda yapılabilen her eylemin kayıt dosyasından kontrolü garanti edilmez.\n'
                     'Kalkış otomatik şarjı normal oyun teknolojisidir; anlık sınırsız yakıt değildir.\n'
                     'Harici garaj arşivdir; aktif gemi sınırını artırmaz.')
         text.configure(state='disabled')
 
 
-def main():
+def main(connect=False):
     root = tk.Tk()
     try:
-        MenuApp(root)
+        app = MenuApp(root)
+        if connect:
+            root.after(250, app.live_panel.connect)
     except Exception as exc:
         messagebox.showerror('Menu başlatılamadı', str(exc))
         root.destroy()

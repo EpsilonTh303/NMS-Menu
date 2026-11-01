@@ -1,4 +1,12 @@
+import argparse
+import sys
+
 from nmsmenu.ui import main
 
 if __name__ == '__main__':
-    main()
+    for stream in (sys.stdout, sys.stderr):
+        if stream is not None:
+            stream.reconfigure(encoding='utf-8', errors='replace')
+    parser = argparse.ArgumentParser(description='No Man’s Sky masaüstü kontrol paneli')
+    parser.add_argument('--connect', action='store_true', help='Açılışta oyuna salt okunur ilk bağlantıyı kur')
+    main(connect=parser.parse_args().connect)

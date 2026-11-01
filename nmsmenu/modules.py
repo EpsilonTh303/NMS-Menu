@@ -15,14 +15,14 @@ MODULES = (
     Module('inventory', 'Envanter ve kalkış', 'Hazır', 'Karakter / gemi yuvalarını aç, normal kalkış otomatik şarj teknolojisi ekle.'),
     Module('garage', 'Harici garaj', 'Hazır', 'Tam gemi kopyalarını arşivle, listele, boş yuvaya veya seçilen geminin yerine al.'),
     Module('transactions', 'Yedek ve geri alma', 'Hazır', 'Taze plan, codec kontrolü, fark incelemesi, kaynak hash kontrolü, tam kayıt geri alma.'),
-    Module('economy', 'Para birimleri', 'Planlandı', 'Units, nanit ve quicksilver: alanlar / sınırlar doğrulandıktan sonra miktar düzenleme.'),
+    Module('economy', 'Canlı para birimleri', 'Hazır / 179666', 'Oyun açıkken Units, nanit ve quicksilver miktarı; aynı değer / oturum kontrolüyle son işlemi geri alma.'),
     Module('items', 'Eşya ve üretim', 'Planlandı', 'Eşya kataloğu, miktar, tarif ve üretim kilitleri; kimlik ve yığın sınırı doğrulaması gerekir.'),
     Module('multitool', 'Çok amaçlı alet', 'Planlandı', 'Alet, yuva, sınıf ve teknoloji; kayıt şeması ve kapasite kuralları araştırılacak.'),
     Module('freighter', 'Yük gemisi ve fırkateyn', 'Planlandı', 'Envanter, filo ve seferler; görev durumlarını koruyan ayrı işlem motoru gerekir.'),
-    Module('player', 'Karakter ve zorluk', 'Araştırma', 'Sağlık, hasar, tüketim ve inşa maliyeti; önce oyunun kendi ayarları değerlendirilecek.'),
+    Module('player', 'Canlı karakter ayarları', 'Hazır / 179666', 'Hız, jetpack itiş / dolum, dayanıklılık / yaşam desteği tüketimi ve kalkan yenilenmesi. Sağlık ve inşa maliyeti araştırma aşamasında.'),
     Module('travel', 'Keşif ve seyahat', 'Araştırma', 'Koordinat, itibar, kelimeler ve keşif; görev / konum tutarlılığı doğrulanmalı.'),
     Module('base', 'Üs ve yerleşim', 'Araştırma', 'Üs parçaları, enerji ve yerleşim; sahiplik / konum verileri araştırılmalı.'),
-    Module('runtime', 'Oyun içi overlay / canlı hile', 'Ayrı proje', 'Bu sürüm kayıt editörüdür. Overlay, ölümsüzlük, uçuş ve zaman kontrolü uygulanmadı.'),
+    Module('runtime', 'Canlı bağlantı', 'Hazır / 179666', 'Ayrı masaüstü penceresinden bellek verisi düzenleme. Oyun içi overlay, kod yaması ve ölümsüzlük uygulanmadı.'),
 )
 
 OPERATIONS = {

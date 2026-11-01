@@ -1,5 +1,30 @@
 # Modüler tasarım
 
+## v0.2 canlı veri yolu
+
+`LivePanel → LiveBackend → ProcessMemory → Windows Read/WriteProcessMemory`
+
+Bu yol FleetManager'dan bağımsızdır. Gemi / envanter işlemleri eski güvenli kayıt
+yolunda kalır. Canlı backend önce EXE SHA256 ve yüklenen kod anchor'ını doğrular;
+yalnız sabit listeli float32 ayar ve uint32 para alanlarına yazabilir. Keyfi adres
+ve kod yaması arayüzü yoktur. ASLR modül tabanıyla çözülür. Oyunun kapanması,
+kayıt yuvası değişmesi veya beklenen byte'ların farklılaşması yazmayı durdurur.
+
+Yazım: ön değer oku → eşitliği kontrol et → intent günlüğü → dört byte yaz →
+yeniden okuyup doğrula → sonuç günlüğü. Geçici ayarların ilk değerleri ve en son
+yazılan byte'ları saklanır; çıkışta hâlâ son yazılan byte'larsa geri alınır.
+Para değişiklikleri oyun autosave'iyle kalıcı olabilir; ayrı, koşullu tek adım
+geri alma sunulur. Panel hiçbir anda aktif kayıt dosyasına canlı yazmaz.
+
+Süreç erişimi yalnız query / VM read / VM write / VM operation hakları ister;
+debug ayrıcalığı, tüm süreç hakları, DLL enjeksiyonu, remote thread veya oyun
+duraklatma kullanılmaz. İşletim sistemi erişimi reddederse hata gösterilir.
+Mevcut CapsLockFix başlatıcısına dokunulmaz.
+
+Profilin teknik bulguları `NMS-Research` altında tutulur. Bilinmeyen EXE'de
+global alanlar veya eski imzalar denenmez. Ana menüde yapılandırma okunabilir;
+oyuncu verisi yüklenene kadar para kontrolleri kilitlidir.
+
 ## Katmanlar
 
 `Tk arayüz → modül plan üreticisi → backend adaptörü → FleetManager → GOG codec`
@@ -37,7 +62,8 @@ eşya vb. modüller ayrı dosyalarda plan üretir; ilk canlı yazımdan önce mo
 izinli işlem desteği ve testleri genişletilir. Genel amaçlı keyfi JSON alanı
 yazma veya rastgele terminal komutu çalıştırma arayüzü eklenmez.
 
-UI özellik listesi `MODULES`, çalıştırılabilir eylemler `OPERATIONS` ile
+UI özellik listesi `MODULES`, kayıt eylemleri `OPERATIONS`, canlı alanlar
+`live.SETTINGS` / `live.CURRENCIES` ile
 tanımlanır. Araştırma / plan durumundaki modüller çalıştırılamaz. Yeni oyun
 sürümü geldiğinde codec ve şema tekrar doğrulanmadan uyumluluk iddia edilmez.
 
