@@ -15,7 +15,8 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 | Ekonomi | Units, nanit, quicksilver miktarı | v0.2 canlı; doğrulanmış 179666 GOG build'i |
 | Eşya | Arama, miktar, malzeme ve yakıt | Kimlik kataloğu, yığın sınırları ve boş yuva kuralları |
 | Tarif / teknoloji | Tarif açma, teknoloji kurulumu | Kilit ve ön koşullar araştırılacak |
-| Çok amaçlı alet | Model, sınıf, yuva, teknoloji | Şema / teknoloji uyumluluğu doğrulanacak |
+| Çok amaçlı alet | Kaynak alet donanımıyla ekle, kesin kimlikle kaldır | v0.4; oyun kapalı. Bağımsız nadir model kataloğu henüz yok |
+| İstasyon savaş kontrolü | Silah çıkarma / ateş etme aç-kapat, NPC hasarı | Araştırma; çalıştırılamaz |
 | Yük gemisi | Model, sınıf, envanter | Aktif gemi ve üs bağımlılıkları araştırılacak |
 | Fırkateyn | Filo ve sefer | Aktif görev ve zaman tutarlılığı araştırılacak |
 | Exocraft / evcil hayvan | Sahiplik, özellik ve envanter | Ayrı şema ve kimlik kuralları gerekli |

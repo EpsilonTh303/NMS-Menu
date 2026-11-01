@@ -10,6 +10,7 @@ from .backend import FleetBackend
 from .modules import MODULES, OPERATIONS, build_plan
 from .live_ui import LivePanel
 from .live_fleet_ui import LiveFleetPanel
+from .weapon_ui import WeaponPanel
 
 
 def formatted(value):
@@ -29,7 +30,7 @@ class MenuApp:
         self.transactions = []
         self.catalog = self.backend.catalog()
         self.loadouts = self.backend.loadouts()
-        root.title("No Man's Sky • Menu 0.3 • Canlı Filo")
+        root.title("No Man's Sky • Menu 0.4 • Silah Koleksiyonu")
         root.geometry('1160x810')
         root.minsize(920, 680)
         style = ttk.Style(root)
@@ -47,16 +48,19 @@ class MenuApp:
         live = ttk.Frame(book, padding=12)
         live_fleet = ttk.Frame(book, padding=12)
         fleet = ttk.Frame(book, padding=12)
+        weapons = ttk.Frame(book, padding=12)
         history = ttk.Frame(book, padding=12)
         roadmap = ttk.Frame(book, padding=12)
         book.add(live, text='Canlı kontroller')
         book.add(live_fleet, text='Canlı filo')
         book.add(fleet, text='Filo ve envanter')
+        book.add(weapons, text='Silah koleksiyonu')
         book.add(history, text='Yedek / geri alma')
         book.add(roadmap, text='Özellikler ve yol haritası')
         self.make_fleet(fleet)
         self.live_panel = LivePanel(live, self)
         self.live_fleet_panel = LiveFleetPanel(live_fleet, self, self.live_panel.backend)
+        self.weapon_panel = WeaponPanel(weapons, self)
         self.make_history(history)
         self.make_roadmap(roadmap)
         ttk.Label(shell, textvariable=self.status, wraplength=1060).pack(anchor='w', pady=(10, 0))
@@ -312,14 +316,17 @@ class MenuApp:
         text.configure(state='disabled')
 
 
-def main(connect=False, fleet=False):
+def main(connect=False, fleet=False, weapons=False):
     root = tk.Tk()
     try:
         app = MenuApp(root)
         if fleet:
             app.book.select(1)
+        if weapons:
+            app.book.select(3)
         if connect:
-            root.after(250, app.live_fleet_panel.refresh if fleet else app.live_panel.connect)
+            refresh = app.weapon_panel.refresh if weapons else app.live_fleet_panel.refresh if fleet else app.live_panel.connect
+            root.after(250, refresh)
     except Exception as exc:
         messagebox.showerror('Menu başlatılamadı', str(exc))
         root.destroy()

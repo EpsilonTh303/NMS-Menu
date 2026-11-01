@@ -1,5 +1,13 @@
 # Değişiklikler
 
+## 0.4.0 — 2 Kasım 2026
+
+- Oyun kapalıyken çok amaçlı alet ekleme / kaldırma ve taze kayıt listesi.
+- Mevcut aletin model ailesi / sınıf / donanımından yeni tohumla boş yuvaya ekleme.
+- Son aleti koruma, tam donanım dışa aktarımı, aktif alet kopyalarını senkron tutma.
+- FleetManager'ın mevcut yedek / codec / hash / apply / restore motoruyla bağımsız silah modülü.
+- İstasyon silah kullanımı ve NPC hasarı için kaynak / binary araştırması; bu seçenekler henüz uygulanmadı.
+
 ## 0.3.0 — 2 Kasım 2026
 
 - Doğrudan bellekten 12 girişlik filo listesi; model / tohum / yuva kimliği.

@@ -1,5 +1,24 @@
 # Modüler tasarım
 
+## v0.4 silah koleksiyonu
+
+`WeaponPanel → WeaponBackend → python -m nmsmenu.weapon_cli → weapons.mutate →
+mevcut FleetManager transaction motoru`
+
+Silah mutator'ü yalnız Multitools girişine ve aktif alet kaldırılırsa üç aktif
+kopyaya yazabilir. Şema anahtarları / sabit dizi uzunluğu korunur. Kesin seçim
+slot + seed + filename ile yapılır. Tohum Seed alanındadır; Resource.Seed farklı
+amaçlıdır ve görünüm tohumu diye değiştirilmez. Aktif aletin daha güncel
+WeaponInventory kopyası ekleme / dışa aktarma için önceliklidir.
+
+FleetManager modülü ayrı CLI sürecinde yüklenip yalnız mutate fonksiyonu bu
+komut için bağlanır; mevcut dosyası veya filo kuralları değiştirilmez. stopped,
+snapshot, codec eşitliği, kaynak / stage hash doğrulamaları ve tam kayıt restore
+aynen korunur. Silinen alet export'u legacy dosya adına ek olarak açıkça
+*-removed-multitools.json ismiyle de tutulur. Oyun açıkken sahiplik yazımı yoktur.
+
+İstasyon silah / NPC hasarı kontrolleri uygulanmadı; UI pasif durumunu belirtir.
+
 ## v0.3 canlı filo projeksiyonu
 
 `LiveFleetPanel → LiveFleet → canlı capture + taze disk kopyası → fleet.mutate →

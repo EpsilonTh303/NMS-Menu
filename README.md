@@ -1,6 +1,6 @@
 # No Man’s Sky — Menu
 
-Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.3 oyun açıkken
+Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.4 oyun açıkken
 çalışan canlı veri kontrolleri içerir; ayrı masaüstü penceresidir.** Python 3.12
 ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekmez.
 
@@ -9,6 +9,34 @@ ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekm
 `start.cmd` dosyasına çift tıklayın veya bu klasörde `python main.py` çalıştırın.
 Mevcut CapsLockFix oyun başlatıcısını normal şekilde kullanmaya devam edin.
 Menu oyunu başlatmaz veya kapatmaz.
+
+## Silah koleksiyonu: çok amaçlı alet ekle / kaldır
+
+**Bu bölüm oyun kapalıyken çalışır.** Canlı silah sahipliği ve istasyon savaş
+modu henüz desteklenmiyor. Liste oyun açıkken salt okunur görüntülenebilir.
+
+1. **Silah koleksiyonu → Taze silah listesini oku**. Kaydı seçip aleti
+   yuva / tohum kimliğiyle doğrulayın; prosedürel isimler boş olabilir.
+2. Yeni alet için mevcut bir aleti kaynak seçin, ad girin ve **Seçili aletin
+   donanımıyla yeni alet** planını hazırlayın. Kaynağın model ailesi, sınıfı,
+   teknolojileri ve yuvaları kopyalanır; farklı prosedürel tohum kullanılır.
+   Aktif alet değişmez. Bu sürüm ayrı bir nadir model kataloğu sunmaz.
+3. Kaldırmak için tam kimliği doğrulanmış aleti seçip kaldırma planını hazırlayın.
+   Tüm veri / donanım işlem klasöründe `*-removed-multitools.json` olarak saklanır.
+   Motorun uyumluluk amaçlı `*-removed-ships.json` kopyası da aynı dışa aktarımı içerir.
+4. Oyunda kaydedip tamamen kapatın; yeni planın raporunu inceleyip uygulayın.
+   Son alet silinemez. Aktif alet kaldırılırsa raporda belirtilen kalan alet
+   otomatik seçilir; aktif envanter, yerleşim ve model / tohum kopyaları senkronlanır.
+
+6 sabit aktif giriş ve diğer sahip olunan aletler korunur. Hazırlama, auto/manual
+dosyalarını ayrı ayrı düzenler; her dosyada seçici tek aletle eşleşmelidir. Değişen
+kaynak dosyaları, codec uyuşmazlığı ve tekrarlanan apply reddedilir.
+**Tam kayıt geri alma** ilgili işlemden önceki iki kayda döner; daha sonraki tüm
+ilerleme eski kayıtta bulunmaz. Mevcut durum ayrıca yedeklenir.
+
+İstasyonda silah çıkarma / ateş etme ve NPC'lere hasar seçenekleri henüz
+doğrulanmadığı için pasiftir. [Araştırma notları](NMS-Research/weapons-179666.md)
+mevcut bulguları ve açık kalan işleri açıklar.
 
 ## Oyun açıkken kullanım
 
@@ -125,6 +153,9 @@ Geri alınmış işlemler yeniden geri alınamaz. Yeni istek için daima yeni pl
 - `nmsmenu/live_ui.py`: oyun açıkken kullanılabilen kontrol sekmesi.
 - `nmsmenu/live_fleet.py`: FleetManager kurallarıyla taze canlı envanter projeksiyonu.
 - `nmsmenu/live_fleet_ui.py`: canlı filo inceleme / uygulama / koşullu geri alma sekmesi.
+- `nmsmenu/weapons.py`: sabit alet sahipliği ve aktif kopya senkronizasyonu.
+- `nmsmenu/weapon_cli.py`, `weapon_backend.py`, `weapon_ui.py`: silah işlemleri,
+  mevcut FleetManager transaction motoru ve masaüstü sekmesi.
 - `tests/test_live.py`: build, oturum, byte eşitliği, günlük ve canlı geri alma testleri.
 - `tests/test_safety.py`: kimlik, kargo, işlem yolu, inceleme ve taze plan kontrolleri.
 - `runtime/`: üretilen istekler; Git dışında. Asıl yedekler FleetManager'da kalır.
