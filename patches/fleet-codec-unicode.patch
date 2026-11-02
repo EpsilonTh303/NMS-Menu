@@ -1,0 +1,12 @@
+--- a/FleetManager/fleet.py
++++ b/FleetManager/fleet.py
+@@ -47,6 +47,8 @@ def encode(data, output, index):
+     result = subprocess.run([str(TOOL), 'Write', '-Output', str(output.resolve()),
+         '-Format', 'Gog', '-Index', str(index)],
+-        input=json.dumps(data, ensure_ascii=False, separators=(',', ':')).encode('utf-8'),
++        # The Windows codec may read redirected stdin using its OEM code page.
++        # ASCII JSON escapes preserve Unicode regardless of Console.InputEncoding.
++        input=json.dumps(data, ensure_ascii=True, separators=(',', ':')).encode('ascii'),
+         capture_output=True)
+     if result.returncode:
+         raise RuntimeError(result.stderr.decode('utf-8', errors='replace') +

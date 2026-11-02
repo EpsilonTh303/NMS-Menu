@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "researched_at": "2026-11-02",
+  "entries": [
+    {
+      "id": "starship_variety",
+      "title": "Gemi aileleri ve prosedürel çeşitlilik",
+      "family": "Gemi rehberi",
+      "summary": "Profil sayısı oyundaki toplam gemi sayısı değildir.",
+      "status": "Avcı, nakliye, kaşif, mekik, exotic, Solar, Living Ship, Sentinel Interceptor ve Corvette farklı ailelerdir. Tohumlar ve parçalar çok sayıda görünüm üretir. Özel ödül gemileri ayrıca hazır profiller olarak listelenir.",
+      "sources": [
+        "https://www.nomanssky.com/outlaws-update/",
+        "https://www.nomanssky.com/interceptor-update/",
+        "https://www.nomanssky.com/living-ship-update/",
+        "https://www.nomanssky.com/voyagers-update/"
+      ]
+    },
+    {
+      "id": "living",
+      "title": "Living Ship / Yaşayan gemi",
+      "family": "Gemi rehberi",
+      "summary": "Organik teknoloji kullanan ayrı gemi ailesi.",
+      "status": "Doğrudan ekleme henüz uygulanmadı: organik envanter/teknoloji ve sahiplik durumu için ayrı doğrulama gerekiyor. Normal gemi profili gibi üretilmez.",
+      "sources": [
+        "https://www.nomanssky.com/living-ship-update/"
+      ]
+    },
+    {
+      "id": "wraith",
+      "title": "The Wraith",
+      "family": "Gemi rehberi",
+      "summary": "Titan seferinin özel yaşayan gemisi.",
+      "status": "Bu sürümde rehber kaydıdır; organik gemi ekleme adaptörü tamamlanmadan sepete eklenmez.",
+      "sources": [
+        "https://www.nomanssky.com/worlds-part-ii-update/"
+      ]
+    },
+    {
+      "id": "corvette",
+      "title": "Corvette",
+      "family": "Gemi rehberi",
+      "summary": "Parçalardan inşa edilen, içi gezilebilir gemi.",
+      "status": "Doğrudan ekleme henüz uygulanmadı. Gövde modülleri ve iç yerleşimi olan yapıyı yalnız model/tohum yazarak kurmak yeterli değildir.",
+      "sources": [
+        "https://www.nomanssky.com/voyagers-update/"
+      ]
+    },
+    {
+      "id": "capital",
+      "title": "Freighter / Pirate Dreadnought / Frigate",
+      "family": "Filo rehberi",
+      "summary": "Yük gemisi ve fırkateynler kişisel gemi profillerinden ayrıdır.",
+      "status": "Bu katalog kişisel gemi ekler. Yük gemisi, fırkateyn ve sefer düzenleme adaptörü henüz yok.",
+      "sources": [
+        "https://www.nomanssky.com/omega-update/",
+        "https://www.nomanssky.com/echoes-update/"
+      ]
+    },
+    {
+      "id": "shared_tools",
+      "title": "Pistol / Rifle / Alien / Experimental",
+      "family": "Silah rehberi",
+      "summary": "Ortak model dosyası farklı tohum ve istatistiklerle kullanılır.",
+      "status": "Yerel ödül tohumları görünüm referansı olarak eklendi. Aynı SCENE dosyasını farklı isimlerle çoğaltmak ayrı bir silah türünü garanti etmez. Sınıf ve ekipman kaynak aletten gelir.",
+      "sources": [
+        "https://github.com/vectorcmdr/NMSE/blob/main/Core/MultitoolLogic.cs"
+      ]
+    },
+    {
+      "id": "staffs",
+      "title": "Autophage ve özel asalar",
+      "family": "Silah rehberi",
+      "summary": "Voltaic Staff, Atlas Sceptre, Pillar of Titan, Basilisk Crown.",
+      "status": "Model profilleri eklenebilir. Parça parça asa özelleştirmesi ve özgün ödül istatistikleri bu işlemde aktarılmaz.",
+      "sources": [
+        "https://www.nomanssky.com/echoes-update/",
+        "https://www.nomanssky.com/omega-update/",
+        "https://www.nomanssky.com/relics-update/"
+      ]
+    },
+    {
+      "id": "technology",
+      "title": "Teknoloji kataloğunun kapsamı",
+      "family": "Teknoloji rehberi",
+      "summary": "149 sabit teknoloji; bütün oyun nesnelerinin sayısı değildir.",
+      "status": "Kırık/onarımlık kayıtlar ve prosedürel yükseltme paketleri dahil edilmez. Exocraft, yük gemisi, görev ve inşa teknolojileri bu hedef adaptöründe desteklenmez. Yerel kurulum tablosu esas alınır.",
+      "sources": [
+        "local:metadata/reality/tables/nms_reality_gctechnologytable.mbin"
+      ]
+    }
+  ]
+}

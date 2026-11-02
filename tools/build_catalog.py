@@ -27,6 +27,7 @@ def build(table, localisation, destination):
         if ident.startswith('DUMMY_') or ident == 'SHIP_LIFESUP':
             continue
         entries.append({'id': ident, 'title': names.get(value('Name'), ident), 'name_key': value('Name'),
+                        'description': names.get(value('Description'), ''),
                         'category': category, 'charge': int(value('ChargeAmount') or 0),
                         'chargeable': value('Chargeable') == 'true', 'uses_ammo': value('UsesAmmo') == 'true',
                         'upgrade': value('Upgrade') == 'true'})

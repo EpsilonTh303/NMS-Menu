@@ -43,7 +43,7 @@ class MenuApp:
         self.transactions = []
         self.catalog = self.backend.catalog()
         self.loadouts = self.backend.loadouts()
-        root.title("No Man's Sky • Menu 0.6 • Ekleme Kataloğu")
+        root.title("No Man's Sky • Menu 0.7 • Ekleme Kataloğu")
         root.geometry('1160x810')
         root.minsize(920, 680)
         style = ttk.Style(root)

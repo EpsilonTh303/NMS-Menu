@@ -1,6 +1,6 @@
 # No Man’s Sky — Menu
 
-Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.6 oyun açıkken
+Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.7 oyun açıkken
 çalışan canlı veri kontrolleri içerir; ayrı masaüstü penceresidir.** Python 3.12
 ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekmez.
 
@@ -36,10 +36,10 @@ Menu açılınca bağlantı kendiliğinden kurulur; `--connect` artık gerekli d
 İşlem hazırlama yine her istek için yeni kaynak / plan / codec doğrulaması yapar.
 Ortak görüntü cache'i yazma sırasında doğrulama veya yedek yerine kullanılmaz.
 
-## Katalog ve toplu ekleme (0.6)
+## Katalog ve toplu ekleme (0.7)
 
-**Katalog / toplu ekle** sekmesi: 149 teknoloji, 7 çok amaçlı alet modeli,
-10 gemi profili ve ortak taramadan gelen harici garaj. `python main.py --catalog`
+**Katalog / toplu ekle** sekmesi: 149 teknoloji, 49 çok amaçlı alet modeli/tohum seçeneği,
+80 gemi profili/tohum seçeneği ve ortak taramadan gelen harici garaj. `python main.py --catalog`
 ile doğrudan açılır. Utopia Speeder öne çıkar; Squid varsayılan olarak gizlidir.
 
 1. Disk kaydını, içerik türünü ve teknoloji hedefini seçin. Arama isim veya ID ile çalışır.
@@ -47,8 +47,20 @@ ile doğrudan açılır. Utopia Speeder öne çıkar; Squid varsayılan olarak g
 3. Sepeti inceleyin, oyunda kaydedip oyunu tamamen kapatın ve yeni plan hazırlayın.
 4. Semantik raporu inceleyip uygulayın. Kaynak hash, yedek ve codec round-trip kontrolü zorunludur.
 
-Alet modelleri kaynak aletin sınıfını, donanımını ve yuvalarını kullanır; yeni model/tohum
-atanır. Kaynak ve aktif alet korunur. Gemi profilleri boş yer ister; yeni tohum seçeneği
+**80 / 49 sayıları oyundaki toplam gemi veya silah türü sayısı değildir.** 12 benzersiz alet model yolu
+ve 37 yerel ödül tohumu vardır. Gemi listesine 70 yerel ödül modeli/tohum profili eklendi.
+Avcı, nakliye, kaşif, mekik ve Solar varyantları; Horizon Vector NX, Golden Rasamama S36
+ve Vintage Interceptor dahil. Özgün ödül sınıfı/istatistikleri yerine editörün S sınıfı temel
+donanımı kullanılır. Ödül hakkı veya sefer tamamlama durumu değiştirilmez.
+
+Aile filtresi, seçili içerik ayrıntıları ve kaynak bağlantıları bulunur. **Tür rehberi**
+Living Ship, The Wraith, Corvette ve büyük filo gemilerinin destek durumunu açıklar;
+bu kayıtlar eklenebilir seçenekler gibi gösterilmez. Teknoloji açıklamaları yerel dil
+tablolarından gelir. Güncel araştırma: [katalog kaynakları](NMS-Research/catalog-expansion-179666.md).
+
+Alet modelleri kaynak aletin sınıfını, donanımını ve yuvalarını kullanır; model/tohum
+atanır. Hazır ödül tohumu varsa varsayılan olarak kullanılır; rastgele tohum ayrıca seçilebilir.
+Kaynak ve aktif alet korunur. Gemi profilleri boş yer ister; yeni tohum seçeneği
 aynı profilden farklı tohumlu kopya oluşturabilir. Görünümün benzersizliği garanti edilmez.
 Teknolojiler ilk boş geçerli yuvaya kurulur, mevcut teknoloji tekrar kurulmaz; yeterli yer
 yoksa hazırlama durur. Bu işlem kendiliğinden yuva açmaz. 12 gemi ve 6 alet sınırı korunur.
@@ -216,3 +228,8 @@ python -m unittest discover -s ../FleetManager -p test_fleet.py
 
 Git deposu yalnız bu klasördedir. Oyun dosyaları, canlı kayıtlar, garaj ve
 işlem yedekleri depoya alınmaz. Yerel `main` dalı kullanılır; remote kurulmadı.
+
+
+0.7, kardeş `FleetManager/fleet.py` codec girişinde Unicode korumasını da düzeltir.
+Bu çalışma alanında uygulanmıştır. Ayrı bir kopyaya taşırken aynı düzeltmenin diff'i
+`patches/fleet-codec-unicode.patch` içindedir. Round-trip eşitliği yine zorunludur.

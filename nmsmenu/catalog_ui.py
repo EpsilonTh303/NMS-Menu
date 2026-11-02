@@ -8,7 +8,8 @@ from .catalog_backend import CatalogBackend
 from .catalog_service import CatalogCart, CatalogService
 
 
-KINDS = {'Hepsi': '', 'Gemi profilleri': 'ship', 'Çok amaçlı alet': 'multitool', 'Teknoloji': 'technology', 'Garaj': 'garage'}
+KINDS = {'Hepsi': '', 'Gemi profilleri': 'ship', 'Çok amaçlı alet': 'multitool', 'Teknoloji': 'technology', 'Garaj': 'garage', 'Tür rehberi': 'reference'}
+KIND_LABELS = {v: k for k, v in KINDS.items()}
 TARGETS = {'Ekzosuit': 'exosuit', 'Gemi': 'ship', 'Çok amaçlı alet': 'multitool'}
 
 
@@ -19,6 +20,8 @@ class CatalogPanel:
         self.review, self.last_applied = None, None
         ttk.Label(parent, text='Ekleme kataloğu • gemi, alet ve teknoloji', font=('Segoe UI', 14, 'bold')).pack(anchor='w')
         ttk.Label(parent, text='Liste ortak taramadan gelir. Sepet uygulaması için oyunu kaydedip tamamen kapatın.').pack(anchor='w', pady=5)
+        self.overview = ttk.Label(parent, text='', wraplength=1080)
+        self.overview.pack(anchor='w')
         self.book = ttk.Notebook(parent)
         self.book.pack(fill='both', expand=True)
         browse, review = ttk.Frame(self.book, padding=8), ttk.Frame(self.book, padding=8)
@@ -33,10 +36,14 @@ class CatalogPanel:
         self.kind = ttk.Combobox(row, state='readonly', values=list(KINDS), width=22)
         self.kind.set('Hepsi')
         self.kind.pack(side='left', padx=8)
-        self.kind.bind('<<ComboboxSelected>>', lambda _: self.filter())
+        self.kind.bind('<<ComboboxSelected>>', lambda _: self.change_kind())
         self.query = tk.StringVar()
         ttk.Entry(row, textvariable=self.query, width=28).pack(side='left')
         self.query.trace_add('write', lambda *_: self.filter())
+        self.family = ttk.Combobox(row, state='readonly', width=19)
+        self.family.set('Tüm aileler')
+        self.family.pack(side='left', padx=8)
+        self.family.bind('<<ComboboxSelected>>', lambda _: self.filter())
         row = ttk.Frame(browse)
         row.pack(fill='x', pady=5)
         ttk.Label(row, text='Teknoloji hedefi: ').pack(side='left')
@@ -50,19 +57,31 @@ class CatalogPanel:
         self.show_all = tk.BooleanVar(value=False)
         self.fit = tk.BooleanVar(value=True)
         self.new_ship_seed = tk.BooleanVar(value=False)
+        self.random_tool_seed = tk.BooleanVar(value=False)
         row = ttk.Frame(browse)
         row.pack(fill='x')
         ttk.Checkbutton(row, text='Yalnız uygun teknolojiler', variable=self.fit, command=self.filter).pack(side='left')
         ttk.Checkbutton(row, text='Beğenilmeyen gemi profillerini de göster', variable=self.show_all, command=self.filter).pack(side='left', padx=8)
         ttk.Checkbutton(browse, text='Gemi profillerini yeni tohumla ekle (aynı modelden kopya; görünüm değişimi garanti değil)',
                         variable=self.new_ship_seed).pack(anchor='w')
+        ttk.Checkbutton(browse, text='Alet ödül tohumunu rastgele değiştir (kapalıyken hazır referans kullanılır)',
+                        variable=self.random_tool_seed).pack(anchor='w')
         self.count = ttk.Label(row, text='')
         self.count.pack(side='right')
-        self.products = ttk.Treeview(browse, columns=('title', 'kind', 'detail'), show='headings', selectmode='extended', height=10)
-        for key, title, width in [('title', 'İçerik', 370), ('kind', 'Tür', 110), ('detail', 'Profil / teknoloji ID', 400)]:
+        self.products = ttk.Treeview(browse, columns=('title', 'kind', 'detail'), show='headings', selectmode='extended', height=7)
+        for key, title, width in [('title', 'İçerik', 340), ('kind', 'Tür / durum', 155), ('detail', 'Aile / profil', 400)]:
             self.products.heading(key, text=title)
             self.products.column(key, width=width)
-        self.products.pack(fill='both', expand=True, pady=8)
+        product_row = ttk.Frame(browse)
+        product_row.pack(fill='both', expand=True, pady=6)
+        # Keep scrollbars with the list, including when a smaller window is used.
+        self.products.pack(in_=product_row, side='left', fill='both', expand=True)
+        scrollbar = ttk.Scrollbar(product_row, orient='vertical', command=self.products.yview)
+        scrollbar.pack(side='right', fill='y')
+        self.products.configure(yscrollcommand=scrollbar.set)
+        self.products.bind('<<TreeviewSelect>>', lambda _: self.show_detail())
+        self.details = ScrolledText(browse, height=4, wrap='word', font=('Segoe UI', 10), state='disabled')
+        self.details.pack(fill='x', pady=(0, 4))
         row = ttk.Frame(browse)
         row.pack(fill='x')
         ttk.Label(row, text='Yeni alet adı: ').pack(side='left')
@@ -70,7 +89,7 @@ class CatalogPanel:
         ttk.Entry(row, textvariable=self.new_name, width=18).pack(side='left')
         ttk.Button(row, text='Seçilenleri sepete ekle', command=self.add).pack(side='left', padx=8)
         ttk.Button(row, text='Sepete git', command=lambda: self.book.select(1)).pack(side='left')
-        ttk.Label(browse, text='Yeni alet, aktif aletin (alet hedefi seçiliyse o aletin) sınıfını/donanımını korur. Model ve görünüm tohumu değişir.\n'
+        ttk.Label(browse, text='Alet modelleri/tohumları kaynak aletin sınıfını ve donanımını kullanır. Rehber kayıtları sepete eklenmez.\n'
                   'Aktif sınırlar: 12 gemi, 6 alet. Gemi profilleri boş yuva ister; garajda tam kopyalar saklanır.', wraplength=1050).pack(anchor='w', pady=6)
         self.cart_label = ttk.Label(review, text='Sepet boş')
         self.cart_label.pack(anchor='w')
@@ -89,7 +108,38 @@ class CatalogPanel:
         self.apply_button.pack(side='left')
         self.restore_button = ttk.Button(row, text='Son katalog işlemi öncesine tam kayıt geri al', command=self.restore, state='disabled')
         self.restore_button.pack(side='left', padx=8)
+        self.change_kind()
+
+    def change_kind(self):
+        self.family.configure(values=['Tüm aileler'] + sorted({p.family for p in self.service.items(
+            kind=KINDS[self.kind.get()], include_hidden=True) if p.family}))
+        self.family.set('Tüm aileler')
         self.filter()
+
+    def show_detail(self):
+        keys = self.products.selection()
+        if not keys:
+            if hasattr(self, 'details'):
+                self.details.configure(state='normal')
+                self.details.delete('1.0', 'end')
+                self.details.configure(state='disabled')
+            return
+        key = keys[0]
+        data = self.service.detail(key)
+        title = data.get('title', data.get('name', data.get('id', key)))
+        lines = [title]
+        lines += [str(data[k]) for k in ('description', 'summary', 'status', 'note') if data.get(k)]
+        if 'model' in data:
+            lines.append('Model: ' + data['model'])
+        if 'seed' in data:
+            lines.append('Referans tohum: ' + data['seed'])
+        if data.get('category'):
+            lines.append('Hedef kategorisi: ' + data['category'] + ' • ID: ' + data['id'])
+        lines += ['Kaynak: ' + p for p in data.get('sources', [])]
+        self.details.configure(state='normal')
+        self.details.delete('1.0', 'end')
+        self.details.insert('1.0', '\n'.join(lines))
+        self.details.configure(state='disabled')
 
     def selected_save(self):
         index = self.save_choice.current()
@@ -132,13 +182,18 @@ class CatalogPanel:
         selected = set(self.products.selection())
         target = self.selected_target()
         items = self.service.items(self.query.get(), KINDS[self.kind.get()],
-            TARGETS[self.target_kind.get()] if self.fit.get() else '', (target or {}).get('type'), self.show_all.get())
+            TARGETS[self.target_kind.get()] if self.fit.get() else '', (target or {}).get('type'), self.show_all.get(),
+            '' if self.family.get() == 'Tüm aileler' else self.family.get())
         self.products.delete(*self.products.get_children())
         for item in items:
-            self.products.insert('', 'end', iid=item.key, values=(('★ ' if item.preferred else '') + item.title, item.kind, item.detail))
+            self.products.insert('', 'end', iid=item.key, values=(('★ ' if item.preferred else '') + item.title,
+                KIND_LABELS[item.kind], item.family + ' • ' + item.detail))
             if item.key in selected:
                 self.products.selection_add(item.key)
-        self.count.configure(text=f'{len(items)} içerik')
+        self.count.configure(text=f'{len(items)} sonuç')
+        c = self.service.counts()
+        self.overview.configure(text=f"{c['ships']} gemi profili / tohum varyantı • {c['tools']} alet modeli / tohum varyantı • "
+            f"{c['technologies']} teknoloji • {c['garage']} garaj kaydı • {c['reference']} rehber | Bunlar oyundaki toplam çeşit sayısı değildir.")
 
     def add(self):
         try:
@@ -159,7 +214,7 @@ class CatalogPanel:
                     selector = {k: target[k] for k in fields} if target else None
                 else:
                     selector = None
-                pending.append(self.service.command(key, target_kind, selector, self.new_name.get(), self.new_ship_seed.get()))
+                pending.append(self.service.command(key, target_kind, selector, self.new_name.get(), self.new_ship_seed.get(), self.random_tool_seed.get()))
             if self.cart.commands and self.cart.save_slot != (number + 1) // 2:
                 raise ValueError('Farklı oyun yuvaları tek sepete konulamaz.')
             for command in pending:

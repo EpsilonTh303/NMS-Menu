@@ -1,5 +1,15 @@
 # Değişiklikler
 
+## 0.7.0 — 2 Kasım 2026
+
+- Resmî güncelleme sayfaları ve NMSE kaynaklarıyla gemi / alet ailelerinin araştırılması.
+- Yerel ödül tablosundan 70 ek gemi profili ve 37 alet görünüm tohumu; toplam 80 / 49 seçenek.
+- 5 yeni alet modeli: Switch, Voltaic Staff, Atlas Sceptre, Pillar of Titan, Basilisk Crown.
+- Aile filtresi, içerik ayrıntısı, model/tohum ve kaynak bilgisi; teknoloji açıklamaları.
+- Ayrı tür rehberi; Living Ship, Wraith, Corvette ve büyük filo için açık destek durumu.
+- Windows codec stdin karakter kodlaması düzeltildi; Unicode JSON kaçışları ve regresyon testi.
+- Katalog sayılarının oyun toplamı olmadığı açıklanır; ödül görünümü ile kaynak istatistikleri ayrılır.
+
 ## 0.6.0 — 2 Kasım 2026
 
 - 149 teknoloji, 7 alet modeli, 10 gemi profili ve dinamik garaj için arama / filtre / çoklu seçim.

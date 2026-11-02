@@ -63,7 +63,8 @@ def mutate(original, plan, catalog, fleet, native_mutate):
             paths = report['changed_paths']
             exports += exported
         elif action['op'] in ('add', 'garage_import'):
-            data, report, exported = native_mutate(data, {'actions': [action]}, catalog)
+            from .catalog_data import ship_profiles
+            data, report, exported = native_mutate(data, {'actions': [action]}, {**catalog, **ship_profiles()})
             events.extend(report['events'])
             paths = report['changed_paths']
             exports += exported

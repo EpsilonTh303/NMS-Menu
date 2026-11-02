@@ -22,3 +22,11 @@ slot/tohum üzerinden korunmalı. Snapshot yazılabilir kayıt kaynağı değild
 Yazma akışı: oyun kapalı kontrolü → taze kaynak/yedek → plan → semantik fark → codec
 round-trip → rapor inceleme → kaynak hash ve oyun kapalı kontrolü → apply. Restore tam
 kayıt zamanına döner ve daha yeni durumu ayrıca yedekler. Bu kontroller görünüm değişse de korunmalı.
+
+
+0.7: `CatalogItem.family` aile filtresinin, `addable` rehber kayıtlarının sözleşmesidir.
+`CatalogService.detail(key)` görünümden bağımsız ve derin kopyalı içerik bilgisi döndürür.
+`counts()` seçenek sayısı verir; oyun içi toplam tür sayısı olarak etiketlenmemeli.
+Sabit ödül tohumu varsayılandır; rastgele alet tohumu açık kullanıcı seçeneğidir.
+Yeni gemi referansları doğrudan FleetManager native mutasyonuna veri olarak iletilir;
+codec / hash / durdurulmuş süreç kontrolleri aynı motor üzerinden yürür.

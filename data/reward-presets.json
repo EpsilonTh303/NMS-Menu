@@ -1,0 +1,2269 @@
+{
+  "schema": 1,
+  "game_build": "179666",
+  "source_sha256": "403f80ae19902bc4d2785c88fe420b4610f5724adb19bc77daebb0ce428619f0",
+  "ship_profiles": {
+    "r_swit_ship01": {
+      "name": "Horizon Vector NX",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTERSPECIALSWITCH.SCENE.MBIN",
+      "seed": "0x1",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_SWIT_SHIP01",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship01": {
+      "name": "Eokai's Prime Inquirer",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0xF437579A7A76D819",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP01",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship02": {
+      "name": "Avcı • R_TWIT_SHIP02",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x6FF7793FBC58837",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP02",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship03": {
+      "name": "Avcı • R_TWIT_SHIP03",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0xBCEF59E1A64E28DC",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP03",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship04": {
+      "name": "Nakliye • R_TWIT_SHIP04",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x9557186C7D37C2EC",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP04",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship05": {
+      "name": "Mekik • R_TWIT_SHIP05",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0x9E58062EEDC436B",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP05",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship06": {
+      "name": "Mekik • R_TWIT_SHIP06",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0xEACE5BEA27F0A3CC",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP06",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship07": {
+      "name": "Kaşif • R_TWIT_SHIP07",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0xAB8668AAA38F66CF",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP07",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship08": {
+      "name": "Avcı • R_TWIT_SHIP08",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x659F3F157B4E33BF",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP08",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship08b": {
+      "name": "Avcı • R_TWIT_SHIP08B",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x94B00527B67F46EF",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP08B",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship09": {
+      "name": "Nakliye • R_TWIT_SHIP09",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x3A8B8466974433AA",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP09",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship10": {
+      "name": "Avcı • R_TWIT_SHIP10",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x19036EFEDEA6E86D",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP10",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship11": {
+      "name": "Avcı • R_TWIT_SHIP11",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0xF7EC41012FFEC6BC",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP11",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship12": {
+      "name": "Kaşif • R_TWIT_SHIP12",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x536F237637EBCAA7",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP12",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship13": {
+      "name": "Avcı • R_TWIT_SHIP13",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x513AB73275CAF6DD",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP13",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship14": {
+      "name": "Mekik • R_TWIT_SHIP14",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0x4270E4BCA7042EC8",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP14",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship15": {
+      "name": "Nakliye • R_TWIT_SHIP15",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0xF4B2A87844DA5EEE",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP15",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship16": {
+      "name": "Nakliye • R_TWIT_SHIP16",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0xC765B3085BEFD516",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP16",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship17": {
+      "name": "Avcı • R_TWIT_SHIP17",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x6DB8AB2CD03AB874",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP17",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship18": {
+      "name": "Nakliye • R_TWIT_SHIP18",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0xBAA067A479806A1C",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP18",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship19": {
+      "name": "Nakliye • R_TWIT_SHIP19",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x1334D105E9ED0B3B",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP19",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship20": {
+      "name": "Avcı • R_TWIT_SHIP20",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x9D741C0A870268CE",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP20",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship21": {
+      "name": "Nakliye • R_TWIT_SHIP21",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x19036EFEDEA6E86D",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP21",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship22": {
+      "name": "Avcı • R_TWIT_SHIP22",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0xABA8968EB34EC301",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP22",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship23": {
+      "name": "Kaşif • R_TWIT_SHIP23",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x96151ACDE144FA74",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP23",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship24": {
+      "name": "Nakliye • R_TWIT_SHIP24",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x3E712C27F8A4255C",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP24",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship25": {
+      "name": "Avcı • R_TWIT_SHIP25",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x771E56C789FDD327",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP25",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship26": {
+      "name": "Kaşif • R_TWIT_SHIP26",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x9E23B52B714DFA2F",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP26",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship27": {
+      "name": "Solar • R_TWIT_SHIP27",
+      "model": "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN",
+      "seed": "0x1394055354328D83",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100,
+        "SOLAR_SAIL": 100
+      },
+      "family": "solar",
+      "reward_id": "R_TWIT_SHIP27",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship28": {
+      "name": "Solar • R_TWIT_SHIP28",
+      "model": "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN",
+      "seed": "0x540AB31E121E3147",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100,
+        "SOLAR_SAIL": 100
+      },
+      "family": "solar",
+      "reward_id": "R_TWIT_SHIP28",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship29": {
+      "name": "Nakliye • R_TWIT_SHIP29",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0xC200007E11C5C630",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP29",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship30": {
+      "name": "Avcı • R_TWIT_SHIP30",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x167A726F28DA2937",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP30",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship31": {
+      "name": "Kaşif • R_TWIT_SHIP31",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0xBD0600881E28957B",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP31",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship32": {
+      "name": "Nakliye • R_TWIT_SHIP32",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x51B29E0AA1CF60D6",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP32",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship33": {
+      "name": "Nakliye • R_TWIT_SHIP33",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x5AD2BF6E1665688E",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP33",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship34": {
+      "name": "Avcı • R_TWIT_SHIP34",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0xD211CEAE1460D02B",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP34",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship35": {
+      "name": "Avcı • R_TWIT_SHIP35",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x68D88885C712EC5C",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP35",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship36": {
+      "name": "Avcı • R_TWIT_SHIP36",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0xC3C01A05BE14CA3C",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP36",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship37": {
+      "name": "Avcı • R_TWIT_SHIP37",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x57DC3A2A7E7AE7A1",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP37",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship38": {
+      "name": "Mekik • R_TWIT_SHIP38",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0xC23C059E2C6CE4A0",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP38",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship39": {
+      "name": "Nakliye • R_TWIT_SHIP39",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x67BABE2F5241D0AD",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP39",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship40": {
+      "name": "Kaşif • R_TWIT_SHIP40",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0xDE8394A01CD76DB8",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP40",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship41": {
+      "name": "Mekik • R_TWIT_SHIP41",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0x41DA9F9B209CD17F",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP41",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship42": {
+      "name": "Solar • R_TWIT_SHIP42",
+      "model": "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN",
+      "seed": "0x89456E26E2F99456",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100,
+        "SOLAR_SAIL": 100
+      },
+      "family": "solar",
+      "reward_id": "R_TWIT_SHIP42",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship43": {
+      "name": "Kaşif • R_TWIT_SHIP43",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0xC07E94F65B7605D5",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP43",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship44": {
+      "name": "Avcı • R_TWIT_SHIP44",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x88D50D4BFA0112BF",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP44",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship45": {
+      "name": "Nakliye • R_TWIT_SHIP45",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x7C055C956DDB8B97",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP45",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship46": {
+      "name": "Nakliye • R_TWIT_SHIP46",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0xC033A5A1C494CC47",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP46",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship47": {
+      "name": "Mekik • R_TWIT_SHIP47",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0x9F9617DB559985F6",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP47",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship48": {
+      "name": "Kaşif • R_TWIT_SHIP48",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x684EB0D916D49D15",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP48",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship49": {
+      "name": "Kaşif • R_TWIT_SHIP49",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x1F9A97546A7C324D",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP49",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship50": {
+      "name": "Avcı • R_TWIT_SHIP50",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x719AABAA5A118FD9",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP50",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship51": {
+      "name": "Avcı • R_TWIT_SHIP51",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x37CF937659308287",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP51",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship52": {
+      "name": "Mekik • R_TWIT_SHIP52",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0x869B6555F736421F",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP52",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship53": {
+      "name": "Kaşif • R_TWIT_SHIP53",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0xB5D75D972EB73233",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP53",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship54": {
+      "name": "Solar • R_TWIT_SHIP54",
+      "model": "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN",
+      "seed": "0xA596E05482C352E4",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100,
+        "SOLAR_SAIL": 100
+      },
+      "family": "solar",
+      "reward_id": "R_TWIT_SHIP54",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship55": {
+      "name": "Avcı • R_TWIT_SHIP55",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x3EDA553465D9A643",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP55",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship56": {
+      "name": "Nakliye • R_TWIT_SHIP56",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x3997B670CCA1B1E1",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP56",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship57": {
+      "name": "Avcı • R_TWIT_SHIP57",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0xEE5F2072FDF5FEF5",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP57",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship58": {
+      "name": "Kaşif • R_TWIT_SHIP58",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x712247228CE03300",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP58",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship59": {
+      "name": "Nakliye • R_TWIT_SHIP59",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x1DB60731CDDF0147",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP59",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship60": {
+      "name": "Avcı • R_TWIT_SHIP60",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x70889D095883B044",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP60",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship61": {
+      "name": "Nakliye • R_TWIT_SHIP61",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0xFA305F729FA81030",
+      "class": "S",
+      "cargo_slots": 120,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "hauler",
+      "reward_id": "R_TWIT_SHIP61",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship62": {
+      "name": "Kaşif • R_TWIT_SHIP62",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x593AF24C47691F8F",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP62",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship63": {
+      "name": "Mekik • R_TWIT_SHIP63",
+      "model": "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN",
+      "seed": "0xFC5C0618C0AB64AA",
+      "class": "S",
+      "cargo_slots": 110,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "shuttle",
+      "reward_id": "R_TWIT_SHIP63",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship64": {
+      "name": "Kaşif • R_TWIT_SHIP64",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x9A660EC8D70AD098",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "R_TWIT_SHIP64",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "r_twit_ship65": {
+      "name": "Avcı • R_TWIT_SHIP65",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN",
+      "seed": "0x2A3AA3CBDF734375",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "R_TWIT_SHIP65",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "rs_s1_s4m3": {
+      "name": "Kaşif • RS_S1_S4M3",
+      "model": "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN",
+      "seed": "0x867BFFC553B294A8",
+      "class": "S",
+      "cargo_slots": 105,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "explorer",
+      "reward_id": "RS_S1_S4M3",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "rs_s23_shipa": {
+      "name": "Golden Rasamama S36",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/RASAMAMAGOLD.SCENE.MBIN",
+      "seed": "0x0",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "RS_S23_SHIPA",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    },
+    "rs_s23_shipb": {
+      "name": "Vintage Interceptor",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/VINTAGEINTERCEPTOR.SCENE.MBIN",
+      "seed": "0x0",
+      "class": "S",
+      "cargo_slots": 100,
+      "tech_slots": 60,
+      "stats": {
+        "SHIP_DAMAGE": 50.0,
+        "SHIP_SHIELD": 30.0,
+        "SHIP_HYPERDRIVE": 30.0,
+        "SHIP_AGILE": 40.0
+      },
+      "technology": {
+        "LAUNCHER": 200,
+        "SHIPJUMP1": 200,
+        "SHIPSHIELD": 200,
+        "SHIPGUN1": 100,
+        "HYPERDRIVE": 120,
+        "UT_LAUNCHCHARGE": 100
+      },
+      "family": "fighter",
+      "reward_id": "RS_S23_SHIPB",
+      "sources": [
+        "local:metadata/reality/tables/rewardtable.mbin"
+      ],
+      "note": "Yerel ödül model/tohum referansı; S sınıfı ve temel donanım editör profilidir. Ödül kilidi açılmaz."
+    }
+  },
+  "tool_presets": {
+    "r_swit_gun01": {
+      "title": "Infinite Neon Mark XXII",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SWITCHMULTITOOL.SCENE.MBIN",
+      "seed": "0xFF33308A268DE488",
+      "family": "Rifle",
+      "reward_id": "R_SWIT_GUN01",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun01": {
+      "title": "Rifle • R_TWIT_GUN01",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x7E9896D06EF5510A",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN01",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun02": {
+      "title": "Pistol • R_TWIT_GUN02",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x33156C44DD934D25",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN02",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun03": {
+      "title": "Pistol • R_TWIT_GUN03",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x8F2D0700120E1149",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN03",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun04": {
+      "title": "Pristine • R_TWIT_GUN04",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xFB8D9BA3FC5021F",
+      "family": "Pristine",
+      "reward_id": "R_TWIT_GUN04",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun05": {
+      "title": "Rifle • R_TWIT_GUN05",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x73DD2FD7DE1FFD45",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN05",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun06": {
+      "title": "Pistol • R_TWIT_GUN06",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xE6CF81F36C74FDAC",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN06",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun07": {
+      "title": "Pistol • R_TWIT_GUN07",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xE2EE0370320FB3FA",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN07",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun08": {
+      "title": "Pistol • R_TWIT_GUN08",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xB300EE43C8B91F99",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN08",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun09": {
+      "title": "Alien • R_TWIT_GUN09",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xF7D2C32AE91F1009",
+      "family": "Alien",
+      "reward_id": "R_TWIT_GUN09",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun10": {
+      "title": "Rifle • R_TWIT_GUN10",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x376D40AD9A16D7CF",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN10",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun11": {
+      "title": "Pistol • R_TWIT_GUN11",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x79ADD444E3D1111F",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN11",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun12": {
+      "title": "Pistol • R_TWIT_GUN12",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x8EF571AD4B7BBA04",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN12",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun13": {
+      "title": "Rifle • R_TWIT_GUN13",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xC6E5F5A12C6E1D3E",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN13",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun14": {
+      "title": "Pistol • R_TWIT_GUN14",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xD6FAA69D56B554C6",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN14",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun15": {
+      "title": "Rifle • R_TWIT_GUN15",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xD2F1A4521641049F",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN15",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun16": {
+      "title": "Pistol • R_TWIT_GUN16",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xCF48EC050E92ECA7",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN16",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun17": {
+      "title": "Pistol • R_TWIT_GUN17",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x86348ED4E87C52C1",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN17",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun18": {
+      "title": "Pistol • R_TWIT_GUN18",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x44976AF3DAED7C66",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN18",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun19": {
+      "title": "Pistol • R_TWIT_GUN19",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xEB43BFAA152B0D7D",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN19",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun20": {
+      "title": "Alien • R_TWIT_GUN20",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x476A07987D729362",
+      "family": "Alien",
+      "reward_id": "R_TWIT_GUN20",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun21": {
+      "title": "Pristine • R_TWIT_GUN21",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xC715094C3FD52600",
+      "family": "Pristine",
+      "reward_id": "R_TWIT_GUN21",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun22": {
+      "title": "Alien • R_TWIT_GUN22",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xE49B8987A360BB3A",
+      "family": "Alien",
+      "reward_id": "R_TWIT_GUN22",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun23": {
+      "title": "Staff • R_TWIT_GUN23",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOL.SCENE.MBIN",
+      "seed": "0xF5CAA258C27B865A",
+      "family": "Staff",
+      "reward_id": "R_TWIT_GUN23",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun24": {
+      "title": "Pistol • R_TWIT_GUN24",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xD78DD145EB4CBF1",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN24",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun25": {
+      "title": "Pistol • R_TWIT_GUN25",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x95A3F7B6C1F052B4",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN25",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun26": {
+      "title": "Rifle • R_TWIT_GUN26",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xF9099528B572DF9F",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN26",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun27": {
+      "title": "Pistol • R_TWIT_GUN27",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xACADADA54E0ABE6A",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN27",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun28": {
+      "title": "Rifle • R_TWIT_GUN28",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xB411529BF912C034",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN28",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun29": {
+      "title": "Pistol • R_TWIT_GUN29",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xA021F802855038D0",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN29",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun30": {
+      "title": "Pistol • R_TWIT_GUN30",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x6E7B0F0CD35BED5",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN30",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun31": {
+      "title": "Rifle • R_TWIT_GUN31",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x67C55A5D36C23EDC",
+      "family": "Rifle",
+      "reward_id": "R_TWIT_GUN31",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun32": {
+      "title": "Pistol • R_TWIT_GUN32",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xBBF92626EA7E644A",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN32",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_twit_gun33": {
+      "title": "Pistol • R_TWIT_GUN33",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0x4CE76CF2B6B8E4BB",
+      "family": "Pistol",
+      "reward_id": "R_TWIT_GUN33",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "r_tra_cs_5_weap": {
+      "title": "Pistol • R_TRA_CS_5_WEAP",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xFFFFFFFFFFFFFFFF",
+      "family": "Pistol",
+      "reward_id": "R_TRA_CS_5_WEAP",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "rs_s1_phase2": {
+      "title": "Pistol • RS_S1_PHASE2",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xCF9858143BDCE787",
+      "family": "Pistol",
+      "reward_id": "RS_S1_PHASE2",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    },
+    "rs_s1_s5m4": {
+      "title": "Alien • RS_S1_S5M4",
+      "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+      "seed": "0xE0AF6FA5D33EE25D",
+      "family": "Alien",
+      "reward_id": "RS_S1_S5M4",
+      "note": "Yerel ödülün görünüm tohumu; sınıf/donanım kaynak aletten kopyalanır. Özgün ödül istatistikleri aktarılmaz."
+    }
+  }
+}

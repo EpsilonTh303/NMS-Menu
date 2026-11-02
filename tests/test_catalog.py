@@ -1,5 +1,7 @@
 import copy
 import unittest
+from unittest.mock import patch
+from types import SimpleNamespace
 
 from nmsmenu.catalog_data import compatible, technologies, tool_models
 from nmsmenu.catalog_service import CatalogCart, CatalogService
@@ -46,6 +48,50 @@ class CatalogServiceTests(unittest.TestCase):
         variant = self.service.command('ship:utopia_speeder', new_ship_seed=True)
         self.assertNotIn('seed', normal)
         self.assertTrue(0 < int(variant['seed'], 16) < 2 ** 64)
+
+    def test_reward_presets_use_explicit_local_seed_and_random_override(self):
+        key, profile = next((k, v) for k, v in tool_models().items() if v.get('seed'))
+        selector = {'slot': 1, 'seed': '0x1', 'filename': 'source'}
+        command = self.service.command('tool:' + key, selector=selector)
+        self.assertEqual(command['seed'], profile['seed'])
+        random = self.service.command('tool:' + key, selector=selector, random_tool_seed=True)
+        self.assertTrue(0 < int(random['seed'], 16) < 2 ** 64)
+
+    def test_reference_entries_are_searchable_but_cannot_be_added(self):
+        result = self.service.items('corvette', kind='reference')
+        self.assertEqual(len(result), 1)
+        self.assertFalse(result[0].addable)
+        with self.assertRaises(ValueError):
+            self.service.command(result[0].key)
+
+    def test_family_filter_and_detail_are_ui_independent(self):
+        result = self.service.items(kind='ship', family='explorer')
+        self.assertGreater(len(result), 5)
+        self.assertTrue(all(item.family == 'explorer' for item in result))
+        detail = self.service.detail(result[0].key)
+        detail['technology']['BROKEN_TEST'] = 1
+        self.assertNotIn('BROKEN_TEST', self.service.detail(result[0].key)['technology'])
+
+    def test_catalog_separates_model_and_seed_variants(self):
+        self.assertEqual(self.service.counts()['ships'], 80)
+        self.assertEqual(self.service.counts()['tools'], 49)
+        self.assertEqual(len({p['model'] for p in tool_models().values()}), 12)
+        for key, profile in self.service.ships.items():
+            self.assertTrue(0 <= int(profile['seed'], 16) < 2 ** 64, key)
+            self.assertLessEqual(profile.get('tech_slots', 20), 60)
+            self.assertTrue(set(profile['technology']) <= technologies().keys(), key)
+
+    def test_codec_stdin_preserves_unicode_across_windows_code_pages(self):
+        import json
+        from pathlib import Path
+        fleet = engine()
+        payload = {'Name': 'Nakliye • Türkçe ıİşŞğĞüÜöÖçÇ'}
+        with patch.object(fleet.subprocess, 'run', return_value=SimpleNamespace(returncode=0)) as run:
+            fleet.encode(payload, Path('.'), 0)
+        raw = run.call_args.kwargs['input']
+        self.assertTrue(raw.isascii())
+        for encoding in ('ascii', 'cp437', 'cp1252', 'utf-8'):
+            self.assertEqual(json.loads(raw.decode(encoding)), payload)
 
     def test_cart_copies_commands_deduplicates_tech_and_rejects_cross_save(self):
         cart = CatalogCart()

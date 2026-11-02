@@ -11,7 +11,22 @@ def technologies():
 
 @lru_cache(maxsize=1)
 def tool_models():
-    return read_json(ROOT / 'data' / 'tool-models.json')
+    return {**read_json(ROOT / 'data' / 'tool-models.json'),
+            **reward_presets()['tool_presets']}
+
+
+@lru_cache(maxsize=1)
+def reward_presets():
+    return read_json(ROOT / 'data' / 'reward-presets.json')
+
+
+def ship_profiles():
+    return reward_presets()['ship_profiles']
+
+
+@lru_cache(maxsize=1)
+def reference_entries():
+    return read_json(ROOT / 'data' / 'reference-catalog.json')['entries']
 
 
 def compatible(entry, target, ship_type=None):

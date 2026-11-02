@@ -1,9 +1,74 @@
 {
-  "standard": {"title": "Standart çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN"},
-  "royal": {"title": "Royal çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/ROYALMULTITOOL.SCENE.MBIN"},
-  "sentinel": {"title": "Sentinel çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOL.SCENE.MBIN"},
-  "sentinel_b": {"title": "Sentinel B çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOLB.SCENE.MBIN"},
-  "atlantid": {"title": "Atlantid çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN"},
-  "swarm": {"title": "Direwasp çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SWARMMULTITOOL.SCENE.MBIN"},
-  "retro": {"title": "Starbound çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/RETROMULTITOOL.SCENE.MBIN"}
+  "standard": {
+    "title": "Standart çok amaçlı alet",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN",
+    "family": "Procedural",
+    "note": "Kaynak aletin sınıfı/donanımı kullanılır; bu bir görünüm modelidir."
+  },
+  "royal": {
+    "title": "Royal çok amaçlı alet",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/ROYALMULTITOOL.SCENE.MBIN",
+    "family": "Royal",
+    "note": "Kaynak aletin sınıfı/donanımı kullanılır; bu bir görünüm modelidir."
+  },
+  "sentinel": {
+    "title": "Sentinel çok amaçlı alet",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOL.SCENE.MBIN",
+    "family": "Sentinel",
+    "note": "Kaynak aletin sınıfı/donanımı kullanılır; bu bir görünüm modelidir."
+  },
+  "sentinel_b": {
+    "title": "Sentinel B çok amaçlı alet",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOLB.SCENE.MBIN",
+    "family": "Sentinel",
+    "note": "Kaynak aletin sınıfı/donanımı kullanılır; bu bir görünüm modelidir."
+  },
+  "atlantid": {
+    "title": "Atlantid çok amaçlı alet",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN",
+    "family": "Atlantid",
+    "note": "Kaynak aletin sınıfı/donanımı kullanılır; bu bir görünüm modelidir."
+  },
+  "swarm": {
+    "title": "Direwasp çok amaçlı alet",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SWARMMULTITOOL.SCENE.MBIN",
+    "family": "Rifle",
+    "note": "Kaynak aletin sınıfı/donanımı kullanılır; bu bir görünüm modelidir."
+  },
+  "retro": {
+    "title": "Starbound çok amaçlı alet",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/RETROMULTITOOL.SCENE.MBIN",
+    "family": "Pistol",
+    "note": "Kaynak aletin sınıfı/donanımı kullanılır; bu bir görünüm modelidir."
+  },
+  "switch": {
+    "title": "Infinite Neon Mark XXII",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SWITCHMULTITOOL.SCENE.MBIN",
+    "family": "Rifle",
+    "note": "Model yolu yerel dosyalarda doğrulandı; kaynak aletin sınıfı/donanımı kullanılır."
+  },
+  "staff": {
+    "title": "Voltaic Staff / Autophage asası",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOL.SCENE.MBIN",
+    "family": "Staff",
+    "note": "Model yolu yerel dosyalarda doğrulandı; kaynak aletin sınıfı/donanımı kullanılır."
+  },
+  "atlas_staff": {
+    "title": "Atlas Sceptre",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLATLAS.SCENE.MBIN",
+    "family": "Staff",
+    "note": "Model yolu yerel dosyalarda doğrulandı; kaynak aletin sınıfı/donanımı kullanılır."
+  },
+  "ruin_staff": {
+    "title": "Pillar of Titan",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLRUIN.SCENE.MBIN",
+    "family": "Staff",
+    "note": "Model yolu yerel dosyalarda doğrulandı; kaynak aletin sınıfı/donanımı kullanılır."
+  },
+  "bone_staff": {
+    "title": "Basilisk Crown",
+    "model": "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLBONE.SCENE.MBIN",
+    "family": "Staff",
+    "note": "Model yolu yerel dosyalarda doğrulandı; kaynak aletin sınıfı/donanımı kullanılır."
+  }
 }
