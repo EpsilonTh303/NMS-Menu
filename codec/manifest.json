@@ -1,0 +1,10 @@
+{
+  "name": "libNOM.io CLI",
+  "version": "0.14.2",
+  "filename": "libNOM.io.cli.exe",
+  "url": "https://github.com/zencq/libNOM.io/releases/download/0.14.2/libNOM.io.cli.win-x64.exe",
+  "sha256": "df81bef41618aaa63c8bbb7010117d21c4dd80803df3f34a561c4de73b92c189",
+  "size": 74380139,
+  "source": "https://github.com/zencq/libNOM.io/tree/0.14.2",
+  "license": "https://github.com/zencq/libNOM.io/blob/0.14.2/LICENSE"
+}

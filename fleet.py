@@ -18,7 +18,7 @@ import uuid
 
 ROOT = Path(__file__).resolve().parent
 GARAGE = ROOT / 'garage'
-TOOL = ROOT.parent / 'SolarShipFix' / 'libNOM.io.cli.exe'
+TOOL = ROOT / 'codec' / 'libNOM.io.cli.exe'
 LIVE = Path(os.environ.get('APPDATA', '')) / 'HelloGames' / 'NMS' / 'DefaultUser'
 PREFIX = '/BaseContext/PlayerStateData/'
 

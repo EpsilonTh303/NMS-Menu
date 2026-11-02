@@ -4,13 +4,14 @@
 
 - FleetManager motoru ve katalogları Menu köküne entegre edildi; ayrı klasör bağımlılığı kaldırıldı.
 - Garaj ve işlem yedekleri hash doğrulamasıyla korundu; son işlem geri alma işaretçileri yeni konuma taşındı.
-
+- Kayıt codec'i `codec/` içine alındı; resmî sürüm için boyut/SHA-256 doğrulamalı kurulum eklendi.
+- Eski Solar düzeltme yedekleri `runtime/legacy-solar/` altında korundu; dış klasör bağımlılığı kaldırıldı.
 - Referansa göre Qt masaüstü görünümü, yerel vektör simgeleri ve envanter çizimi.
 - Ayarlar sekmesi; anlık ve kalıcı Türkçe, İngilizce, Rusça ve Almanca seçimi.
 - Dil başına ayrı JSON, 525 kaynak metin, dosyadan dil keşfi ve Türkçe yedek metinler.
 - Yeni metin/dil ekleme, dosya yenileme ve değişken/eksik çeviri kontrol araçları.
 - Mevcut Tk denetleyicileri, işlem doğrulamaları ve `--classic` görünümü korunur.
-- Yerel bağımlılık kurulumu, temiz klonda test klasörü oluşturma; 113 geçen test.
+- Yerel bağımlılık kurulumu ve temiz klonda test klasörü oluşturma; sentetik ve yerel motor regresyon testleri.
 
 ## 0.8.0 — 2 Kasım 2026
 

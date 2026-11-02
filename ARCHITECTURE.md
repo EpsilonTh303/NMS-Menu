@@ -144,6 +144,6 @@ sürümü geldiğinde codec ve şema tekrar doğrulanmadan uyumluluk iddia edilm
 
 Python, PySide6 ve Menu kökündeki entegre `fleet.py` motoru kullanılır.
 `FLEET = ROOT`; kataloglar, işlem geçmişi ve garaj aynı kökte çözümlenir.
-Codec `../SolarShipFix/libNOM.io.cli.exe` konumundadır; ayrı FleetManager
-klasörü gerekmez. Kaynak kontrolü kod, kataloglar, belgeler ve sentetik testleri
+Codec `codec/libNOM.io.cli.exe` konumundadır; kurucu resmî sürümü hash ile doğrular.
+Ayrı FleetManager veya SolarShipFix klasörü gerekmez. Kaynak kontrolü kod, kataloglar, belgeler ve sentetik testleri
 içerir. Yerel garaj, geçmiş işlem yedekleri ve inceleme kayıtları Git dışındadır.

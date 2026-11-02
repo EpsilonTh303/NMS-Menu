@@ -12,6 +12,8 @@ vendor/
 build/
 dist/
 *.egg-info/
+/codec/*.exe
+/codec/*.part
 # Local fleet history, save snapshots and analysis dependencies
 /transactions/
 /garage/

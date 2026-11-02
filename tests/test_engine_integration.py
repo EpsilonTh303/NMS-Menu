@@ -23,7 +23,7 @@ class IntegratedEngine(unittest.TestCase):
 
     def test_codec_and_live_save_locations_are_preserved(self):
         native = engine()
-        self.assertEqual(native.TOOL, ROOT.parent / 'SolarShipFix' / 'libNOM.io.cli.exe')
+        self.assertEqual(native.TOOL, ROOT / 'codec' / 'libNOM.io.cli.exe')
         self.assertEqual(native.LIVE.parts[-3:], ('HelloGames', 'NMS', 'DefaultUser'))
         self.assertEqual(native.GARAGE, ROOT / 'garage')
 

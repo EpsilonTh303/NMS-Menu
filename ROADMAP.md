@@ -6,6 +6,8 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 
 | Alan | Aday kontroller | Durum / koşul |
 |---|---|---|
+| Arayüz / dil | Qt görünümü, dosya tabanlı dört dil, Ayarlar sekmesi | v0.9 hazır |
+| Entegre kurulum | Filo motoru ve hash doğrulamalı codec kurucusu | v0.9; ayrı FleetManager/SolarShipFix klasörü gerekmez |
 | Filo | Ekle, kaldır, onar, donanım kur | v0.1 hazır; doğrulanmış katalog / motor |
 | Canlı filo | Listele, mevcut gemiyi onar / şarj et, tüm gemilerin yuvalarını aç | v0.3; oyun açık, offline, Esc duraklatma menüsünde |
 | Envanter | Karakter ve gemi yuvaları | v0.1 hazır; tür kapasitesi korunur |
