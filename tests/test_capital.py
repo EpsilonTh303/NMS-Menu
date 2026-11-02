@@ -52,6 +52,51 @@ class CapitalTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.apply('freighter_edit', fields={'name': 'No grant'})
 
+    def empty_template(self):
+        self.p['CurrentFreighter']['Filename'] = ''
+        self.p['CurrentFreighterNPC'] = {'Filename': '', 'Seed': [False, '0x0'], 'Unknown': 17}
+        self.p['CurrentFreighterHomeSystemSeed'] = [False, '0x0']
+        self.p['PersistentPlayerBases'] = [{'BaseType': {'PersistentBaseTypes': 'HomePlanetBase'}, 'Unknown': 8}]
+        return {'op': 'freighter_create', 'experimental': True, 'model': 'Capital',
+                'name': 'New Capital', 'seed': '0x101', 'home_seed': '0x202', 'crew_seed': '0x303'}
+
+    def test_create_preserves_every_other_field_and_ownership_array(self):
+        action = self.empty_template()
+        before = copy.deepcopy(self.data)
+        result, _, paths, _ = capital.mutate(self.data, action, self.fleet)
+        p = self.fleet.player(result)
+        self.assertEqual(self.data, before)
+        self.assertEqual(p['CurrentFreighter']['Filename'], capital.FREIGHTER_MODELS['Capital'])
+        self.assertEqual(p['CurrentFreighter']['Unknown'], 42)
+        self.assertEqual(p['CurrentFreighterNPC']['Unknown'], 17)
+        self.assertEqual(p['CurrentFreighterHomeSystemSeed'], [True, '0x0000000000000202'])
+        for key in ('ShipOwnership', 'FleetFrigates', 'PersistentPlayerBases', *capital.FREIGHTER_INVENTORIES):
+            self.assertEqual(p[key], self.p[key])
+        self.assertTrue(paths)
+        routed, _, _ = basket_mutate(self.data, {'actions': [action]}, {}, self.fleet, self.fleet.mutate)
+        self.assertEqual(routed, result)
+
+    def test_create_rejects_existing_owner_or_missing_explicit_ack(self):
+        action = self.empty_template()
+        for ack in (False, None, 1, 'true'):
+            with self.assertRaises(ValueError):
+                capital.mutate(self.data, {**action, 'experimental': ack}, self.fleet)
+        self.p['CurrentFreighter']['Filename'] = capital.FREIGHTER_MODELS['Normal']
+        with self.assertRaises(ValueError):
+            capital.mutate(self.data, action, self.fleet)
+
+    def test_create_rejects_cargo_base_and_unknown_model(self):
+        action = self.empty_template()
+        with self.assertRaises(ValueError):
+            capital.mutate(self.data, {**action, 'model': '../arbitrary'}, self.fleet)
+        self.p['PersistentPlayerBases'].append({'BaseType': {'PersistentBaseTypes': 'FreighterBase'}})
+        with self.assertRaises(ValueError):
+            capital.mutate(self.data, action, self.fleet)
+        self.p['PersistentPlayerBases'].pop()
+        self.p['FreighterInventory']['Slots'] = [self.fleet.tech('F_HYPERDRIVE', 100)]
+        with self.assertRaises(ValueError):
+            capital.mutate(self.data, action, self.fleet)
+
     def test_freighter_class_sync_preserves_cargo_and_bases(self):
         before = copy.deepcopy(self.data)
         result, _, paths, _ = self.apply('freighter_edit', fields={'class': 'S', 'name': 'Flagship'})

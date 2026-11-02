@@ -1,6 +1,6 @@
 """Offline freighter/frigate operations with explicit semantic allowlists.
 
-Never allocates live game memory, invents freighter ownership or rewrites bases.
+Never allocates live game memory or rewrites bases.
 Mission indices stay untouched: fleet removal requires an empty expedition list.
 """
 import copy
@@ -10,6 +10,11 @@ import re
 MAX_FRIGATES = 30
 NORMAL_FRIGATES = {'Combat', 'Exploration', 'Mining', 'Diplomacy', 'Support'}
 FREIGHTER_INVENTORIES = ('FreighterInventory', 'FreighterInventory_TechOnly', 'FreighterInventory_Cargo')
+FREIGHTER_MODELS = {
+    'Normal': 'MODELS/COMMON/SPACECRAFT/INDUSTRIAL/FREIGHTER_PROC.SCENE.MBIN',
+    'Capital': 'MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CAPITALFREIGHTER_PROC.SCENE.MBIN',
+    'Pirate': 'MODELS/COMMON/SPACECRAFT/INDUSTRIAL/PIRATEFREIGHTER.SCENE.MBIN',
+}
 
 
 def seed(value):
@@ -114,7 +119,44 @@ def mutate(original, action, fleet):
     p = fleet.player(data)
     operation = action.get('op')
     allowed, exports = [], []
-    if operation in ('freighter_edit', 'freighter_expand', 'freighter_repair'):
+    if operation == 'freighter_create':
+        if action.get('experimental') is not True:
+            raise ValueError('Deneysel ekleme için açık onay gerekli.')
+        if freighter_identity(p) is not None:
+            raise ValueError('Mevcut yük gemisi değiştirilemez.')
+        if expeditions(p):
+            raise ValueError('Kaldırmadan önce tüm seferleri tamamlayıp raporlarını alın.')
+        model = FREIGHTER_MODELS.get(action.get('model'))
+        if not model:
+            raise ValueError('Bilinmeyen yük gemisi modeli.')
+        # Start only from the game's empty ownership template. No base, mission,
+        # cargo, spawn transform or personal ship ownership is synthesized.
+        for key in ('CurrentFreighter', 'CurrentFreighterNPC'):
+            resource = p[key]
+            if resource.get('Filename') or not isinstance(resource.get('Seed'), list) or len(resource['Seed']) != 2:
+                raise ValueError('Boş yük gemisi şablonu doğrulanamadı.')
+        if any(base.get('BaseType', {}).get('PersistentBaseTypes') == 'FreighterBase'
+               for base in p['PersistentPlayerBases']):
+            raise ValueError('Boş yük gemisi şablonu doğrulanamadı.')
+        home = p['CurrentFreighterHomeSystemSeed']
+        if not isinstance(home, list) or len(home) != 2 or home[0] is not False:
+            raise ValueError('Boş yük gemisi şablonu doğrulanamadı.')
+        for key in FREIGHTER_INVENTORIES:
+            inventory = p[key]
+            if inventory['Slots'] or inventory['Class']['InventoryClass'] not in ('C', 'B', 'A', 'S'):
+                raise ValueError('Boş yük gemisi şablonu doğrulanamadı.')
+            if not isinstance(inventory['ValidSlotIndices'], list):
+                raise ValueError('Boş yük gemisi şablonu doğrulanamadı.')
+        p['CurrentFreighter']['Filename'] = model
+        p['CurrentFreighter']['Seed'] = [True, seed(action.get('seed'))]
+        p['CurrentFreighterHomeSystemSeed'] = [True, seed(action.get('home_seed'))]
+        p['CurrentFreighterNPC']['Filename'] = 'MODELS/COMMON/PLAYER/PLAYERCHARACTER/NPCKORVAX.SCENE.MBIN'
+        p['CurrentFreighterNPC']['Seed'] = [True, seed(action.get('crew_seed'))]
+        p['PlayerFreighterName'] = name(action.get('name'))
+        allowed.extend(('CurrentFreighter/Filename', 'CurrentFreighter/Seed',
+                        'CurrentFreighterHomeSystemSeed', 'CurrentFreighterNPC/Filename',
+                        'CurrentFreighterNPC/Seed', 'PlayerFreighterName'))
+    elif operation in ('freighter_edit', 'freighter_expand', 'freighter_repair'):
         identity = freighter_identity(p)
         if identity is None or identity != action.get('selector'):
             raise ValueError('Sahip olunan yük gemisi gerekli; kimliğini taze listeden seçin.')
@@ -209,4 +251,8 @@ def mutate(original, action, fleet):
     paths = fleet.differences(original, data)
     if any(not any(path == prefix or path.startswith(prefix + '/') for prefix in prefixes) for path in paths):
         raise ValueError('İşlem yük gemisi / fırkateyn sınırını aştı.')
-    return data, {'op': operation, 'selector': action.get('selector'), 'fields': action.get('fields', {})}, paths, exports
+    event = {'op': operation, 'selector': action.get('selector'), 'fields': action.get('fields', {})}
+    if operation == 'freighter_create':
+        event.update(experimental=True, identity=freighter_identity(p), name=p['PlayerFreighterName'],
+                     home_seed=p['CurrentFreighterHomeSystemSeed'][1], crew_seed=p['CurrentFreighterNPC']['Seed'][1])
+    return data, event, paths, exports

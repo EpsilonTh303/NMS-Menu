@@ -42,8 +42,19 @@ görünüm, sahiplik oluşturma ya da oynanış doğrulaması değildir.
 
 ## Overlay
 
+v0.11 ekleme denemesinde oyun normal kapatıldı; taze auto/manual kayıtlar
+bağımsız yedeklenip `freighter_create` için kodlandı ve çözülmüş JSON eşitliği
+doğrulandı. Semantik fark yalnız model/ad/üç tohum alanlarıydı. Deneme
+uygulandı; CapsLockFix ile oyun kayıt seçim ekranına açıldı. Windows UI
+aracında basılı tutma desteklenmediği için kayıt yükleme onayı geçilemedi.
+Oyun normal kapatılıp deneme tam kayıt yedeğinden geri alındı; yeni durum da
+restore öncesi yedekte korundu. Bu işlem bir oynanış doğrulaması değildir.
+Özellik bu yüzden açık deneysel onay gerektirir; mevcut sahiplik/üs/kargo
+üzerine uygulanmaz. Görev, oda veya konum üretilmez.
+
 Qt araç penceresi, `WindowStaysOnTopHint` ve çerçevesiz pencere ile mevcut
-canlı UI modelini gösterir. Yeni bir bellek bağlantısı veya yazma yolu açmaz.
+canlı UI modelini gösterir. v0.11 kontrolleri mevcut LiveBackend para, ayar ve
+geri alma yollarına bağlanır; ayrı bellek bağlantısı veya yeni adres kullanılmaz.
 Kısayol [RegisterHotKey](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-registerhotkey)
 ile Ctrl+Shift+F8 olarak kaydedilir; panel kapandığında kayıt kaldırılır.
 Qt [native event filter](https://doc.qt.io/qtforpython-6/PySide6/QtCore/QAbstractNativeEventFilter.html)

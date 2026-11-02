@@ -1,6 +1,6 @@
 # NMS Menu
 
-No Man’s Sky için Windows masaüstü kontrol paneli. **v0.10.0**; PySide6/Qt
+No Man’s Sky için Windows masaüstü kontrol paneli. **v0.11.0**; PySide6/Qt
 arayüzü, entegre filo motoru, envanter ve koleksiyon araçları içerir.
 Offline GOG kurulumu için geliştirilmiştir; Steam kaydını güncel kabul etmez.
 
@@ -127,21 +127,28 @@ işlemler ortak sepete eklenip **oyun kapalıyken** yeni plan/rapor/apply akış
 - Seferdeki veya rapor bekleyen fırkateyn düzenlenmez. Kaldırma, bütün seferler
   bitirilip raporları alınınca açılır; sefer indeksleri değiştirilmez.
 
-Panel sahip olunmayan yük gemisini oluşturmaz. Yük gemisi modeli yoksa ilgili
-düğmeler kilitli kalır; önce oyun içinde yük gemisi edinilmelidir. Üs, odalar,
-model, ev sistemi ve konum bu işlemlerde değiştirilmez. Bu özelliklerin kayıt
-şeması ve codec doğrulaması yapıldı; oyun içi görsel/oynanış testi yapılmadı.
+**Deneysel yeni yük gemisi:** Ad girin, Normal/Capital/Pirate modelini seçin,
+deneysel onay kutusunu işaretleyip sepete ekleyin. Yalnız boş sahiplik,
+mürettebat ve envanter şablonunda çalışır; mevcut yük gemisini değiştirmez.
+Model, ev sistemi ve mürettebat için yeni tohumlar oluşturur. Üs/oda, görev,
+spawn konumu veya teknoloji oluşturmaz; oyunda çağırma ve oynanış doğrulaması
+tamamlanmadı. Bu nedenle standart özellik gibi sunulmaz. Mevcut yük gemisinin
+düzenlenmesinde üs, odalar, model, ev sistemi ve konum korunur.
 
 ### Oyun üstü panel
 
 **Ayarlar → Oyun üstü paneli etkinleştir** seçeneği küçük ve sürüklenebilir
 paneli açar. **Ctrl+Shift+F8** gizler/gösterir. Panel mevcut canlı bağlantıdan
-para birimlerini ve gemi sayısını okur; düğmeler ilgili işlem ekranını açar.
+para birimlerini ve gemi sayısını okur. Para miktarı ve canlı karakter ayarları
+doğrudan panelden uygulanabilir; son para işlemi ve geçici ayarlar geri alınabilir.
+Menü kısayolları ilgili işlem ekranını açar.
 Bağlantı veya kayıt yoksa eski değerler gösterilmez.
 
 Bu, oyun üstünde duran ayrı Qt penceresidir. **Pencere veya kenarlıksız mod**
 gerekir; özel tam ekran render katmanına enjeksiyon yapılmaz. Overlay kendi
-başına belleğe/kayda yazmaz. CapsLockFix ve CapsLock davranışı değişmez.
+başına yeni bellek erişimi açmaz; kontroller mevcut denetimli canlı backend'i
+kullanır. Kayıt yüklenmeden ve başka işlem sürerken düğmeler kilitlenir.
+CapsLockFix ve CapsLock davranışı değişmez.
 Canlı gemi ekleme/silme veya model değiştirme hâlâ desteklenmez; mevcut kaynak
 tahsisi ve spawn davranışı bu build için doğrulanmadı.
 

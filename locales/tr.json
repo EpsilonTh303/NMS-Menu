@@ -601,5 +601,13 @@
   "Canlı kontroller ve Ctrl+Shift+F8 oyun üstü paneli. Overlay mevcut değerleri gösterir; DLL enjeksiyonu, kod yaması ve canlı gemi ekleme uygulanmadı.": "Canlı kontroller ve Ctrl+Shift+F8 oyun üstü paneli. Overlay mevcut değerleri gösterir; DLL enjeksiyonu, kod yaması ve canlı gemi ekleme uygulanmadı.",
   "Yük gemisi envanter boyutları doğrulanamadı.": "Yük gemisi envanter boyutları doğrulanamadı.",
   "Yük gemisi envanter koordinatları doğrulanamadı.": "Yük gemisi envanter koordinatları doğrulanamadı.",
-  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur."
+  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.",
+  "Bilinmeyen yük gemisi modeli.": "Bilinmeyen yük gemisi modeli.",
+  "Boş yük gemisi şablonu doğrulanamadı.": "Boş yük gemisi şablonu doğrulanamadı.",
+  "Deneysel ekleme için açık onay gerekli.": "Deneysel ekleme için açık onay gerekli.",
+  "Deneysel ekleme; oyun içi doğrulama bekliyor": "Deneysel ekleme; oyun içi doğrulama bekliyor",
+  "Mevcut yük gemisi değiştirilemez.": "Mevcut yük gemisi değiştirilemez.",
+  "Normal": "Normal",
+  "Yeni yük gemisini sepete ekle": "Yeni yük gemisini sepete ekle",
+  "Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir.": "Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir."
 }

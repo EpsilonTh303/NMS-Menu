@@ -24,9 +24,19 @@ class CapitalPanel:
         group.pack(fill='x', pady=5)
         self.freighter_info = ttk.Label(group, text='Sahip olunan yük gemisi bulunamadı.')
         self.freighter_info.pack(anchor='w')
+        create_row = ttk.Frame(group)
+        create_row.pack(fill='x', pady=3)
+        self.model_choice = ttk.Combobox(create_row, values=list(capital.FREIGHTER_MODELS), state='readonly', width=12)
+        self.model_choice.set('Normal')
+        self.model_choice.pack(side='left')
+        self.experimental = tk.BooleanVar(value=False)
+        ttk.Checkbutton(create_row, text='Deneysel ekleme; oyun içi doğrulama bekliyor', variable=self.experimental).pack(side='left', padx=5)
+        self.create_button = ttk.Button(create_row, text='Yeni yük gemisini sepete ekle', command=lambda: self.perform(self.create))
+        self.create_button.pack(side='left')
         row = ttk.Frame(group)
         row.pack(fill='x', pady=5)
         self.freighter_name = tk.StringVar()
+        ttk.Label(row, text='Ad: ').pack(side='left')
         ttk.Entry(row, textvariable=self.freighter_name, width=28).pack(side='left')
         self.freighter_class = ttk.Combobox(row, values=['C', 'B', 'A', 'S'], state='readonly', width=5)
         self.freighter_class.pack(side='left', padx=5)
@@ -107,6 +117,7 @@ class CapitalPanel:
         self.signature, self.view = signature, view
         self.info.configure(text=current.get('capital_error', current.get('read_at', '')))
         freighter = view['freighter']
+        self.create_button.configure(state='normal' if current and not freighter and not current.get('capital_error') else 'disabled')
         self.freighter_info.configure(text=(freighter['name'] or freighter['filename']) + f" • {freighter['class']} • {freighter['cargo']} / {freighter['tech']}" if freighter else 'Sahip olunan yük gemisi bulunamadı.')
         self.freighter_name.set(freighter['name'] if freighter else '')
         self.freighter_class.set(freighter['class'] if freighter else '')
@@ -161,3 +172,12 @@ class CapitalPanel:
         frigate = self.chosen()
         self.queue({'op': 'frigate_clone', 'selector': {key: frigate[key] for key in ('slot', 'seed', 'type')},
                     'name': capital.name(self.frigate_name.get()), 'seed': f'0x{secrets.randbits(64) or 1:016X}'})
+
+    def create(self):
+        if not self.experimental.get():
+            raise ValueError('Deneysel ekleme için açık onay gerekli.')
+        if self.view.get('freighter'):
+            raise ValueError('Mevcut yük gemisi değiştirilemez.')
+        self.queue({'op': 'freighter_create', 'experimental': True, 'model': self.model_choice.get(),
+                    'name': capital.name(self.freighter_name.get()),
+                    **{key: f'0x{secrets.randbits(64) or 1:016X}' for key in ('seed', 'home_seed', 'crew_seed')}})

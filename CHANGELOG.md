@@ -1,5 +1,12 @@
 # Değişiklikler
 
+## 0.11.0 — 2 Kasım 2026
+
+- Boş oyun şablonundan Normal/Capital/Pirate yük gemisi için deneysel ekleme; mevcut gemi, üs veya kargo üzerine yazılmaz.
+- Overlay üzerinden para, karakter ayarları ve geri alma; mevcut denetimli canlı backend kullanılır.
+- Yüklü kayıt ve boş işlem kuyruğu şartı, kaynak korunumu testleri ve dört dil çevirileri.
+- Canlı gemi ekleme hâlâ kapalı; oyun thread'i kaynak tahsisi ve spawn yolu doğrulanmadı.
+
 ## 0.10.0 — 2 Kasım 2026
 
 - Yük gemisi/fırkateyn sekmesi ve ortak sepete bağlanan çevrimdışı işlemler.

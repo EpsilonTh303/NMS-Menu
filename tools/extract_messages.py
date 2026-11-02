@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXTRA = [
     'Bağlı ve kayıt yüklü', 'Canlı bağlantı / kayıt bekleniyor',
     'Oyun üstü paneli etkinleştir',
-    'Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir; panel oyun belleğine yazmaz.',
+    'Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir.',
     'Sanayi', 'Ticaret', 'Hasar', 'Sefer', 'Combat', 'Exploration', 'Mining', 'Diplomacy', 'Support',
     'Aktif', 'Ekzosuit', 'Favoriler', 'Filo rehberi', 'Garaj', 'Gemi', 'Gemi rehberi',
     'Kargo', 'Silah rehberi', 'Teknoloji rehberi', 'Yuva', 'Ad', 'Tip',

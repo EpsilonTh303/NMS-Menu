@@ -601,5 +601,13 @@
   "Canlı kontroller ve Ctrl+Shift+F8 oyun üstü paneli. Overlay mevcut değerleri gösterir; DLL enjeksiyonu, kod yaması ve canlı gemi ekleme uygulanmadı.": "Live controls and Ctrl+Shift+F8 desktop overlay. The overlay shows existing values; no DLL injection, code patching or live ship addition.",
   "Yük gemisi envanter boyutları doğrulanamadı.": "Could not validate freighter inventory dimensions.",
   "Yük gemisi envanter koordinatları doğrulanamadı.": "Could not validate freighter inventory coordinates.",
-  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Manage existing freighters and frigates in the Freighter / frigates tab. This catalog does not grant freighter ownership; active expeditions are preserved."
+  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Manage existing freighters and frigates in the Freighter / frigates tab. This catalog does not grant freighter ownership; active expeditions are preserved.",
+  "Bilinmeyen yük gemisi modeli.": "Unknown freighter model.",
+  "Boş yük gemisi şablonu doğrulanamadı.": "Could not verify the empty freighter template.",
+  "Deneysel ekleme için açık onay gerekli.": "Explicit confirmation is required for experimental addition.",
+  "Deneysel ekleme; oyun içi doğrulama bekliyor": "Experimental addition; awaiting in-game verification",
+  "Mevcut yük gemisi değiştirilemez.": "The current freighter cannot be replaced.",
+  "Normal": "Normal",
+  "Yeni yük gemisini sepete ekle": "Add new freighter to basket",
+  "Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir.": "Ctrl+Shift+F8 hides/shows the panel. Windowed or borderless mode is required."
 }

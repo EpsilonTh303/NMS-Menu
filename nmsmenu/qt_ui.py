@@ -260,7 +260,7 @@ class Window(Q.QMainWindow):
         layout.addWidget(self.overlay_toggle)
         self.overlay_hint = Q.QLabel()
         self.overlay_hint.setWordWrap(True)
-        self.localized_widgets.append((self.overlay_hint, 'Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir; panel oyun belleğine yazmaz.'))
+        self.localized_widgets.append((self.overlay_hint, 'Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir.'))
         layout.addWidget(self.overlay_hint)
         layout.addStretch()
         self.settings_index = self.main_book.addTab(page, icon('settings'), self.t('Ayarlar'))

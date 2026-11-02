@@ -9,9 +9,16 @@ canlı sahiplik yazımı yoktur. Genişletme bütün açık koordinatları ve ö
 yuvaları korur; kaldırmada tam fırkateyn işlem dışa aktarımında saklanır.
 
 `overlay.py` mevcut LivePanel/LiveFleetPanel modelini okur; yeni bellek
-erişimi açmaz. Ayrı Qt araç penceresi ve yalnız kayıtlı Ctrl+Shift+F8 mesajını
+erişimi açmaz. Para/ayar/geri alma kontrolleri host.run üzerinden mevcut
+LiveBackend doğrulamalarını kullanır; busy/yüklü kayıt şartı uygulanır.
+Ayrı Qt araç penceresi ve yalnız kayıtlı Ctrl+Shift+F8 mesajını
 işleyen native event filter kullanılır. Kapatmada hotkey kaydı bırakılır.
 Pencere/kenarlıksız mod hedeflenir; render/DLL enjeksiyonu yapılmaz.
+
+v0.11 `freighter_create`, boş oyun şablonunu kullanır ve açık experimental:true
+gerektirir. Sahiplik, NPC, ev tohumu, üs ve boş envanter önkoşulları denetlenir.
+Yalnız model/tohum/ad alanları değişir; mevcut eşya, üs, görev ve spawn alanları
+korunur. Oyun içi sahiplik/çağırma doğrulaması beklediği için deneysel tutulur.
 
 ## v0.8 envanter ve koleksiyon
 

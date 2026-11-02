@@ -44,6 +44,15 @@ bütün dosyaları kapsayan tek atomik işlem garantisi yoktur; `before/` yedeğ
 
 ## Plan eylemleri
 
+Yük gemisi/fırkateyn sepet işlemleri `python -m nmsmenu.catalog_cli prepare PLAN.json`
+üzerinden aynı `fleet.py` motorunu kullanır. Hazırlanan işlemi inceleyip
+`python fleet.py apply transactions/ISLEM` ile uygulayın. `freighter_create`
+deneyseldir: `experimental:true`, `model` (Normal/Capital/Pirate), `name`,
+64 bit hex `seed`, `home_seed`, `crew_seed` gerekir. Yalnız boş sahiplik/NPC,
+boş envanter ve yük gemisi üssü bulunmayan kayıt kabul edilir. Üs, oda,
+teknoloji, görev veya spawn konumu oluşturulmaz. Oyun içi çağırma doğrulaması
+henüz tamamlanmadı. Mevcut geminin üstüne yazma ve canlı ekleme yoktur.
+
 | Eylem | Önemli alanlar |
 | --- | --- |
 | `add` | `profile`; isteğe bağlı `name`, `seed`, `class` |

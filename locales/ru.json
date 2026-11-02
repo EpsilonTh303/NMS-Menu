@@ -601,5 +601,13 @@
   "Canlı kontroller ve Ctrl+Shift+F8 oyun üstü paneli. Overlay mevcut değerleri gösterir; DLL enjeksiyonu, kod yaması ve canlı gemi ekleme uygulanmadı.": "Управление и панель поверх игры по Ctrl+Shift+F8. Панель показывает текущие значения; без внедрения DLL, патчей кода и добавления кораблей в реальном времени.",
   "Yük gemisi envanter boyutları doğrulanamadı.": "Не удалось проверить размеры инвентаря грузового корабля.",
   "Yük gemisi envanter koordinatları doğrulanamadı.": "Не удалось проверить координаты инвентаря грузового корабля.",
-  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Существующие грузовые корабли и фрегаты управляются на вкладке «Грузовой корабль / фрегаты». Каталог не создаёт право владения грузовым кораблём; активные экспедиции сохраняются."
+  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Существующие грузовые корабли и фрегаты управляются на вкладке «Грузовой корабль / фрегаты». Каталог не создаёт право владения грузовым кораблём; активные экспедиции сохраняются.",
+  "Bilinmeyen yük gemisi modeli.": "Неизвестная модель грузового корабля.",
+  "Boş yük gemisi şablonu doğrulanamadı.": "Не удалось проверить пустой шаблон грузового корабля.",
+  "Deneysel ekleme için açık onay gerekli.": "Для экспериментального добавления требуется явное подтверждение.",
+  "Deneysel ekleme; oyun içi doğrulama bekliyor": "Экспериментальное добавление; ожидается проверка в игре",
+  "Mevcut yük gemisi değiştirilemez.": "Имеющийся грузовой корабль нельзя заменить.",
+  "Normal": "Обычный",
+  "Yeni yük gemisini sepete ekle": "Добавить новый грузовой корабль в очередь",
+  "Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir.": "Ctrl+Shift+F8 скрывает/показывает панель. Требуется оконный режим или режим без рамки."
 }

@@ -96,6 +96,37 @@ class QtBindings(unittest.TestCase):
         self.assertEqual(value.get(), '16')
         self.assertEqual(target.maximum(), 16)
 
+    def test_overlay_controls_use_guarded_backend_and_block_unloaded_or_busy(self):
+        from unittest.mock import patch
+        from nmsmenu.overlay import GameOverlay
+        window = self.window
+        panel = window.controller.live_panel
+        old = panel.state
+        overlay = GameOverlay(window)
+        try:
+            with patch.object(window.controller, 'run') as run, patch.object(panel.backend, 'set_currency') as currency:
+                panel.state = {'loaded': False}
+                overlay.dispatch('currency', 'Units', 123)
+                run.assert_not_called()
+                panel.state = {'loaded': True, 'settings': {'run': 8}}
+                window.controller.busy = True
+                overlay.dispatch('currency', 'Units', 123)
+                run.assert_not_called()
+                window.controller.busy = False
+                overlay.dispatch('currency', 'Units', 123)
+                work, callback = run.call_args.args
+                work()
+                currency.assert_called_once_with('Units', 123)
+                self.assertEqual(callback, panel.render)
+                overlay.setting.setCurrentIndex(overlay.setting.findData('run'))
+                self.assertEqual(overlay.setting_amount.value(), 8)
+                self.assertEqual(overlay.setting_amount.maximum(), 40)
+        finally:
+            panel.state = old
+            window.controller.busy = False
+            overlay.timer.stop()
+            overlay.deleteLater()
+
     def test_toggle_uses_original_checkbox_command(self):
         calls = []
         value = tk.BooleanVar(self.window.legacy, True)

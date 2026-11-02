@@ -601,5 +601,13 @@
   "Canlı kontroller ve Ctrl+Shift+F8 oyun üstü paneli. Overlay mevcut değerleri gösterir; DLL enjeksiyonu, kod yaması ve canlı gemi ekleme uygulanmadı.": "Live-Steuerung und Desktop-Overlay mit Ctrl+Shift+F8. Das Overlay zeigt vorhandene Werte; keine DLL-Injektion, Code-Patches oder Live-Schiffserstellung.",
   "Yük gemisi envanter boyutları doğrulanamadı.": "Die Inventarmaße des Frachters konnten nicht geprüft werden.",
   "Yük gemisi envanter koordinatları doğrulanamadı.": "Die Inventarkoordinaten des Frachters konnten nicht geprüft werden.",
-  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Vorhandene Frachter und Fregatten werden im Reiter Frachter / Fregatten verwaltet. Dieser Katalog erzeugt keinen neuen Frachterbesitz; laufende Expeditionen bleiben erhalten."
+  "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.": "Vorhandene Frachter und Fregatten werden im Reiter Frachter / Fregatten verwaltet. Dieser Katalog erzeugt keinen neuen Frachterbesitz; laufende Expeditionen bleiben erhalten.",
+  "Bilinmeyen yük gemisi modeli.": "Unbekanntes Frachtermodell.",
+  "Boş yük gemisi şablonu doğrulanamadı.": "Die leere Frachtervorlage konnte nicht verifiziert werden.",
+  "Deneysel ekleme için açık onay gerekli.": "Für das experimentelle Hinzufügen ist eine ausdrückliche Bestätigung erforderlich.",
+  "Deneysel ekleme; oyun içi doğrulama bekliyor": "Experimentelles Hinzufügen; In-Game-Verifizierung ausstehend",
+  "Mevcut yük gemisi değiştirilemez.": "Der aktuelle Frachter kann nicht geändert werden.",
+  "Normal": "Normal",
+  "Yeni yük gemisini sepete ekle": "Neuen Frachter zum Korb hinzufügen",
+  "Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir.": "Strg+Umschalt+F8 blendet das Panel ein/aus. Fenster- oder randloser Modus erforderlich."
 }

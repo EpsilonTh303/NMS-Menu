@@ -19,7 +19,7 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 | Tarif / teknoloji | 149 sabit teknolojiyi uygun hedefe kurma | v0.8 hazır; seçili teknoloji/ürün tarifi de öğrenilir |
 | Çok amaçlı alet | Kaynak donanımla ekle / kaldır; 49 model/tohum seçeneği | v0.7; oyun kapalı, 12 benzersiz model yolu |
 | İstasyon savaş kontrolü | Silah çıkarma / ateş etme aç-kapat, NPC hasarı | Araştırma; çalıştırılamaz |
-| Yük gemisi | Mevcut geminin adı, sınıfı, onarım/şarj, S sınıfında 120/60 yuva ve envanter | v0.10; oyun kapalı; sahiplik/model/üs oluşturma yok |
+| Yük gemisi | Mevcut geminin adı, sınıfı, onarım/şarj, S sınıfında 120/60 yuva ve envanter | v0.11; oyun kapalı; boş şablondan deneysel sahiplik, oyun içi test bekliyor |
 | Fırkateyn | Ad, beceriler, onarım, normal tür kopyalama ve kaldırma | v0.10; 30 sınırı; sefer/rapor korumaları |
 | Exocraft / evcil hayvan | Sahiplik, özellik ve envanter | Ayrı şema ve kimlik kuralları gerekli |
 | Karakter | Hız, jetpack itiş/dolum, dayanıklılık, yaşam desteği, kalkan yenilenmesi | v0.2 canlı; 12 yapılandırma alanı. Doğrudan sağlık / ölümsüzlük yok |
