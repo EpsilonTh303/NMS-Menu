@@ -2,6 +2,9 @@
 
 ## 0.9.0 — 2 Kasım 2026
 
+- FleetManager motoru ve katalogları Menu köküne entegre edildi; ayrı klasör bağımlılığı kaldırıldı.
+- Garaj ve işlem yedekleri hash doğrulamasıyla korundu; son işlem geri alma işaretçileri yeni konuma taşındı.
+
 - Referansa göre Qt masaüstü görünümü, yerel vektör simgeleri ve envanter çizimi.
 - Ayarlar sekmesi; anlık ve kalıcı Türkçe, İngilizce, Rusça ve Almanca seçimi.
 - Dil başına ayrı JSON, 525 kaynak metin, dosyadan dil keşfi ve Türkçe yedek metinler.

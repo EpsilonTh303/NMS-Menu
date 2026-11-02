@@ -142,7 +142,8 @@ sürümü geldiğinde codec ve şema tekrar doğrulanmadan uyumluluk iddia edilm
 
 ## Bağımlılık ve dağıtım
 
-Python standart kütüphanesi + komşu FleetManager ve mevcut codec. İlk Git deposu
-Menu kapsamındadır; FleetManager ayrı, mevcut bağımlılıktır. Tam taşınabilir
-paket için bu bağımlılığın sürüm / dağıtım modeli ayrıca tasarlanmalıdır.
-Kaynak kontrolü yalnız kod / doküman / sentetik testleri içerir.
+Python, PySide6 ve Menu kökündeki entegre `fleet.py` motoru kullanılır.
+`FLEET = ROOT`; kataloglar, işlem geçmişi ve garaj aynı kökte çözümlenir.
+Codec `../SolarShipFix/libNOM.io.cli.exe` konumundadır; ayrı FleetManager
+klasörü gerekmez. Kaynak kontrolü kod, kataloglar, belgeler ve sentetik testleri
+içerir. Yerel garaj, geçmiş işlem yedekleri ve inceleme kayıtları Git dışındadır.

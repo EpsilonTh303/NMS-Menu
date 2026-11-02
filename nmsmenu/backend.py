@@ -8,7 +8,7 @@ import sys
 import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
-FLEET = ROOT.parent / 'FleetManager'
+FLEET = ROOT
 
 
 def read_json(path):

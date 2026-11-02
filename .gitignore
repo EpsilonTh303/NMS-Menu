@@ -12,3 +12,19 @@ vendor/
 build/
 dist/
 *.egg-info/
+# Local fleet history, save snapshots and analysis dependencies
+/transactions/
+/garage/
+/inspection*/
+/diagnosis-*/
+/loadout-data/
+/tools/capstone/
+/tools/capstone-*.dist-info/
+/last-*.json
+/current-request.json
+/aesthetic-refresh.json
+/collection-expansion.json
+/repair-sentinel.json
+/sentinel-loadout-and-exotic.json
+/ship-references/*.json
+!/ship-references/iron-vulture-ccd.json

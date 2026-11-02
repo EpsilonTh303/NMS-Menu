@@ -6,19 +6,20 @@ Windows x64 ve Python 3.12 (Tkinter dahil) gerekir. İlk kurulumda `setup.cmd`
 çalıştırın; PySide6 bağımlılıkları yalnız yerel `vendor/` klasörüne indirilir.
 Ardından `start.cmd` ile açın. Kurulumdan sonra internet gerekmez.
 
-Bu depo kontrol panelidir; mevcut işlem motoru kardeş klasörde bulunmalıdır:
+Kontrol paneli ve filo işlem motoru aynı depodadır:
 
 ```text
 oyun-klasörü/
-  Menu/           # bu depo
-  FleetManager/  # fleet.py, catalog.json, loadouts.json, preferences.json ve codec
+  Menu/           # arayüz + fleet.py, catalog.json, loadouts.json, preferences.json
+  SolarShipFix/   # libNOM.io.cli.exe; kayıt okuma/kodlama bağımlılığı
   Binaries/      # NMS.exe; yalnız canlı kontroller için
 ```
 
-FleetManager ve codec kurulumunu kendi README'sine göre tamamlayın. Oyun,
-codec ikilileri, kullanıcı kayıtları, `runtime/` ve `vendor/` bu depoya dahil
-edilmez. Testler de mevcut FleetManager modülünü kullanır; yalnız bu deponun
-klonlanması işlem motorunu kurmaz.
+Filo motorunun kullanımı [FLEET_ENGINE.md](FLEET_ENGINE.md) içindedir.
+Codec dosyası hâlâ `../SolarShipFix/libNOM.io.cli.exe` konumundan alınır.
+Oyun, codec ikilileri, kullanıcı kayıtları, `transactions/`, `garage/`,
+`inspection*/`, `runtime/` ve `vendor/` depoya dahil edilmez.
+Sentetik testler kardeş FleetManager klasörü veya oyun kaydı gerektirmez.
 
 Menu klasöründe son kontroller:
 
@@ -28,9 +29,15 @@ python -m unittest discover -s tests
 git diff --check
 ```
 
-113 test; dil dosyaları, sunum bağlamaları ve işlem korumaları doğrulandı.
+116 sentetik test; dil dosyaları, sunum bağlamaları, entegre motor yolları ve işlem korumaları doğrulandı.
 Bu testler oyun kayıtlarına yazmaz. Qt üzerinden canlı yazımın oyun içi
 uçtan uca doğrulaması bu sürüm için yapılmadı.
+
+Yerel inceleme kopyaları mevcutsa `python -m unittest test_fleet` ek 13 tarihsel
+motor testini çalıştırır. Bu özel kayıtlar dağıtılmadığından temiz klonda ilgili
+test sınıfı atlanır. Taşıma kanıtları ve eski değişen dosyaların kopyaları
+`runtime/fleet-integration/` altındadır; işlem yedekleri `transactions/`, tam
+gemi koleksiyonu `garage/` konumunda korunur.
 
 ## Ayarlar ve dil dosyaları
 
@@ -293,9 +300,8 @@ bağlantıyı kesip yeniden bağlanın. Ani panel sonlanmasında geçici ayarlar
 yeniden başlatılana kadar kalabilir. Normal kapanışın hata vermesi durumunda
 günlükteki ilk değerler elde kalır; uyuşmazlıklar otomatik ezilmez.
 
-Beklenen komşu klasörler: `../FleetManager` ve `../SolarShipFix`.
-Panel tek başına taşınabilir dağıtım değildir. Codec mevcut FleetManager'ın
-kullandığı `libNOM.io.cli.exe` dosyasıdır. Kayıt konumu:
+Filo motoru Menu içine entegredir; ayrı FleetManager klasörü gerekmez.
+Kayıt codec'i `../SolarShipFix/libNOM.io.cli.exe` dosyasıdır. Kayıt konumu:
 `%APPDATA%/HelloGames/NMS/DefaultUser`.
 
 ## Şu anda çalışanlar
@@ -350,21 +356,24 @@ Geri alınmış işlemler yeniden geri alınamaz. Yeni istek için daima yeni pl
   mevcut FleetManager transaction motoru ve masaüstü sekmesi.
 - `tests/test_live.py`: build, oturum, byte eşitliği, günlük ve canlı geri alma testleri.
 - `tests/test_safety.py`: kimlik, kargo, işlem yolu, inceleme ve taze plan kontrolleri.
-- `runtime/`: üretilen istekler; Git dışında. Asıl yedekler FleetManager'da kalır.
+- `fleet.py`, `catalog.json`, `loadouts.json`, `preferences.json`: entegre filo motoru.
+- `FLEET_ENGINE.md`: motorun işlem ve geri alma belgeleri.
+- `transactions/`, `garage/`: taşınan işlem yedekleri ve tam gemi arşivi; Git dışında.
+- `runtime/`: üretilen istekler ve taşıma doğrulama manifesti; Git dışında.
 
 ```powershell
 python -m unittest discover -s tests -v
-python -m unittest discover -s ../FleetManager -p test_fleet.py
+python -m unittest test_fleet
 ```
 
 Git deposu yalnız bu klasördedir. Oyun dosyaları, canlı kayıtlar, garaj ve
 işlem yedekleri depoya alınmaz. Yerel `main` dalı kullanılır; remote kurulmadı.
 
 
-0.7, kardeş `FleetManager/fleet.py` codec girişinde Unicode korumasını da düzeltir.
+0.7, artık entegre `fleet.py` codec girişinde Unicode korumasını da düzeltir.
 Bu çalışma alanında uygulanmıştır. Ayrı bir kopyaya taşırken aynı düzeltmenin diff'i
 `patches/fleet-codec-unicode.patch` içindedir. Round-trip eşitliği yine zorunludur.
 
-0.8 yerleşik arşivi dolu 12 gemilik filoda da kullanabilmek için kardeş FleetManager'ın
+0.8 yerleşik arşivi dolu 12 gemilik filoda da kullanabilmek için entegre motorun
 boş gemi şablonuna aynı şemadaki boş arşiv Ownership girişini yedek kaynak ekler.
 Düzeltme bu çalışma alanında uygulanmıştır; taşınabilir diff `patches/fleet-archive-template.patch`.

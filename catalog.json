@@ -1,0 +1,259 @@
+{
+  "solar": {
+    "name": "Gece Yelkencisi",
+    "model": "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN",
+    "seed": "0x170E511C94A55366",
+    "class": "S",
+    "stats": {
+      "SHIP_DAMAGE": 60.0,
+      "SHIP_SHIELD": 20.0,
+      "SHIP_HYPERDRIVE": 20.0,
+      "SHIP_AGILE": 50.0
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "SOLAR_SAIL": 100
+    },
+    "sources": [
+      "https://www.reddit.com/r/NoMansSkyTheGame/comments/u2qwxh/"
+    ]
+  },
+  "exotic": {
+    "name": "Altin Inci",
+    "model": "MODELS/COMMON/SPACECRAFT/S-CLASS/S-CLASS_PROC.SCENE.MBIN",
+    "seed": "0xD387D71BEDC8BB91",
+    "class": "S",
+    "cargo_slots": 105,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 55.0,
+      "SHIP_SHIELD": 75.0,
+      "SHIP_HYPERDRIVE": 80.0,
+      "SHIP_AGILE": 45.0
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100
+    },
+    "sources": [
+      "https://www.reddit.com/r/NMSCoordinateExchange/comments/1r11ywj/white_gold_guppy_exotic_with_side_boosters_one/",
+      "https://github.com/vectorcmdr/NMSE/blob/main/Core/StarshipLogic.cs"
+    ]
+  },
+  "starborn_runner": {
+    "name": "Yildiz Kosucusu",
+    "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACER.SCENE.MBIN",
+    "seed": "0x6",
+    "class": "S",
+    "cargo_slots": 105,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 55.0,
+      "SHIP_SHIELD": 65.0,
+      "SHIP_HYPERDRIVE": 75.0,
+      "SHIP_AGILE": 45.0
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100,
+      "PHOTONIX_CORE": 100
+    },
+    "sources": [
+      "https://github.com/vectorcmdr/NMSE/blob/main/Core/StarshipLogic.cs",
+      "https://www.reddit.com/r/NoMansSkySeedExchange/comments/1au1jhq/starborn_runner_0x6/"
+    ]
+  },
+  "golden_vector": {
+    "name": "Altin Vektor",
+    "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTERCLASSICGOLD.SCENE.MBIN",
+    "seed": "0x1",
+    "class": "S",
+    "cargo_slots": 100,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 80.0,
+      "SHIP_SHIELD": 30.0,
+      "SHIP_HYPERDRIVE": 20.0,
+      "SHIP_AGILE": 45.0
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100
+    },
+    "sources": [
+      "https://github.com/vectorcmdr/NMSE/blob/main/Core/StarshipLogic.cs",
+      "https://github.com/goatfungus/NMSSaveEditor/issues/750"
+    ]
+  },
+  "utopia_speeder": {
+    "name": "Utopia Izcisi",
+    "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/VRSPEEDER.SCENE.MBIN",
+    "seed": "0x1",
+    "class": "S",
+    "cargo_slots": 100,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 80.0,
+      "SHIP_SHIELD": 30.0,
+      "SHIP_HYPERDRIVE": 20.0,
+      "SHIP_AGILE": 45.0
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100
+    },
+    "sources": [
+      "https://github.com/vectorcmdr/NMSE/blob/main/Core/StarshipLogic.cs",
+      "https://github.com/goatfungus/NMSSaveEditor/issues/750"
+    ]
+  },
+  "blue_squid": {
+    "name": "Mavi Kalamar",
+    "model": "MODELS/COMMON/SPACECRAFT/S-CLASS/S-CLASS_PROC.SCENE.MBIN",
+    "seed": "0x9D86809E77CB29E5",
+    "class": "S",
+    "cargo_slots": 105,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 55.0,
+      "SHIP_SHIELD": 75.0,
+      "SHIP_HYPERDRIVE": 80.0,
+      "SHIP_AGILE": 45.0
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100
+    },
+    "sources": [
+      "https://www.nmseeds.club/Seeds/Search/beyond/ship/exotic/index.html"
+    ]
+  },
+  "sentinel": {
+    "name": "Kara Muhafiz",
+    "model": "MODELS/COMMON/SPACECRAFT/SENTINELSHIP/SENTINELSHIP_PROC.SCENE.MBIN",
+    "seed": "0x5EEDC0DE145A6444",
+    "class": "S",
+    "stats": {
+      "SHIP_DAMAGE": 70.0,
+      "SHIP_SHIELD": 30.0,
+      "SHIP_HYPERDRIVE": 30.0,
+      "SHIP_AGILE": 45.0
+    },
+    "technology": {
+      "LAUNCHER_ROBO": 200,
+      "SHIPJUMP_ROBO": 200,
+      "SHIPSHIELD_ROBO": 200,
+      "SHIPGUN_ROBO": 100,
+      "HYPERDRIVE_ROBO": 120,
+      "LIFESUP_ROBO": 100,
+      "UT_LAUNCHCHARGE": 100,
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200
+    },
+    "sources": [
+      "https://www.reddit.com/r/NoMansSkySeedExchange/comments/1e8l53l/does_anyone_have_the_seed_for_this_interceptor_or/",
+      "https://github.com/vectorcmdr/NMSE/blob/main/Core/StarshipLogic.cs"
+    ]
+  },
+  "iron_vulture": {
+    "name": "Iron Vulture",
+    "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+    "seed": "0x7F18DB792C766ACE",
+    "class": "S",
+    "cargo_slots": 120,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 17.509004592895508,
+      "SHIP_SHIELD": 119.70277404785156,
+      "SHIP_HYPERDRIVE": 49.18813705444336,
+      "SHIP_AGILE": 12.416167259216309
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100
+    },
+    "sources": [
+      "https://www.tazmd.nl/starships"
+    ],
+    "customisation_file": "ship-references/iron-vulture-ccd.json"
+  },
+  "boundary_herald": {
+    "name": "Boundary Herald",
+    "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/SPOOKSHIP.SCENE.MBIN",
+    "seed": "0x0",
+    "class": "S",
+    "cargo_slots": 100,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 77.06755828857422,
+      "SHIP_SHIELD": 36.970947265625,
+      "SHIP_HYPERDRIVE": 102.76653289794922,
+      "SHIP_AGILE": 38.6368522644043
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100
+    },
+    "sources": [
+      "https://www.tazmd.nl/starships"
+    ]
+  },
+  "starborn_phoenix": {
+    "name": "Starborn Phoenix",
+    "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACERSE.SCENE.MBIN",
+    "seed": "0x69164EB2",
+    "class": "S",
+    "cargo_slots": 105,
+    "tech_slots": 60,
+    "stats": {
+      "SHIP_DAMAGE": 60.57190704345703,
+      "SHIP_SHIELD": 75.7925796508789,
+      "SHIP_HYPERDRIVE": 80.910888671875,
+      "SHIP_AGILE": 42.502559661865234
+    },
+    "technology": {
+      "LAUNCHER": 200,
+      "SHIPJUMP1": 200,
+      "SHIPSHIELD": 200,
+      "SHIPGUN1": 100,
+      "HYPERDRIVE": 120,
+      "UT_LAUNCHCHARGE": 100,
+      "PHOTONIX_CORE": 100
+    },
+    "sources": [
+      "https://www.tazmd.nl/starships"
+    ]
+  }
+}

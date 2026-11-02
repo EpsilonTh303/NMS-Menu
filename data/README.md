@@ -12,7 +12,7 @@ ve her dil tablosu için tekrarlanabilir `--localisation LOC.MXML` argümanı.
 her modelin oyun içi görünümü ayrı ayrı test edilmedi. Yeni alet mevcut aletin donanımını
 kopyalar; nadir modelin özel istatistiklerini garanti etmez.
 
-Gemi profilleri FleetManager/catalog.json, estetik tercihler FleetManager/preferences.json
+Gemi profilleri Menu kökündeki catalog.json, estetik tercihler preferences.json
 üzerinden okunur. Garaj ortak taramanın güncel verisidir. Katalog kurulumunda boş yer,
 hedef türü, gerçek kaynak kimliği ve codec doğrulaması ayrıca zorunludur.
 

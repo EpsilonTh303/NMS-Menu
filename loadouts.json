@@ -1,0 +1,21 @@
+{
+  "sentinel_combat": {
+    "ship_types": ["sentinel"],
+    "description": "Infra-Knife with Q-resonator and three S modules; three S shield modules, Ablative Armour, economy and conflict scanners. Preserve all existing technology and engine placement.",
+    "items": [
+      {"id": "SHIPMINIGUN", "position": {"X": 1, "Y": 1}},
+      {"id": "UP_SMINI4#12345", "position": {"X": 2, "Y": 1}},
+      {"id": "UP_SMINI4#23456", "position": {"X": 3, "Y": 1}},
+      {"id": "UP_SMINI4#34567", "position": {"X": 4, "Y": 1}},
+      {"id": "UT_SHIPMINI", "position": {"X": 1, "Y": 2}},
+      {"id": "UP_S_SHL4#12345", "position": {"X": 5, "Y": 1}},
+      {"id": "UP_S_SHL4#23456", "position": {"X": 6, "Y": 1}},
+      {"id": "UP_S_SHL4#34567", "position": {"X": 5, "Y": 2}},
+      {"id": "UT_SHIPSHIELD", "position": {"X": 6, "Y": 2}},
+      {"id": "SHIPSCAN_ECON", "position": {"X": 8, "Y": 2}},
+      {"id": "SHIPSCAN_COMBAT", "position": {"X": 9, "Y": 2}}
+    ],
+    "procedural_family_limits": {"UP_SMINI": 3, "UP_S_SHL": 3},
+    "sources": ["https://github.com/vectorcmdr/NMSE/blob/main/Data/TechPackDatabase.Generated.cs", "https://github.com/vectorcmdr/NMSE/blob/main/Resources/json/Technology%20Module.json"]
+  }
+}
