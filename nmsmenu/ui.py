@@ -1,6 +1,7 @@
 """Tk desktop shell; workers never access Tk widgets."""
 from concurrent.futures import ThreadPoolExecutor
 import time
+import logging
 import json
 from pathlib import Path
 import tkinter as tk
@@ -199,6 +200,7 @@ class MenuApp:
                 success(result)
                 self.status.set('İşlem tamamlandı. Ayrıntılar ilgili panelde.')
             except Exception as exc:
+                logging.getLogger(__name__).exception('Menü işlemi başarısız')
                 self.status.set(str(exc))
                 messagebox.showerror('İşlem durduruldu', str(exc))
         self.root.after(100, poll)

@@ -34,6 +34,24 @@ class Languages(unittest.TestCase):
         self.assertEqual(self.translator.text('1272 sonuç'), '1272 results')
         self.assertEqual(self.translator.text('My Starship — 0x1234'), 'My Starship — 0x1234')
 
+    def test_turkish_dynamic_template_uses_simplified_translation(self):
+        source = {
+            '{v0} işlem sepete gönderildi; henüz uygulanmadı.':
+                '{v0} işlem eklendi; henüz uygulanmadı.'
+        }
+        atomic_json(self.locales / 'tr.json', source)
+        translator = Translator(self.locales, self.settings)
+        self.assertEqual(
+            translator.text('3 işlem sepete gönderildi; henüz uygulanmadı.'),
+            '3 işlem eklendi; henüz uygulanmadı.',
+        )
+
+    def test_invalid_source_placeholders_preserve_runtime_value(self):
+        atomic_json(self.locales / 'tr.json', {'{v0} sonuç': '{v1} sonuç'})
+        translator = Translator(self.locales, self.settings)
+        self.assertEqual(translator.text('27 sonuç'), '27 sonuç')
+        self.assertTrue(any('placeholders' in item for item in audit(self.locales)))
+
     def test_new_language_discovered_and_reloaded(self):
         atomic_json(self.locales / 'fr.json', {'_meta': {'name': 'Français'}, 'Ayarlar': 'Réglages'})
         self.assertEqual(self.translator.available()['fr'], 'Français')

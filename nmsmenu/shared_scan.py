@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import shutil
 import tempfile
+import logging
 
 from .backend import ROOT
 from .live_fleet import engine
@@ -91,6 +92,7 @@ class DiskScanner:
                 self.cache[file.name] = (signature, entry)
                 result.append(copy.deepcopy(entry))
             except Exception as exc:
+                logging.getLogger(__name__).exception('Disk kaydı okunamadı: %s', file.name)
                 errors.append(f'{file.name}: {exc}')
         live_names = {p.name for p in files}
         self.cache = {name: value for name, value in self.cache.items() if name in live_names}
@@ -103,6 +105,7 @@ class SharedScan:
     def __init__(self, live, fleet, disk=None):
         self.live, self.fleet = live, fleet
         self.disk = disk or DiskScanner()
+        self.last_error = ''
 
     def fast(self):
         result = {'read_at': stamp(), 'live': None, 'fleet': [], 'error': ''}
@@ -115,4 +118,7 @@ class SharedScan:
                 result['fleet'] = self.fleet.inspect()
         except Exception as exc:
             result['error'] = str(exc)
+            if result['error'] != self.last_error:
+                logging.getLogger(__name__).warning('Canlı bağlantı: %s', exc, exc_info=True)
+        self.last_error = result['error']
         return result

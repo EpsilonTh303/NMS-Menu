@@ -2,7 +2,7 @@ import copy
 import unittest
 from unittest.mock import patch
 from nmsmenu.qt_ui import Q
-from nmsmenu.overlay import display_state, GlobalHotkey
+from nmsmenu.overlay import display_state, GlobalHotkey, hotkey_spec
 
 
 class OverlayState(unittest.TestCase):
@@ -28,7 +28,8 @@ class OverlayState(unittest.TestCase):
     def test_hotkey_unregisters_its_own_registration(self):
         import ctypes
         app = Q.QApplication.instance() or Q.QApplication([])
-        with patch('ctypes.windll.user32') as user32:
+        with patch('ctypes.WinDLL') as dll:
+            user32 = dll.return_value
             user32.RegisterHotKey.return_value = 1
             hotkey = GlobalHotkey(lambda: None)
             self.assertTrue(hotkey.registered)
@@ -41,7 +42,8 @@ class OverlayState(unittest.TestCase):
         from ctypes import wintypes
         app = Q.QApplication.instance() or Q.QApplication([])
         calls = []
-        with patch('ctypes.windll.user32') as user32:
+        with patch('ctypes.WinDLL') as dll:
+            user32 = dll.return_value
             user32.RegisterHotKey.return_value = 1
             hotkey = GlobalHotkey(lambda: calls.append('toggle'))
             message = wintypes.MSG()
@@ -51,3 +53,22 @@ class OverlayState(unittest.TestCase):
             message.wParam += 1
             self.assertEqual(hotkey.nativeEventFilter(b'windows_generic_MSG', ctypes.addressof(message)), (False, 0))
             hotkey.close()
+
+    def test_shortcut_mapping_and_invalid_shortcuts(self):
+        self.assertEqual(hotkey_spec('Ctrl+Alt+F9'), ('Ctrl+Alt+F9', 0x4003, 0x78))
+        self.assertEqual(hotkey_spec('Ctrl+Shift+K'), ('Ctrl+Shift+K', 0x4006, ord('K')))
+        for invalid in ('', 'F9', 'Ctrl+F9, Ctrl+F8', 'Alt+Left', 'Meta+K'):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                hotkey_spec(invalid)
+
+    def test_registration_failure_reports_windows_error(self):
+        app = Q.QApplication.instance() or Q.QApplication([])
+        with patch('ctypes.WinDLL') as dll, patch('ctypes.get_last_error', return_value=1409):
+            dll.return_value.RegisterHotKey.return_value = 0
+            with self.assertLogs('nmsmenu.overlay', level='ERROR') as log:
+                hotkey = GlobalHotkey(lambda: None)
+            self.assertFalse(hotkey.registered)
+            self.assertEqual(hotkey.error_code, 1409)
+            self.assertIn('1409', log.output[0])
+            hotkey.close()
+            dll.return_value.UnregisterHotKey.assert_not_called()

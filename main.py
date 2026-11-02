@@ -6,6 +6,8 @@ if __name__ == '__main__':
     for stream in (sys.stdout, sys.stderr):
         if stream is not None:
             stream.reconfigure(encoding='utf-8', errors='replace')
+    from nmsmenu.diagnostics import install
+    install()
     parser = argparse.ArgumentParser(description='No Man’s Sky masaüstü kontrol paneli')
     parser.add_argument('--connect', action='store_true', help='Uyumluluk seçeneği; bağlantı artık açılışta otomatik')
     parser.add_argument('--classic', action='store_true', help='Önceki Tk arayüzünü aç')
@@ -24,5 +26,7 @@ if __name__ == '__main__':
         main(connect=args.connect, fleet=args.fleet, weapons=args.weapons, catalog=args.catalog, inventory=args.inventory, capital=args.capital)
     else:
         from nmsmenu.qt_ui import main
-        raise SystemExit(main(inventory=args.inventory or not (args.fleet or args.weapons or args.catalog or args.capital),
-                              fleet=args.fleet, weapons=args.weapons, catalog=args.catalog, settings=args.settings, capital=args.capital))
+        default_catalog = not any((args.inventory, args.fleet, args.weapons, args.catalog, args.capital, args.settings))
+        raise SystemExit(main(inventory=args.inventory,
+                              fleet=args.fleet, weapons=args.weapons, catalog=args.catalog or default_catalog,
+                              settings=args.settings, capital=args.capital))

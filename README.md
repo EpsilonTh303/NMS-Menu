@@ -20,8 +20,8 @@ Offline GOG kurulumu için geliştirilmiştir; Steam kaydını güncel kabul etm
 | Katalog | 81 gemi profili/tohum seçeneği, 49 alet modeli/tohum seçeneği, 149 sabit teknoloji, 1100 eşya/madde |
 | Envanter ve arşiv | Izgara, taşıma, yığın bölme/birleştirme, miktar, donanım setleri, seçili tarifler, yerleşik arşiv |
 | Yedek ve geri alma | İşlem raporu, kaynak hash kontrolü, yedekleme ve tam kayıt geri alma |
-| Ayarlar | Anında dil değişimi, kalıcı tercih, JSON çeviri dosyalarını yenileme |
-| Oyun üstü panel | Canlı para ve gemi sayısı, menü kısa yolları, Ctrl+Shift+F8 ile gizle/göster |
+| Ayarlar | Dil seçimi, panel kısayolu ve kısayol bağlantı durumu |
+| Oyun üstü panel | Canlı para ve gemi sayısı, menü kısayolları, değiştirilebilir Ctrl+Alt+F9 ile gizle/göster |
 
 Katalog sayıları oyundaki toplam tür sayıları değildir. Gemi/alet görünüm
 seçenekleri, sınıf/istatistik veya ödül hakkının birebir kopyası anlamına gelmez.
@@ -147,7 +147,12 @@ tam codec eşitliği doğrulandı; **oynanış/çağırma testi tamamlanmadı**.
 ### Oyun üstü panel
 
 **Ayarlar → Oyun üstü paneli etkinleştir** seçeneği küçük ve sürüklenebilir
-paneli açar. **Ctrl+Shift+F8** gizler/gösterir. Panel mevcut canlı bağlantıdan
+paneli açar. **Ctrl+Alt+F9** gizler/gösterir; panel kapalıysa da açar.
+**Ayarlar → Panel kısayolu → Kısayolu kaydet** üzerinden tuş değiştirilebilir.
+Tercih `runtime/ui-settings.json` içinde saklanır. Tuş başka uygulamada
+kullanılıyorsa Windows hata kodu Ayarlar'da ve CMD'de görünür; çalışan eski
+kısayol korunur. **Paneli göster / gizle** düğmesi kısayolsuz deneme sağlar.
+Panel mevcut canlı bağlantıdan
 para birimlerini ve gemi sayısını okur. Para miktarı ve canlı karakter ayarları
 doğrudan panelden uygulanabilir; son para işlemi ve geçici ayarlar geri alınabilir.
 Menü kısayolları ilgili işlem ekranını açar.
@@ -158,6 +163,30 @@ gerekir; özel tam ekran render katmanına enjeksiyon yapılmaz. Overlay kendi
 başına yeni bellek erişimi açmaz; kontroller mevcut denetimli canlı backend'i
 kullanır. Kayıt yüklenmeden ve başka işlem sürerken düğmeler kilitlenir.
 CapsLockFix ve CapsLock davranışı değişmez.
+
+Panel açıldığında fare ve klavye odağını alır; oyun tarafından sınırlandırılmış
+imleç serbest bırakılır. Aynı kısayol, Escape veya **Oyun ekranına dön** ile
+kapanınca önceki pencereye dönülür.
+
+### Sade menü ve ekleme
+
+Sol bölüm listesinden **Ekle / kaldır** açılır. İçeriği seçin; eşya ve malzeme
+için **Adet** yazıp **Ekle** düğmesine basın. Adet gemi veya teknoloji kopya
+sayısı değildir. Bekleyen bir eşyanın adedini sağ listeden seçip **Değiştir**
+ile güncelleyebilirsiniz. Bu değişiklik eski kontrol raporunu geçersiz kılar.
+
+Bekleyen değişiklikler ve **Kontrol et / Uygula** sağ panelde kalır. Kontrol,
+oyun kapalıyken taze kayıt ve yedekle hazırlanır; değişiklik raporu otomatik
+gösterilir. **Uygula** mevcut doğrulama ve son onaydan geçer. Yeni düzen bu
+adımları atlamaz. Rastgele tohum ve diğer filtreler **Gelişmiş seçenekler**
+altındadır.
+
+`start.cmd`, hata yığınlarını ve panel kısayolu olaylarını CMD'ye ve
+`runtime/menu.log` dosyasına yazar. Hatalı çıkışta CMD açık kalır.
+Qt arayüzünde gizli Tk denetleyicisinin zamanlayıcıları Qt üzerinden çalışır;
+seçim olayları yalnız açık Tcl çağrılarıyla işlenir, `Tk.update()` çağrılmaz.
+Bu, Tk/Qt iç içe mesaj işleme sırasında oluşan
+`PyEval_RestoreThread` çökmesini önler ([CPython #84256](https://github.com/python/cpython/issues/84256)).
 Genel canlı gemi oluşturma/silme veya model değiştirme desteklenmez.
 **Deneysel oyun içi gemi ödülü** için Canlı filo bölümüne ayrı bir istek
 paneli eklendi. `native-bridge.cmd` ile isteğe bağlı pyMHF köprüsü yüklenir;

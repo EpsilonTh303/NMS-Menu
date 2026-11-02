@@ -5,6 +5,8 @@ Qt never writes saves or memory: every action invokes the original controller.
 """
 import sys
 import html
+import json
+import logging
 from pathlib import Path
 import tkinter as tk
 from tkinter import ttk, messagebox
@@ -13,7 +15,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'vendor'))
 from PySide6 import QtCore, QtGui, QtWidgets as Q
 from .ui import MenuApp
 from .icons import icon, pixmap, for_text, resource_icon
-from .i18n import Translator
+from .i18n import Translator, atomic_json
+from .diagnostics import tk_error
+from .qt_tk_bridge import ControllerEvents
+
+LOG = logging.getLogger(__name__)
 
 STYLE = '''
 QWidget { background:#0b202a; color:#dce9ed; font:12px "Segoe UI"; }
@@ -43,6 +49,10 @@ QScrollBar:vertical { background:#0d222c; width:12px; }
 QScrollBar::handle:vertical { background:#b46b62; border-radius:5px; min-height:25px; }
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height:0; }
 #stats { border:1px solid #385560; border-radius:8px; background:#142f39; padding:0; color:#dfedef; }
+#changesPanel { background:#122b36; border:1px solid #36515b; border-radius:10px; }
+#navigation { background:#0b202a; border:0; padding:6px; font-size:13px; }
+#navigation::item { padding:13px 10px; margin:2px 0; border-radius:7px; }
+#navigation::item:selected { background:#734c48; color:#fff3ef; }
 '''
 
 
@@ -114,7 +124,7 @@ class Header(Q.QFrame):
         super().__init__()
         self.translator = translator
         self.art = QtGui.QPixmap(str(Path(__file__).resolve().parents[1] / 'assets/reference-banner.png'))
-        self.setFixedHeight(122)
+        self.setFixedHeight(90)
         layout = Q.QGridLayout(self)
         layout.setContentsMargins(12, 8, 12, 3)
         logo = Q.QLabel()
@@ -147,8 +157,8 @@ class Header(Q.QFrame):
 
     def refresh(self):
         t = self.translator.text
-        self.brand_sub.setText(t('Mod Merkezi').upper())
-        self.subtitle.setText('<b>' + html.escape(t('Envanter ve Koleksiyon')) + '</b><br>' + html.escape(t('Modüler envanter, eşya ve koleksiyon yöneticisi')))
+        self.brand_sub.setText(t('Mod Menüsü').upper())
+        self.subtitle.setText('<b>' + html.escape(t('Canlı ayarlar')) + '</b><br>' + html.escape(t('Ekle / kaldır')))
         self.note.setText('<span style="color:#52bd82">●</span> &nbsp;Offline GOG &nbsp; | &nbsp;' + html.escape(t('Canlı filo: Esc')) + ' &nbsp; | &nbsp;' + html.escape(t('Kayıt dosyası düzenleme: oyun kapalıyken')))
 
 
@@ -161,9 +171,12 @@ class Window(Q.QMainWindow):
         self.overlay_panel = None
         self.overlay_hotkey = None
         self.legacy = tk.Tk()
+        self.legacy.report_callback_exception = tk_error
         self.legacy.withdraw()
+        self.controller_events = ControllerEvents(self.legacy, self)
         self.controller = MenuApp(self.legacy)
         self.legacy.withdraw()
+        self.controller_events.adapt(self.legacy)
         self.bindings = []
         self.cache = {}
         self.setWindowTitle("No Man's Sky • Mod Merkezi • Qt")
@@ -188,6 +201,8 @@ class Window(Q.QMainWindow):
             outer.addWidget(widget, 1 if isinstance(child, ttk.Notebook) else 0)
         self.main_book = next(q for source, q in self.bindings if source is self.controller.book)
         self.add_settings()
+        self.add_navigation(outer)
+        self.register_overlay_hotkey()
         if inventory:
             self.controller.book.select(6)
             self.controller.catalog_panel.book.select(2)
@@ -203,6 +218,26 @@ class Window(Q.QMainWindow):
         self.timer.timeout.connect(self.tick)
         self.timer.start(120)
         self.tick()
+
+    def add_navigation(self, outer):
+        index = outer.indexOf(self.main_book)
+        outer.removeWidget(self.main_book)
+        content = Q.QWidget()
+        row = Q.QHBoxLayout(content)
+        row.setContentsMargins(0, 0, 0, 0)
+        row.setSpacing(12)
+        self.navigation = Q.QListWidget(objectName='navigation')
+        self.navigation.setFixedWidth(175)
+        self.navigation_titles = ['Canlı ayarlar', 'Gemiler', 'Filo ve envanter', 'Silahlar',
+                                  'Yedekler', 'Rehber', 'Ekle / kaldır', 'Yük gemisi', 'Ayarlar']
+        for title in self.navigation_titles:
+            self.navigation.addItem(self.t(title))
+        self.navigation.currentRowChanged.connect(self.main_book.setCurrentIndex)
+        self.main_book.currentChanged.connect(self.navigation.setCurrentRow)
+        self.main_book.tabBar().hide()
+        row.addWidget(self.navigation)
+        row.addWidget(self.main_book, 1)
+        outer.insertWidget(index, content, 1)
 
     def patch_dialogs(self):
         for name, icon in [('showinfo', Q.QMessageBox.Icon.Information), ('showerror', Q.QMessageBox.Icon.Critical), ('showwarning', Q.QMessageBox.Icon.Warning)]:
@@ -240,15 +275,13 @@ class Window(Q.QMainWindow):
         row.addWidget(self.language_choice)
         row.addStretch()
         layout.addLayout(row)
-        for text in ('Dil değişikliği hemen uygulanır ve bu bilgisayarda saklanır.',
-                     'Yeni bir dil eklemek için locales klasörüne bir JSON dosyası ekleyin.',
-                     'Eksik çeviriler Türkçe gösterilir.'):
+        for text in ('Dil değişikliği hemen uygulanır ve bu bilgisayarda saklanır.',):
             label = Q.QLabel()
             label.setWordWrap(True)
             layout.addWidget(label)
             self.localized_widgets.append((label, text))
         self.coverage = Q.QLabel()
-        layout.addWidget(self.coverage)
+        self.coverage.hide()
         reload_button = Q.QPushButton()
         reload_button.setIcon(icon('refresh'))
         reload_button.clicked.connect(self.reload_languages)
@@ -260,8 +293,33 @@ class Window(Q.QMainWindow):
         layout.addWidget(self.overlay_toggle)
         self.overlay_hint = Q.QLabel()
         self.overlay_hint.setWordWrap(True)
-        self.localized_widgets.append((self.overlay_hint, 'Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir.'))
         layout.addWidget(self.overlay_hint)
+        from .overlay import DEFAULT_HOTKEY, hotkey_spec
+        try:
+            settings = json.loads(self.translator.settings.read_text(encoding='utf-8'))
+            saved_key = settings.get('overlay_hotkey', DEFAULT_HOTKEY)
+            self.overlay_sequence = hotkey_spec(saved_key)[0]
+        except (OSError, ValueError, TypeError, AttributeError):
+            self.overlay_sequence = DEFAULT_HOTKEY
+        row = Q.QHBoxLayout()
+        label = Q.QLabel()
+        self.localized_widgets.append((label, 'Panel kısayolu'))
+        row.addWidget(label)
+        self.hotkey_edit = Q.QKeySequenceEdit(QtGui.QKeySequence(self.overlay_sequence))
+        self.hotkey_edit.setMaximumSequenceLength(1)
+        row.addWidget(self.hotkey_edit)
+        save_key = Q.QPushButton()
+        self.localized_widgets.append((save_key, 'Kısayolu kaydet'))
+        save_key.clicked.connect(self.save_overlay_hotkey)
+        row.addWidget(save_key)
+        layout.addLayout(row)
+        self.hotkey_status = Q.QLabel()
+        self.hotkey_status.setWordWrap(True)
+        layout.addWidget(self.hotkey_status)
+        preview = Q.QPushButton()
+        self.localized_widgets.append((preview, 'Paneli göster / gizle'))
+        preview.clicked.connect(self.shortcut_overlay)
+        layout.addWidget(preview, alignment=QtCore.Qt.AlignmentFlag.AlignLeft)
         layout.addStretch()
         self.settings_index = self.main_book.addTab(page, icon('settings'), self.t('Ayarlar'))
         self.language_choice.currentIndexChanged.connect(self.change_language)
@@ -270,24 +328,72 @@ class Window(Q.QMainWindow):
         self.retranslate()
 
     def toggle_overlay(self, enabled):
-        from .overlay import GameOverlay, GlobalHotkey
+        from .overlay import GameOverlay
+        LOG.info('Overlay %s', 'açılıyor' if enabled else 'gizleniyor')
         if enabled:
             if self.overlay_panel is None:
                 self.overlay_panel = GameOverlay(self)
             self.overlay_panel.timer.start(500)
-            self.overlay_panel.show()
-            if self.overlay_hotkey is None:
-                self.overlay_hotkey = GlobalHotkey(lambda: self.overlay_panel.setVisible(not self.overlay_panel.isVisible()))
-            if not self.overlay_hotkey.registered:
-                self.overlay_hint.setText(self.t('Kısayol kullanımda veya desteklenmiyor; panel ayarlardan açılabilir.'))
+            self.overlay_panel.show_interactive()
             self.overlay_panel.refresh()
         else:
             if self.overlay_panel is not None:
+                self.overlay_panel.return_input()
                 self.overlay_panel.hide()
                 self.overlay_panel.timer.stop()
-            if self.overlay_hotkey is not None:
-                self.overlay_hotkey.close()
-                self.overlay_hotkey = None
+
+    def shortcut_overlay(self):
+        visible = self.overlay_panel is not None and self.overlay_panel.isVisible()
+        self.overlay_toggle.setChecked(not visible)
+
+    def update_hotkey_status(self):
+        self.overlay_hint.setText(self.t('Kısayol: {v0}. Pencere veya kenarlıksız mod kullanın.').replace('{v0}', self.overlay_sequence))
+        key = self.overlay_hotkey
+        if key is not None and key.registered:
+            self.hotkey_status.setText(self.t('Kısayol hazır: {v0}').replace('{v0}', key.sequence))
+        elif key is not None:
+            self.hotkey_status.setText(self.t('Kısayol kullanılamıyor: {v0} (Windows: {v1}). Başka bir tuş seçin.')
+                                      .replace('{v0}', key.sequence).replace('{v1}', str(key.error_code)))
+
+    def register_overlay_hotkey(self):
+        from .overlay import GlobalHotkey
+        self.overlay_hotkey = GlobalHotkey(self.shortcut_overlay, self.overlay_sequence, hwnd=int(self.winId()))
+        self.update_hotkey_status()
+
+    def save_overlay_hotkey(self):
+        from .overlay import GlobalHotkey, hotkey_spec
+        candidate = None
+        try:
+            sequence = hotkey_spec(self.hotkey_edit.keySequence())[0]
+            old = self.overlay_hotkey
+            if old and old.registered and old.sequence == sequence:
+                return
+            # Register under a different ID first; failure keeps the working key.
+            identifier = GlobalHotkey.IDENTIFIER + (1 if old and old.identifier == GlobalHotkey.IDENTIFIER else 0)
+            candidate = GlobalHotkey(self.shortcut_overlay, sequence, identifier, hwnd=int(self.winId()))
+            if not candidate.registered:
+                raise ValueError(self.t('Kısayol kullanılamıyor: {v0} (Windows: {v1}). Başka bir tuş seçin.')
+                                 .replace('{v0}', sequence).replace('{v1}', str(candidate.error_code)))
+            try:
+                settings = json.loads(self.translator.settings.read_text(encoding='utf-8'))
+                if not isinstance(settings, dict):
+                    settings = {}
+            except (OSError, ValueError):
+                settings = {}
+            atomic_json(self.translator.settings, {**settings, 'overlay_hotkey': sequence})
+            if old:
+                old.close()
+            self.overlay_hotkey = candidate
+            self.overlay_sequence = sequence
+            self.update_hotkey_status()
+            LOG.info('Overlay kısayolu kaydedildi: %s', sequence)
+            if self.overlay_panel is not None:
+                self.overlay_panel.refresh()
+        except Exception as exc:
+            if candidate is not None and candidate is not self.overlay_hotkey:
+                candidate.close()
+            LOG.exception('Overlay kısayolu kaydedilemedi')
+            self.hotkey_status.setText(self.t('Kısayol kaydedilemedi: {v0}').replace('{v0}', self.t(str(exc))))
 
     def refresh_language_choices(self):
         self.language_choice.blockSignals(True)
@@ -323,7 +429,7 @@ class Window(Q.QMainWindow):
         self.tick()
 
     def retranslate(self):
-        self.setWindowTitle("No Man's Sky • " + self.t('Mod Merkezi'))
+        self.setWindowTitle("No Man's Sky • " + self.t('Mod Menüsü'))
         self.header.refresh()
         for widget, text in self.localized_widgets:
             widget.setText(self.t(text))
@@ -331,12 +437,20 @@ class Window(Q.QMainWindow):
         total = len([key for key in self.translator.source if key != '_meta'])
         done = sum(bool(self.translator.catalog.get(key)) for key in self.translator.source if key != '_meta')
         self.coverage.setText(self.t('Çeviri kapsamı: {v0}/{v1}').replace('{v0}', str(done)).replace('{v1}', str(total)))
+        self.update_hotkey_status()
+        if hasattr(self, 'navigation'):
+            for index, title in enumerate(self.navigation_titles):
+                self.navigation.item(index).setText(self.t(title))
 
     def dispatch(self, source, event):
         source.event_generate(event)
-        self.legacy.update()
 
     def build(self, source):
+        self.controller_events.adapt(source)
+        if source is self.controller.catalog_panel.book.master:
+            from .qt_catalog import CatalogWorkspace
+            self.catalog_workspace = CatalogWorkspace(self)
+            return self.catalog_workspace
         if isinstance(source, ttk.Notebook):
             target = Q.QTabWidget()
             target.setIconSize(QtCore.QSize(23, 23))
@@ -344,7 +458,7 @@ class Window(Q.QMainWindow):
             for name in source.tabs():
                 child = source.nametowidget(name)
                 page = self.build(child)
-                if source == self.controller.book:
+                if source == self.controller.book and child is not self.controller.catalog_panel.book.master:
                     scroll = Q.QScrollArea()
                     scroll.setWidgetResizable(True)
                     scroll.setFrameShape(Q.QFrame.Shape.NoFrame)
@@ -378,9 +492,11 @@ class Window(Q.QMainWindow):
             target = Q.QSpinBox()
             target.setRange(int(float(source.cget('from'))), int(float(source.cget('to'))))
             target.setSingleStep(int(float(source.cget('increment'))))
-            target.setMaximumWidth(110)
-            target.setKeyboardTracking(True)
+            target.setMinimumWidth(145)
+            target.setMaximumWidth(200)
+            target.setKeyboardTracking(False)
             target.valueChanged.connect(lambda value: source.setvar(str(source.cget('textvariable')), str(value)))
+            target.editingFinished.connect(lambda: source.setvar(str(source.cget('textvariable')), str(target.value())))
         elif isinstance(source, (ttk.Entry, tk.Entry)):
             target = Q.QLineEdit()
             target.setMinimumWidth(45)
@@ -479,13 +595,18 @@ class Window(Q.QMainWindow):
 
     def tick(self):
         try:
-            self.legacy.update()
+            self.controller_events.refresh_selections()
             for source, target in self.bindings:
                 target.blockSignals(True)
                 try:
                     self.sync(source, target)
                 finally:
                     target.blockSignals(False)
+            self.catalog_workspace.refresh()
+            with QtCore.QSignalBlocker(self.navigation):
+                self.navigation.setCurrentRow(self.main_book.currentIndex())
+            count = len(self.controller.catalog_panel.cart.commands)
+            self.navigation.item(6).setText(self.t('Ekle / kaldır') + (f' ({count})' if count else ''))
         except tk.TclError:
             self.timer.stop()
             self.close()
@@ -547,7 +668,12 @@ class Window(Q.QMainWindow):
             if self.cache.get(source) != values:
                 self.cache[source] = values
                 target.clear()
-                target.addItems([self.t(value) for value in values])
+                if source is self.controller.catalog_panel.cart_list:
+                    from .qt_catalog import action_text
+                    panel = self.controller.catalog_panel
+                    target.addItems([action_text(command, panel.service, self.t) for command in panel.cart.commands])
+                else:
+                    target.addItems([self.t(value) for value in values])
         elif isinstance(target, Q.QTextEdit):
             target.setReadOnly(str(source.cget('state')) == 'disabled')
             value = source.get('1.0', 'end-1c')
@@ -583,8 +709,7 @@ class Window(Q.QMainWindow):
             exists = False
         if exists:
             if not self.controller.busy:
-                for timer_id in self.legacy.tk.call('after', 'info'):
-                    self.legacy.after_cancel(timer_id)
+                self.controller_events.cancel_all()
             self.controller.close()
             try:
                 alive = self.legacy.winfo_exists()
@@ -594,6 +719,10 @@ class Window(Q.QMainWindow):
                 event.ignore()
                 return
         self.toggle_overlay(False)
+        if self.overlay_hotkey is not None:
+            self.overlay_hotkey.close()
+            self.overlay_hotkey = None
+        self.timer.stop()
         event.accept()
 
 
@@ -649,6 +778,11 @@ class InventoryCanvas(Q.QGraphicsView):
         super().mousePressEvent(event)
 
 
+def run_event_loop(app, window):
+    LOG.info('Qt olay döngüsü; gizli denetleyici olayları Qt üzerinden işleniyor')
+    return app.exec()
+
+
 def main(inventory=True, fleet=False, weapons=False, catalog=False, settings=False, capital=False):
     app = Q.QApplication(sys.argv)
     app.setStyle('Fusion')
@@ -659,4 +793,5 @@ def main(inventory=True, fleet=False, weapons=False, catalog=False, settings=Fal
     if settings:
         window.main_book.setCurrentIndex(window.settings_index)
     window.show()
-    return app.exec()
+    LOG.info('Menü penceresi açıldı')
+    return run_event_loop(app, window)

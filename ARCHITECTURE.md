@@ -1,5 +1,38 @@
 # Modüler tasarım
 
+## Windows olay döngüsü ve panel kısayolu
+
+Qt görünümü tek Qt olay döngüsünde çalışır. `qt_tk_bridge.ControllerEvents`,
+gizli Tk denetleyicisinin `after` işlemlerini iptal edilebilir QTimer'lara
+çevirir. Widget seçim bağları yalnız senkron Tcl çağrısı sırasında etkinleşir;
+programatik ağaç seçimleri de tick sırasında izlenir. Gizli scrollbar geometri
+callback'leri kaldırılır; Qt kendi kaydırma alanlarını çizer. Böylece Windows
+native mesajları `_tkinter` Python callback'lerine Tcl bağlamı dışında girmez.
+`Tk.update()` / Tk mainloop ile Qt olay döngüsü iç içe çalıştırılmaz; aksi halde
+`_tkinter` NULL Python thread state ile çökebilir
+([CPython #84256](https://github.com/python/cpython/issues/84256)).
+Klasik Tk arayüzü bu adaptörü kullanmaz.
+
+`qt_catalog.CatalogWorkspace`, katalog için yerel Qt düzenidir: içerik seçimi
+ve adet ortada, bekleyen işlemler ve mevcut prepare/apply/restore kontrolleri
+sabit sağ paneldedir. Eski notebook indeksleri korunur; rapora git komutları
+yan paneli açar. Adet klavyeden tamamlanmadan Ekle'ye basılırsa `interpretText`
+ile önce editör doğrulanır ve aynı CatalogPanel planına geçirilir. Bekleyen
+eşya miktarı değişimi cart revision'ı artırır ve hazır raporu iptal eder.
+Sol menü eski denetleyici sekmelerine karşılık gelir; işlem motoru değişmez.
+
+Overlay `WA_ShowWithoutActivating` kullanmaz. Açılışta SetForegroundWindow ile
+odağı ister ve yalnız ön plana geçtiğinde ClipCursor(NULL) ile imleci bırakır.
+Önceki HWND saklanır; kapatma/kısayol/Escape yalnız panel hâlâ ön plandaysa
+önceki geçerli pencereye döner. Odak başarısızlığı konsola yazılır.
+
+Panel kısayolu menü açılışında pencerenin HWND'sine kaydedilir; panel gizliyken
+de çalışır. Varsayılan Ctrl+Alt+F9'dur. Ayarlar'dan yeni tuş önce başka bir
+kayıt kimliğiyle denenir, tercih atomik kaydedilir, sonra eski tuş bırakılır.
+Çakışma veya dosya hatası çalışan tuşu kaldırmaz. GlobalHotkey yalnız kendi
+kaydını kapatır. `start.cmd` alt sürecin stdout/stderr çıktısını anında CMD ve
+`runtime/menu.log` dosyasına aktarır; native fatal traceback de saklanır.
+
 ## v0.13 isteğe bağlı native gemi ödülü köprüsü
 
 `runtime_ship.py` menü kuyruğu, read-only oturum yakalama, kaynak hash'li yedek
@@ -24,7 +57,7 @@ yuvaları korur; kaldırmada tam fırkateyn işlem dışa aktarımında saklanı
 `overlay.py` mevcut LivePanel/LiveFleetPanel modelini okur; yeni bellek
 erişimi açmaz. Para/ayar/geri alma kontrolleri host.run üzerinden mevcut
 LiveBackend doğrulamalarını kullanır; busy/yüklü kayıt şartı uygulanır.
-Ayrı Qt araç penceresi ve yalnız kayıtlı Ctrl+Shift+F8 mesajını
+Ayrı Qt araç penceresi ve yalnız ayarlarda seçilmiş kısayol mesajını
 işleyen native event filter kullanılır. Kapatmada hotkey kaydı bırakılır.
 Pencere/kenarlıksız mod hedeflenir; render/DLL enjeksiyonu yapılmaz.
 

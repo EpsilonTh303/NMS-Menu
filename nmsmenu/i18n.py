@@ -93,6 +93,11 @@ class Translator:
             translated = data.get(source) or fallback
             if sorted(TOKEN.findall(source)) != sorted(TOKEN.findall(translated)):
                 translated = fallback
+            # A damaged Turkish source entry can also have invalid tokens.
+            # Keep its source template intact rather than compiling a template
+            # that could lose a runtime value or raise during substitution.
+            if sorted(TOKEN.findall(source)) != sorted(TOKEN.findall(translated)):
+                translated = source
             if TOKEN.search(source):
                 parts, names, cursor = [], [], 0
                 for match in TOKEN.finditer(source):
@@ -111,7 +116,7 @@ class Translator:
     @lru_cache(maxsize=4096)
     def text(self, value):
         value = str(value)
-        if not value or self.language == 'tr':
+        if not value:
             return self.source.get(value, value)
         translated = self.catalog.get(value)
         if translated and isinstance(translated, str):

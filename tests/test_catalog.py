@@ -15,6 +15,24 @@ class CatalogServiceTests(unittest.TestCase):
     def setUp(self):
         self.service = CatalogService()
 
+    def test_pending_item_amount_edit_preserves_target_and_revises_review(self):
+        cart = CatalogCart()
+        command = {'op': 'add_item', 'id': 'FUEL1', 'amount': 5,
+                   'inventory': {'kind': 'ship', 'section': 'cargo',
+                                 'selector': {'slot': 2, 'seed': '0x123', 'type': 'fighter'}}}
+        cart.add(1, command)
+        revision = cart.revision
+        cart.set_item_amount(0, 12345)
+        self.assertEqual(cart.commands[0], {**command, 'amount': 12345})
+        self.assertGreater(cart.revision, revision)
+        for invalid in (0, -1, 10_000_001, '12'):
+            with self.assertRaises(ValueError):
+                cart.set_item_amount(0, invalid)
+        cart.add(1, {'op': 'add', 'profile': 'utopia_speeder'})
+        with self.assertRaises(ValueError):
+            cart.set_item_amount(1, 4)
+        self.assertEqual(cart.commands[0]['amount'], 12345)
+
     def test_catalog_has_unique_nonprocedural_ids_and_no_maintenance(self):
         entries = technologies()
         self.assertGreater(len(entries), 100)

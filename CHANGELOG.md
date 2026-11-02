@@ -1,5 +1,17 @@
 # Değişiklikler
 
+## Güncel düzeltmeler — 2 Kasım 2026
+
+- Overlay fare/klavye odağını alır, oyunun imleç sınırını bırakır; kısayol/Escape önceki pencereye döner.
+- Sol bölüm menüsü ve yerel Qt ekleme ekranı; bekleyen değişiklikler ile kontrol/uygula sağ üstte sabittir.
+- Klavyeden adet girme ve bekleyen eşya adedini değiştirme; miktar değişince eski rapor iptal edilir.
+- Gelişmiş filtreler açılır alana taşındı; rapor ayrıntıları isteğe bağlı, hazır doğrulama raporu otomatik açılır.
+- Windows Tk/Qt olay döngüleri düzenlendi; `PyEval_RestoreThread` açılış çöküşü için regresyon testi eklendi.
+- Panel kısayolu Ctrl+Alt+F9 oldu; Ayarlar'dan değiştirilebilir ve panel gizliyken de açılır.
+- Kısayol çakışmaları Windows hata koduyla gösterilir; başarısız değişiklik eski kısayolu korur.
+- CMD'de traceback ve kısayol olayları; kalıcı `runtime/menu.log`, fatal hatada açık kalan konsol.
+- Türkçe/İngilizce sepet ifadeleri sadeleştirildi; dinamik Türkçe metinler de çeviri şablonlarından geçer.
+
 ## 0.13.0 — 2 Kasım 2026
 
 - Canlı filo bölümünde deneysel native gemi ödülü istek paneli; ayrı opt-in pyMHF köprüsü.
