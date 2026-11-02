@@ -1,6 +1,6 @@
 # NMS Menu
 
-No Man’s Sky için Windows masaüstü kontrol paneli. **v0.12.0**; PySide6/Qt
+No Man’s Sky için Windows masaüstü kontrol paneli. **v0.13.0**; PySide6/Qt
 arayüzü, entegre filo motoru, envanter ve koleksiyon araçları içerir.
 Offline GOG kurulumu için geliştirilmiştir; Steam kaydını güncel kabul etmez.
 
@@ -158,8 +158,13 @@ gerekir; özel tam ekran render katmanına enjeksiyon yapılmaz. Overlay kendi
 başına yeni bellek erişimi açmaz; kontroller mevcut denetimli canlı backend'i
 kullanır. Kayıt yüklenmeden ve başka işlem sürerken düğmeler kilitlenir.
 CapsLockFix ve CapsLock davranışı değişmez.
-Canlı gemi ekleme/silme veya model değiştirme hâlâ desteklenmez; mevcut kaynak
-tahsisi ve spawn davranışı bu build için doğrulanmadı.
+Genel canlı gemi oluşturma/silme veya model değiştirme desteklenmez.
+**Deneysel oyun içi gemi ödülü** için Canlı filo bölümüne ayrı bir istek
+paneli eklendi. `native-bridge.cmd` ile isteğe bağlı pyMHF köprüsü yüklenir;
+sonraki doğal oyun ödülünde yedi yerel gemi ödülünden biri çağrılır. Anında
+teslim veya sahiplik garantisi yoktur; oyun teslim ekranı açabilir.
+**Köprü oyun içinde çalıştırılıp test edilmedi.** Kurulum, sınırlar ve tam
+kayıt geri alma kapsamı [native_bridge/README.md](native_bridge/README.md) içindedir.
 
 ## Dil sistemi
 

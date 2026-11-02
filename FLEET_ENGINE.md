@@ -119,6 +119,14 @@ Harici garaj aktif gemi kapasitesini artırmaz.
 
 ## Geri alma
 
+Deneysel native ödül köprüsünün yedekleri işlem kimliğiyle
+`runtime/native-ship-bridge/backups/ISTEK_ID` altında tutulur.
+`python -m nmsmenu.runtime_ship restore-backup ISTEK_ID` komutu, oyun
+kapalıyken mevcut motor üzerinden tam dosya geri alma işlemi oluşturur.
+Bu, istek anındaki tam kayda döner; daha sonraki ilerleme eski dosyalarda
+yoktur. Yeni durum da restore öncesinde ayrıca yedeklenir. Native çağrı
+oyun tarafından işlenir; bu köprü kaydı JSON olarak değiştirip açık oyuna yazmaz.
+
 ```powershell
 python fleet.py restore transactions/ISLEM_KLASORU
 python fleet.py restore-last

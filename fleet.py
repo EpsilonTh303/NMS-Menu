@@ -62,7 +62,7 @@ def player(data):
 
 def kind(ship):
     path = ship['Resource']['Filename'].upper()
-    for marker, name in [('BIOPARTS/BIOSHIP_PROC.', 'alien'), ('SAILSHIP/', 'solar'), ('SENTINELSHIP/', 'sentinel'),
+    for marker, name in [('BIOPARTS/BIOSHIP_PROC.', 'alien'), ('BIOPARTS/BIOFIGHTER.', 'alien'), ('SAILSHIP/', 'solar'), ('SENTINELSHIP/', 'sentinel'),
                          ('FIGHTERS/WRACER.', 'starborn'), ('FIGHTERS/WRACERSE.', 'starborn'),
                          ('FIGHTERS/SPOOKSHIP.', 'boundary'),
                          ('FIGHTERS/FIGHTERCLASSICGOLD.', 'golden'), ('FIGHTERS/VRSPEEDER.', 'utopia'),

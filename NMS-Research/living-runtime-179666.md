@@ -46,7 +46,9 @@ boş sahiplik kaydının resource ve envanterlerini kuran bir ekleme API'si
 değildir. GiveGenericReward da doğru manager instance'ı, görev bağlamı,
 parametre ömürleri ve oyun thread'i gerektirir. Bunlar henüz doğrulanmadı.
 İmza eşleşmesi çağrı güvenliği veya tüm sınıf yerleşiminin uyumu değildir.
-Bu adreslere çağrı/yama yapılmadı; canlı ekleme tamamlanmış sayılmaz.
+v0.13'te bu ödül çağrısı için ayrı, açık opt-in gerektiren deneysel mod yazıldı:
+[native_bridge](../native_bridge/README.md). Mod burada oyuna yüklenmedi veya
+çalıştırılmadı; native teslim/oynanış doğrulanmış sayılmaz.
 
 ## Oyun içi test engeli
 

@@ -39,7 +39,7 @@ class LiveFleetPanel:
         self.apply_button.pack(side='left')
         self.undo_button = ttk.Button(controls, text='Son canlı filo işlemini geri al', state='disabled', command=self.undo)
         self.undo_button.pack(side='left', padx=8)
-        ttk.Label(parent, text='Aktif sınır 12 gemi. Canlı ekleme, silme, model / tohum değiştirme ve teknoloji ekleme henüz desteklenmiyor.',
+        ttk.Label(parent, text='Aktif sınır 12 gemi. Bu envanter motoru gemi eklemez; deneysel native gemi ödülleri ayrı köprüden istenir.',
                   wraplength=1000).pack(anchor='w', pady=(10, 0))
 
     def output(self, value):

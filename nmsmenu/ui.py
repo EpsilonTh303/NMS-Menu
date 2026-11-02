@@ -85,6 +85,8 @@ class MenuApp:
         self.make_fleet(fleet)
         self.live_panel = LivePanel(live, self)
         self.live_fleet_panel = LiveFleetPanel(live_fleet, self, self.live_panel.backend)
+        from .runtime_ship_ui import RuntimeShipPanel
+        self.runtime_ship_panel = RuntimeShipPanel(live_fleet, self)
         self.weapon_panel = WeaponPanel(weapons, self)
         self.catalog_panel = CatalogPanel(catalog, self)
         self.capital_panel = CapitalPanel(capital, self)

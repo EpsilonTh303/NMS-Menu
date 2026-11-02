@@ -22,3 +22,4 @@ doğrulanmadan kullanılmamalıdır. Kaynak kodla gözlem arasında fark bulunma
 başına kaynak projede hata olduğunu göstermez; sürüm / platform farkı olabilir.
 
 - [Living Ship ve runtime ekleme adayları](living-runtime-179666.md): organik profil, codec ve imza araştırması; oynanış doğrulaması bekliyor.
+- [Deneysel native ödül köprüsü](../native_bridge/README.md): upstream API incelemesi, yedi yerel ödül ve opt-in istek yolu; oyun içinde çalıştırılmadı.

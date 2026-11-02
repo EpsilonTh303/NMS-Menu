@@ -1,5 +1,18 @@
 # Modüler tasarım
 
+## v0.13 isteğe bağlı native gemi ödülü köprüsü
+
+`runtime_ship.py` menü kuyruğu, read-only oturum yakalama, kaynak hash'li yedek
+ve açık restore adaptörünü içerir. `runtime_ship_ui.py` Canlı filo bölümüne
+eklenir. Menü native hook yüklemez; `native-bridge.cmd` ayrı pyMHF ortamını
+kurup `native_bridge/ship_rewards.py` modunu kullanıcının çalışan oyununa yükler.
+Mod, host yol/hash/tekil RVA doğrulamasından sonra kayıt edilir. Bir doğal
+non-peek ödül callback'inde ek çağrı dener; instance/seed pointer'ı callback
+dışına saklanmaz. Normal ödül argümanları veya dönüş değeri değiştirilmez.
+Heartbeat thread'i yalnız okur ve yerel durum yazar; native çağrı yapmaz.
+Her attach için bir native deneme vardır; claim edilmiş istek tekrar yürütülmez.
+Bu yol oyun içinde test edilmedi; `dispatched` sahiplik doğrulaması değildir.
+
 ## v0.10 yük gemisi, fırkateyn ve oyun üstü panel
 
 `capital.py` kimlik/sefer doğrulaması ve semantik izin listesiyle saf veri

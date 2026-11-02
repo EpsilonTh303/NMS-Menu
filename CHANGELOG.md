@@ -1,5 +1,14 @@
 # Değişiklikler
 
+## 0.13.0 — 2 Kasım 2026
+
+- Canlı filo bölümünde deneysel native gemi ödülü istek paneli; ayrı opt-in pyMHF köprüsü.
+- Yerel tablodan yedi tek-gemi ödülü: özel gemiler ve The Wraith. Genel model/seed yazımı yapılmaz.
+- Gerçek non-peek ödül callback'inden ek çağrı; normal ödül argümanları/sonucu korunur.
+- Build/imza/oturum/nonce/süre/boş yuva ve sahiplik kontrolleri; yedekli, tek denemeli kuyruk ve iptal.
+- Native yedek için mevcut fleet.py motoruyla açık tam-kayıt geri alma yolu.
+- Kullanıcı isteğiyle oyun içi test veya köprü enjeksiyonu yapılmadı; native teslim doğrulanmadı.
+
 ## 0.12.0 — 2 Kasım 2026
 
 - Living Ship kataloğu: ayrı organik çekirdek, S sınıfı, 35/20 başlangıç yuvası.

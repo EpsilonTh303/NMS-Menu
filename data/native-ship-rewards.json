@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "build": "179666",
+  "table_sha256": "403f80ae19902bc4d2785c88fe420b4610f5724adb19bc77daebb0ce428619f0",
+  "rewards": {
+    "R_TGA_SHIP01": {
+      "title": "Starborn Phoenix",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACERSE.SCENE.MBIN",
+      "seed": "0x0000000000000006"
+    },
+    "RS_S1_SHIP": {
+      "title": "Golden Vector",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTERCLASSICGOLD.SCENE.MBIN",
+      "seed": "0x0000000000000001"
+    },
+    "RS_S9_SHIP": {
+      "title": "Utopia Speeder",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/VRSPEEDER.SCENE.MBIN",
+      "seed": "0x0000000000000001"
+    },
+    "RS_S12_SHIP": {
+      "title": "Starborn Runner",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACER.SCENE.MBIN",
+      "seed": "0x0000000000000006"
+    },
+    "RS_S13_SHIP": {
+      "title": "Iron Vulture",
+      "model": "MODELS/COMMON/SPACECRAFT/DROPSHIPS/DROPSHIP_PROC.SCENE.MBIN",
+      "seed": "0x0000000000000000"
+    },
+    "RS_S16_SHIP": {
+      "title": "Boundary Herald",
+      "model": "MODELS/COMMON/SPACECRAFT/FIGHTERS/SPOOKSHIP.SCENE.MBIN",
+      "seed": "0x0000000000000000"
+    },
+    "RS_S17_SHIP": {
+      "title": "The Wraith (Living Ship)",
+      "model": "MODELS/COMMON/SPACECRAFT/S-CLASS/BIOPARTS/BIOFIGHTER.SCENE.MBIN",
+      "seed": "0x0000000000000000"
+    }
+  }
+}

@@ -64,8 +64,10 @@ def extract():
                 visit(child)
 
         def add(value):
+            if len(value.strip()) < 2:
+                return
             visible = re.sub(r'\{v\d+\}', '', value)
-            if value == 'Segoe UI' or re.fullmatch(r'(?:[A-F0-9]{2} ?)+', value):
+            if value == 'Segoe UI' or re.fullmatch(r'(?:(?:[A-F0-9]{2}|\?{1,2}) ?)+', value):
                 return
             if value and (re.search('[çğıöşüÇĞİÖŞÜ]', value) or
                           (' ' in visible and re.search('[A-Za-z]', visible) and len(visible.strip()) > 2) or
