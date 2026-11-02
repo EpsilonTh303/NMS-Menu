@@ -1,6 +1,6 @@
 # NMS Menu
 
-No Man’s Sky için Windows masaüstü kontrol paneli. **v0.11.0**; PySide6/Qt
+No Man’s Sky için Windows masaüstü kontrol paneli. **v0.12.0**; PySide6/Qt
 arayüzü, entegre filo motoru, envanter ve koleksiyon araçları içerir.
 Offline GOG kurulumu için geliştirilmiştir; Steam kaydını güncel kabul etmez.
 
@@ -17,7 +17,7 @@ Offline GOG kurulumu için geliştirilmiştir; Steam kaydını güncel kabul etm
 | Yük gemisi / fırkateyn | Yük gemisi adı/sınıfı, onarım ve yuva; fırkateyn adı/beceriler, onarım, kopyalama ve kaldırma |
 | Filo ve envanter | Gemi ekleme/kaldırma, donanım, normal kalkış otomatik şarjı, harici garaj |
 | Silah koleksiyonu | Kaynak donanımla çok amaçlı alet ekleme/kaldırma |
-| Katalog | 80 gemi profili/tohum seçeneği, 49 alet modeli/tohum seçeneği, 149 sabit teknoloji, 1100 eşya/madde |
+| Katalog | 81 gemi profili/tohum seçeneği, 49 alet modeli/tohum seçeneği, 149 sabit teknoloji, 1100 eşya/madde |
 | Envanter ve arşiv | Izgara, taşıma, yığın bölme/birleştirme, miktar, donanım setleri, seçili tarifler, yerleşik arşiv |
 | Yedek ve geri alma | İşlem raporu, kaynak hash kontrolü, yedekleme ve tam kayıt geri alma |
 | Ayarlar | Anında dil değişimi, kalıcı tercih, JSON çeviri dosyalarını yenileme |
@@ -134,6 +134,15 @@ Model, ev sistemi ve mürettebat için yeni tohumlar oluşturur. Üs/oda, görev
 spawn konumu veya teknoloji oluşturmaz; oyunda çağırma ve oynanış doğrulaması
 tamamlanmadı. Bu nedenle standart özellik gibi sunulmaz. Mevcut yük gemisinin
 düzenlenmesinde üs, odalar, model, ev sistemi ve konum korunur.
+
+### Living Ship / organik gemi
+
+Katalogda **Living Ship** profilini arayın. Oyun kapalıyken boş native yuvaya
+S sınıfı, 35 kargo/20 teknoloji yuvası ve organik çekirdekle eklenir. Mevcut
+gemiler, kargo, aktif gemi ve 12 giriş sınırı korunur. 120/60 genişletme ve
+organik CHARGER_ALIEN otomatik şarj desteği vardır. Normal donanım takılmaz.
+Starbirth görevi veya ödül hakları değiştirilmez. Yerel model, teknoloji ve
+tam codec eşitliği doğrulandı; **oynanış/çağırma testi tamamlanmadı**.
 
 ### Oyun üstü panel
 

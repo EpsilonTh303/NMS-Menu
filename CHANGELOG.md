@@ -1,5 +1,13 @@
 # Değişiklikler
 
+## 0.12.0 — 2 Kasım 2026
+
+- Living Ship kataloğu: ayrı organik çekirdek, S sınıfı, 35/20 başlangıç yuvası.
+- Living Ship türü, 120/60 yuva ve CHARGER_ALIEN otomatik şarj desteği; normal şarj cihazı takılmaz.
+- Yeni giriş boş native yuvayı kullanır; mevcut gemiler, kargo ve aktif gemi korunur. Starbirth görevi değiştirilmez.
+- Yerel model dosyası, organik teknoloji uyumu, tam codec eşitliği ve kaynak hash'leri doğrulandı; oynanış doğrulaması bekliyor.
+- Canlı ekleme araştırmasında yerel build için sahiplik/spawn/ödül işlev adayları bulundu; imza eşleşmesi çağrı güvenliği kanıtı değildir.
+
 ## 0.11.0 — 2 Kasım 2026
 
 - Boş oyun şablonundan Normal/Capital/Pirate yük gemisi için deneysel ekleme; mevcut gemi, üs veya kargo üzerine yazılmaz.

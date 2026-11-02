@@ -255,5 +255,35 @@
     "sources": [
       "https://www.tazmd.nl/starships"
     ]
+  },
+  "living_ship": {
+    "name": "Living Ship",
+    "family": "alien",
+    "model": "MODELS/COMMON/SPACECRAFT/S-CLASS/BIOPARTS/BIOSHIP_PROC.SCENE.MBIN",
+    "seed": "0x5EEDB105",
+    "class": "S",
+    "cargo_slots": 35,
+    "tech_slots": 20,
+    "stats": {
+      "SHIP_DAMAGE": 30.0,
+      "SHIP_SHIELD": 20.0,
+      "SHIP_HYPERDRIVE": 30.0,
+      "SHIP_AGILE": 20.0
+    },
+    "technology": {
+      "LAUNCHER_SPEC": 200,
+      "SHIPJUMP_SPEC": 200,
+      "HYPERDRIVE_SPEC": 120,
+      "SHIELD_ALIEN": 200,
+      "SHIPGUN_ALIEN": 100,
+      "SHIPLAS_ALIEN": 100,
+      "CHARGER_ALIEN": 100
+    },
+    "sources": [
+      "https://www.nomanssky.com/living-ship-update/",
+      "https://github.com/vectorcmdr/NMSE/blob/6e0fd3a3c92456ac7241e106856ca8be76b2e46b/Core/StarshipLogic.cs",
+      "local:metadata/reality/tables/nms_reality_gctechnologytable.mbin"
+    ],
+    "note": "Editor-authored organic loadout and stats; does not complete Starbirth or grant expedition rewards. Gameplay verification pending."
   }
 }

@@ -43,7 +43,7 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
    kuralları / codec kontrolü, duraklatma doğrulaması ve koşullu alan bazlı geri alma.
    Sahiplik ekleme / silme ve model değiştirme henüz canlı desteklenmiyor.
 4. **v0.4–v0.7 tamamlandı:** alet sahipliği, ortak otomatik tarama, UI bağımsız
-   katalog/sepet, 80 gemi profili/tohum seçeneği, 49 alet seçeneği, 149 teknoloji.
+   katalog/sepet, 81 gemi profili/tohum seçeneği, 49 alet seçeneği, 149 teknoloji.
    Bunlar oyundaki toplam tür sayıları değildir. Ayrıntılar / aile filtresi / rehber bulunur.
 5. **v0.8 tamamlandı:** 1100 eşya/madde ve miktar, envanter ızgarası, taşıma/bölme/birleştirme,
    5 hazır ve kişisel sabit teknoloji setleri, favoriler/son kullanılanlar ve seçili tarif öğrenme.

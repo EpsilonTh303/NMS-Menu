@@ -73,7 +73,7 @@ class CatalogServiceTests(unittest.TestCase):
         self.assertNotIn('BROKEN_TEST', self.service.detail(result[0].key)['technology'])
 
     def test_catalog_separates_model_and_seed_variants(self):
-        self.assertEqual(self.service.counts()['ships'], 80)
+        self.assertEqual(self.service.counts()['ships'], 81)
         self.assertEqual(self.service.counts()['tools'], 49)
         self.assertEqual(len({p['model'] for p in tool_models().values()}), 12)
         for key, profile in self.service.ships.items():

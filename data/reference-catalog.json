@@ -20,7 +20,7 @@
       "title": "Living Ship / Yaşayan gemi",
       "family": "Gemi rehberi",
       "summary": "Organik teknoloji kullanan ayrı gemi ailesi.",
-      "status": "Doğrudan ekleme henüz uygulanmadı: organik envanter/teknoloji ve sahiplik durumu için ayrı doğrulama gerekiyor. Normal gemi profili gibi üretilmez.",
+      "status": "Katalogdaki Living Ship profili oyun kapalıyken organik donanımla eklenir. Model, teknoloji ve codec eşitliği doğrulandı; oyun içi çağırma testi tamamlanmadı. Starbirth görevi değiştirilmez.",
       "sources": [
         "https://www.nomanssky.com/living-ship-update/"
       ]

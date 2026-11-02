@@ -77,6 +77,12 @@ Gemi profilleri `catalog.json`, donanımlar `loadouts.json`, estetik tercihler
 
 ## Kapasite ve donanım
 
+Living Ship: `{"save_slot":1,"actions":[{"op":"add","profile":"living_ship"}]}`.
+Yeni `fleet.py prepare` işlemiyle kullanılır. Profil yalnız organik çekirdek
+teknolojileri kabul eder. Tür `alien`, şarj teknolojisi `CHARGER_ALIEN` olur;
+normal `UT_LAUNCHCHARGE` takılmaz. 35/20 başlangıç ve 120/60 genişletme
+desteklenir. Model/codec doğrulaması geçti; oyun içi test henüz tamamlanmadı.
+
 12 aktif gemi sınırı kaldırılmaz; sahiplik dizileri genişletilmez. Karakter
 120 kargo/60 teknoloji; gemide doğrulanmış tür kapasitesi kullanılır.
 Mevcut eşya konumları ve süperşarjlı yuvalar korunur; sığmayan işlem durur.

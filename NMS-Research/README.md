@@ -20,3 +20,5 @@ Windows API uygulamasıdır; DLL enjeksiyonu veya instruction patch kullanmaz.
 Buradaki RVA / offset değerleri yalnız belirtilen hash'e aittir. Başka build için
 doğrulanmadan kullanılmamalıdır. Kaynak kodla gözlem arasında fark bulunması tek
 başına kaynak projede hata olduğunu göstermez; sürüm / platform farkı olabilir.
+
+- [Living Ship ve runtime ekleme adayları](living-runtime-179666.md): organik profil, codec ve imza araştırması; oynanış doğrulaması bekliyor.

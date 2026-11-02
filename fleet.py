@@ -62,7 +62,7 @@ def player(data):
 
 def kind(ship):
     path = ship['Resource']['Filename'].upper()
-    for marker, name in [('SAILSHIP/', 'solar'), ('SENTINELSHIP/', 'sentinel'),
+    for marker, name in [('BIOPARTS/BIOSHIP_PROC.', 'alien'), ('SAILSHIP/', 'solar'), ('SENTINELSHIP/', 'sentinel'),
                          ('FIGHTERS/WRACER.', 'starborn'), ('FIGHTERS/WRACERSE.', 'starborn'),
                          ('FIGHTERS/SPOOKSHIP.', 'boundary'),
                          ('FIGHTERS/FIGHTERCLASSICGOLD.', 'golden'), ('FIGHTERS/VRSPEEDER.', 'utopia'),
@@ -154,7 +154,8 @@ def fleet_summary(p):
              'seed': s['Resource']['Seed'][1], 'class': s['Inventory']['Class']['InventoryClass'],
              'cargo_slots': len(s['Inventory']['ValidSlotIndices']),
              'tech_slots': len(s['Inventory_TechOnly']['ValidSlotIndices']),
-             'auto_recharge': any(x['Id'] == '^UT_LAUNCHCHARGE' for x in s['Inventory_TechOnly']['Slots'])}
+             'auto_recharge': any(x['Id'] == ('^CHARGER_ALIEN' if kind(s) == 'alien' else '^UT_LAUNCHCHARGE')
+                                  for x in s['Inventory_TechOnly']['Slots'])}
             for i, s in owned(p)]
 
 def capture_ship(p, index):
@@ -223,7 +224,7 @@ def mutate(original, plan, catalog):
                 for i, ship in owned(p):
                     cargo_max = {'fighter': 100, 'solar': 110, 'explorer': 105,
                                  'shuttle': 110, 'hauler': 120, 'sentinel': 120, 'exotic': 105,
-                                 'starborn': 105, 'golden': 100, 'utopia': 100, 'boundary': 100}.get(kind(ship))
+                                 'starborn': 105, 'golden': 100, 'utopia': 100, 'boundary': 100, 'alien': 120}.get(kind(ship))
                     if cargo_max is None:
                         raise ValueError('Unsupported ship slot cap; add its verified cap to the tool first.')
                     for field, count in [('Inventory', cargo_max), ('Inventory_TechOnly', 60)]:
@@ -275,6 +276,15 @@ def mutate(original, plan, catalog):
             ship = blank_ship(p)
             ship['Name'] = profile['name']
             ship['Resource'].update({'Filename': profile['model'], 'Seed': [True, profile['seed']]})
+            if kind(ship) == 'alien':
+                if any(ship[field]['Slots'] for field in ('Inventory', 'Inventory_Cargo', 'Inventory_TechOnly')):
+                    raise ValueError('Living Ship requires an empty ownership template; residual items must be preserved.')
+                core = {'LAUNCHER_SPEC', 'SHIPJUMP_SPEC', 'HYPERDRIVE_SPEC', 'SHIELD_ALIEN', 'SHIPGUN_ALIEN', 'SHIPLAS_ALIEN'}
+                organic = core | {'CARGO_S_ALIEN', 'CHARGER_ALIEN', 'SHIPSCAN_ALIEN', 'WATERLAND_ALIEN', 'TELEPORT_ALIEN'}
+                if not core <= profile['technology'].keys() or profile['technology'].keys() - organic:
+                    raise ValueError('Living Ship requires organic core technology; conventional equipment is incompatible.')
+                if profile['class'] != 'S' or not 1 <= profile.get('cargo_slots', 30) <= 120 or not 10 <= profile.get('tech_slots', 20) <= 60:
+                    raise ValueError('Living Ship requires S class and supported inventory capacity.')
             stats = [{'BaseStatID': '^' + key, 'Value': value} for key, value in profile['stats'].items()]
             for field in ('Inventory', 'Inventory_Cargo', 'Inventory_TechOnly'):
                 ship[field]['Class']['InventoryClass'] = profile['class']
@@ -306,11 +316,12 @@ def mutate(original, plan, catalog):
             indices = [i for i, _ in owned(p)] if action.get('scope') == 'ships' else [select(p, action['selector'])]
             for i in indices:
                 ship = p['ShipOwnership'][i]
-                if kind(ship) not in ('fighter', 'hauler', 'solar', 'sentinel', 'explorer', 'shuttle', 'exotic', 'starborn', 'golden', 'utopia', 'boundary'):
+                if kind(ship) not in ('fighter', 'hauler', 'solar', 'sentinel', 'explorer', 'shuttle', 'exotic', 'starborn', 'golden', 'utopia', 'boundary', 'alien'):
                     raise ValueError('Auto-charger is not verified for this ship type.')
                 inventory = ship['Inventory_TechOnly']
-                if not any(s['Id'] == '^UT_LAUNCHCHARGE' for s in inventory['Slots']):
-                    insert(inventory, tech('UT_LAUNCHCHARGE'))
+                charger = 'CHARGER_ALIEN' if kind(ship) == 'alien' else 'UT_LAUNCHCHARGE'
+                if not any(s['Id'] == '^' + charger for s in inventory['Slots']):
+                    insert(inventory, tech(charger))
                     allowed.append(PREFIX + f'ShipOwnership/{i}/Inventory_TechOnly/Slots')
             events.append({'op': op, 'slots': [i + 1 for i in indices]})
         elif op == 'garage_import':
