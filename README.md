@@ -1,6 +1,6 @@
 # NMS Menu
 
-No Man’s Sky için Windows masaüstü kontrol paneli. **v0.9.0**; PySide6/Qt
+No Man’s Sky için Windows masaüstü kontrol paneli. **v0.10.0**; PySide6/Qt
 arayüzü, entegre filo motoru, envanter ve koleksiyon araçları içerir.
 Offline GOG kurulumu için geliştirilmiştir; Steam kaydını güncel kabul etmez.
 
@@ -14,12 +14,14 @@ Offline GOG kurulumu için geliştirilmiştir; Steam kaydını güncel kabul etm
 | --- | --- |
 | Canlı kontroller | Units, nanit, quicksilver; hız, jetpack, dayanıklılık, yaşam desteği ve kalkan ayarları |
 | Canlı filo | Mevcut gemileri listeleme, onarım/şarj, envanter yuvalarını genişletme |
+| Yük gemisi / fırkateyn | Yük gemisi adı/sınıfı, onarım ve yuva; fırkateyn adı/beceriler, onarım, kopyalama ve kaldırma |
 | Filo ve envanter | Gemi ekleme/kaldırma, donanım, normal kalkış otomatik şarjı, harici garaj |
 | Silah koleksiyonu | Kaynak donanımla çok amaçlı alet ekleme/kaldırma |
 | Katalog | 80 gemi profili/tohum seçeneği, 49 alet modeli/tohum seçeneği, 149 sabit teknoloji, 1100 eşya/madde |
 | Envanter ve arşiv | Izgara, taşıma, yığın bölme/birleştirme, miktar, donanım setleri, seçili tarifler, yerleşik arşiv |
 | Yedek ve geri alma | İşlem raporu, kaynak hash kontrolü, yedekleme ve tam kayıt geri alma |
 | Ayarlar | Anında dil değişimi, kalıcı tercih, JSON çeviri dosyalarını yenileme |
+| Oyun üstü panel | Canlı para ve gemi sayısı, menü kısa yolları, Ctrl+Shift+F8 ile gizle/göster |
 
 Katalog sayıları oyundaki toplam tür sayıları değildir. Gemi/alet görünüm
 seçenekleri, sınıf/istatistik veya ödül hakkının birebir kopyası anlamına gelmez.
@@ -109,6 +111,40 @@ Ani panel kapanışında geçici ayarlar oyun yeniden başlatılana kadar kalabi
 
 Ayrıntılı motor komutları: [FLEET_ENGINE.md](FLEET_ENGINE.md).
 
+### Yük gemisi ve fırkateyn
+
+`python main.py --capital` yeni bölümü açar. Ortak taramadaki kayıt seçilir;
+işlemler ortak sepete eklenip **oyun kapalıyken** yeni plan/rapor/apply akışıyla uygulanır.
+
+- Mevcut yük gemisinin adı ve sınıfı değiştirilir, kurulu teknolojileri onarılıp
+  şarj edilir. S sınıfında 120 kargo/60 teknoloji yuvası açılabilir.
+- Yük gemisi kargo ve teknoloji envanterleri mevcut envanter ızgarasında da görünür.
+- Fırkateynler yuva, tür ve tohumla seçilir. Adı ve ilk dört beceri değeri
+  düzenlenebilir; diğer yedi istatistik, özellikler ve sefer geçmişi korunur.
+- Normal fırkateyn türleri yeni tohumla kopyalanabilir; **30 fırkateyn** sınırı
+  korunur. Özel/ödül türleri kopyalanmaz. Silinen fırkateyn tam veriyle işlem
+  dışa aktarımında ve yedekte saklanır.
+- Seferdeki veya rapor bekleyen fırkateyn düzenlenmez. Kaldırma, bütün seferler
+  bitirilip raporları alınınca açılır; sefer indeksleri değiştirilmez.
+
+Panel sahip olunmayan yük gemisini oluşturmaz. Yük gemisi modeli yoksa ilgili
+düğmeler kilitli kalır; önce oyun içinde yük gemisi edinilmelidir. Üs, odalar,
+model, ev sistemi ve konum bu işlemlerde değiştirilmez. Bu özelliklerin kayıt
+şeması ve codec doğrulaması yapıldı; oyun içi görsel/oynanış testi yapılmadı.
+
+### Oyun üstü panel
+
+**Ayarlar → Oyun üstü paneli etkinleştir** seçeneği küçük ve sürüklenebilir
+paneli açar. **Ctrl+Shift+F8** gizler/gösterir. Panel mevcut canlı bağlantıdan
+para birimlerini ve gemi sayısını okur; düğmeler ilgili işlem ekranını açar.
+Bağlantı veya kayıt yoksa eski değerler gösterilmez.
+
+Bu, oyun üstünde duran ayrı Qt penceresidir. **Pencere veya kenarlıksız mod**
+gerekir; özel tam ekran render katmanına enjeksiyon yapılmaz. Overlay kendi
+başına belleğe/kayda yazmaz. CapsLockFix ve CapsLock davranışı değişmez.
+Canlı gemi ekleme/silme veya model değiştirme hâlâ desteklenmez; mevcut kaynak
+tahsisi ve spawn davranışı bu build için doğrulanmadı.
+
 ## Dil sistemi
 
 **Ayarlar → Arayüz dili** seçimi anında uygulanır ve
@@ -117,7 +153,8 @@ Ayrıntılı motor komutları: [FLEET_ENGINE.md](FLEET_ENGINE.md).
 Her dil ayrı UTF-8 JSON dosyasıdır: `locales/tr.json`, `en.json`, `ru.json`,
 `de.json`. Dil adı dosyanın `_meta.name` alanından okunur. Türkçe kaynak metin
 sabit anahtardır; sağındaki değer ekranda gösterilir. Eksik çeviriler Türkçeye
-döner. Mevcut dört dil 525 kaynak metin içerir; çeviriler Luna ajanlarıyla hazırlanmıştır.
+döner. İlk dil kataloğu Luna ajanlarıyla hazırlanmıştır; yeni bölüm metinleri
+aynı dört JSON dosyasında tutulur.
 
 Yeni dil ekleme:
 
@@ -148,6 +185,7 @@ python main.py --catalog    # Katalog
 python main.py --fleet      # Canlı filo
 python main.py --weapons    # Alet koleksiyonu
 python main.py --settings   # Ayarlar / dil
+python main.py --capital    # Yük gemisi / fırkateyn
 python main.py --classic    # Önceki Türkçe Tk görünümü
 ```
 
@@ -188,6 +226,7 @@ kurulumda `runtime/legacy-solar/` altındadır. Depoyu klonlamak kişisel yedek 
 - [Mimari](ARCHITECTURE.md) · [UI servis sınırları](UI_MIGRATION.md)
 - [Katalog verilerinin kaynağı](data/README.md)
 - [Yol haritası](ROADMAP.md) · [Araştırma notları](NMS-Research/README.md)
+- [Yük gemisi, fırkateyn ve overlay doğrulaması](NMS-Research/capital-overlay-179666.md)
 
 Araştırma belgelerindeki eski klasör adları tarihsel düzeni anlatabilir.
 Uygulamanın güncel yolları bu README ve kod içindeki yollarla belirlenir.

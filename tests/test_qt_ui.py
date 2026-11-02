@@ -28,6 +28,28 @@ class QtBindings(unittest.TestCase):
         self.window.build(source).click()
         self.assertEqual(calls, ['original'])
 
+    def test_capital_panel_queues_only_and_missing_freighter_stays_disabled(self):
+        from nmsmenu import capital
+        from test_capital import source
+        panel = self.window.controller.capital_panel
+        data = source()
+        p = data['BaseContext']['PlayerStateData']
+        record = {'file': 'save.hg', 'capital': capital.snapshot(p)}
+        panel.load_saves([record])
+        panel.tree.selection_set('0')
+        self.window.legacy.update()
+        panel.frigate('frigate_repair')
+        cart = self.window.controller.catalog_panel.cart
+        self.assertEqual(cart.plan()['actions'][-1]['op'], 'frigate_repair')
+        self.assertEqual(p['FleetFrigates'][0]['DamageTaken'], 2)
+        cart.clear()
+        self.window.controller.catalog_panel.changed()
+        p['CurrentFreighter']['Filename'] = ''
+        record['capital'] = capital.snapshot(p)
+        panel.load_saves([record])
+        self.assertTrue(all('disabled' in button.state() for button in panel.freighter_buttons))
+        self.assertEqual(len(panel.tree.get_children()), 2)
+
     def test_entry_updates_original_variable(self):
         value = tk.StringVar(self.window.legacy, '1')
         source = ttk.Entry(self.window.legacy, textvariable=value)
@@ -50,6 +72,21 @@ class QtBindings(unittest.TestCase):
         target = next(q for t, q in self.window.bindings if t is source)
         self.window.sync(source, target)
         self.assertFalse(target.isEnabled())
+
+    def test_overlay_toggle_closes_and_preserves_menu_review(self):
+        from unittest.mock import patch
+        window = self.window
+        source = window.controller.catalog_panel.apply_button
+        with patch('nmsmenu.overlay.GlobalHotkey') as hotkey:
+            hotkey.return_value.registered = True
+            window.overlay_toggle.setChecked(True)
+            self.assertIsNotNone(window.overlay_panel)
+            self.assertTrue(window.overlay_panel.windowFlags() & __import__('PySide6.QtCore', fromlist=['Qt']).Qt.WindowType.WindowStaysOnTopHint)
+            self.assertIn('disabled', source.state())
+            window.overlay_panel.close()
+            self.assertFalse(window.overlay_toggle.isChecked())
+            self.assertFalse(window.overlay_panel.timer.isActive())
+            hotkey.return_value.close.assert_called_once()
 
     def test_spinbox_updates_original_variable_with_limits(self):
         value = tk.StringVar(self.window.legacy, '1')

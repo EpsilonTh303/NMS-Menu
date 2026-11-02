@@ -15,13 +15,14 @@ if __name__ == '__main__':
     tabs.add_argument('--catalog', action='store_true', help='Ortak ekleme kataloğunu aç')
     tabs.add_argument('--inventory', action='store_true', help='Envanter, donanım ve arşiv ekranını aç')
     tabs.add_argument('--settings', action='store_true', help='Ayarlar / dil seçimi sekmesini aç (Qt)')
+    tabs.add_argument('--capital', action='store_true', help='Yük gemisi ve fırkateyn sekmesini aç')
     args = parser.parse_args()
     if args.classic and args.settings:
         parser.error('--settings Qt arayüzünü gerektirir; --classic ile kullanılamaz.')
     if args.classic:
         from nmsmenu.ui import main
-        main(connect=args.connect, fleet=args.fleet, weapons=args.weapons, catalog=args.catalog, inventory=args.inventory)
+        main(connect=args.connect, fleet=args.fleet, weapons=args.weapons, catalog=args.catalog, inventory=args.inventory, capital=args.capital)
     else:
         from nmsmenu.qt_ui import main
-        raise SystemExit(main(inventory=args.inventory or not (args.fleet or args.weapons or args.catalog),
-                              fleet=args.fleet, weapons=args.weapons, catalog=args.catalog, settings=args.settings))
+        raise SystemExit(main(inventory=args.inventory or not (args.fleet or args.weapons or args.catalog or args.capital),
+                              fleet=args.fleet, weapons=args.weapons, catalog=args.catalog, settings=args.settings, capital=args.capital))

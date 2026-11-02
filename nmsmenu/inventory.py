@@ -33,6 +33,13 @@ def resolve(player, spec, fleet):
         i = fleet.select(player, spec['selector'])
         key = 'Inventory' if section == 'cargo' else 'Inventory_TechOnly'
         return player['ShipOwnership'][i][key], fleet.PREFIX + f'ShipOwnership/{i}/{key}', None
+    if kind == 'freighter':
+        from .capital import freighter_identity
+        identity = freighter_identity(player)
+        if identity is None or spec.get('selector') != identity:
+            raise ValueError('Yük gemisi kimliği değişti; taze listeden yeniden seçin.')
+        key = 'FreighterInventory' if section == 'cargo' else 'FreighterInventory_TechOnly'
+        return player[key], fleet.PREFIX + key, None
     if kind == 'multitool' and section == 'tech':
         i = weapons.select(player, spec['selector'])
         if i == weapons.active(player):
@@ -205,6 +212,11 @@ def snapshot(player, fleet):
     for tool in weapons.summary(player):
         specs.append((f"Alet {tool['slot']} • {tool['name']}", {'kind': 'multitool', 'section': 'tech',
             'selector': {k: tool[k] for k in ('slot', 'seed', 'filename')}}))
+    from .capital import freighter_identity
+    freighter = freighter_identity(player)
+    if freighter:
+        for label, section in [('Yük gemisi kargo', 'cargo'), ('Yük gemisi teknoloji', 'tech')]:
+            specs.append((label, {'kind': 'freighter', 'section': section, 'selector': freighter}))
     for label, spec in specs:
         inv, _, _ = resolve(player, spec, fleet)
         contents = []

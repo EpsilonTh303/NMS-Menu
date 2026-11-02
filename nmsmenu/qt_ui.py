@@ -158,6 +158,8 @@ class Window(Q.QMainWindow):
         self.translator = translator or Translator()
         self.t = self.translator.text
         self.localized_widgets = []
+        self.overlay_panel = None
+        self.overlay_hotkey = None
         self.legacy = tk.Tk()
         self.legacy.withdraw()
         self.controller = MenuApp(self.legacy)
@@ -252,12 +254,40 @@ class Window(Q.QMainWindow):
         reload_button.clicked.connect(self.reload_languages)
         self.localized_widgets.append((reload_button, 'Dil dosyalarını yenile'))
         layout.addWidget(reload_button, alignment=QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.overlay_toggle = Q.QCheckBox()
+        self.localized_widgets.append((self.overlay_toggle, 'Oyun üstü paneli etkinleştir'))
+        self.overlay_toggle.toggled.connect(self.toggle_overlay)
+        layout.addWidget(self.overlay_toggle)
+        self.overlay_hint = Q.QLabel()
+        self.overlay_hint.setWordWrap(True)
+        self.localized_widgets.append((self.overlay_hint, 'Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir; panel oyun belleğine yazmaz.'))
+        layout.addWidget(self.overlay_hint)
         layout.addStretch()
         self.settings_index = self.main_book.addTab(page, icon('settings'), self.t('Ayarlar'))
         self.language_choice.currentIndexChanged.connect(self.change_language)
         self.main_book.currentChanged.connect(lambda index: self.refresh_language_choices() if index == self.settings_index else None)
         self.refresh_language_choices()
         self.retranslate()
+
+    def toggle_overlay(self, enabled):
+        from .overlay import GameOverlay, GlobalHotkey
+        if enabled:
+            if self.overlay_panel is None:
+                self.overlay_panel = GameOverlay(self)
+            self.overlay_panel.timer.start(500)
+            self.overlay_panel.show()
+            if self.overlay_hotkey is None:
+                self.overlay_hotkey = GlobalHotkey(lambda: self.overlay_panel.setVisible(not self.overlay_panel.isVisible()))
+            if not self.overlay_hotkey.registered:
+                self.overlay_hint.setText(self.t('Kısayol kullanımda veya desteklenmiyor; panel ayarlardan açılabilir.'))
+            self.overlay_panel.refresh()
+        else:
+            if self.overlay_panel is not None:
+                self.overlay_panel.hide()
+                self.overlay_panel.timer.stop()
+            if self.overlay_hotkey is not None:
+                self.overlay_hotkey.close()
+                self.overlay_hotkey = None
 
     def refresh_language_choices(self):
         self.language_choice.blockSignals(True)
@@ -372,6 +402,8 @@ class Window(Q.QMainWindow):
             target.setSelectionMode(Q.QAbstractItemView.SelectionMode.ExtendedSelection if source.cget('selectmode') == 'extended' else Q.QAbstractItemView.SelectionMode.SingleSelection)
             target.setMinimumHeight(85)
             target.setMaximumHeight(150 if int(source.cget('height')) <= 3 else 16777215)
+            if source is self.controller.capital_panel.tree:
+                target.setFixedHeight(150)
             def select_tree():
                 source.selection_set([item.data(0, QtCore.Qt.ItemDataRole.UserRole) for item in target.selectedItems()])
                 self.dispatch(source, '<<TreeviewSelect>>')
@@ -531,7 +563,9 @@ class Window(Q.QMainWindow):
             target.setTitle(self.t(str(source.cget('text'))))
         elif isinstance(target, Q.QLabel):
             value = str(source.cget('text'))
-            if str(source.cget('textvariable')) == str(self.controller.scan_status):
+            if source is self.controller.capital_panel.freighter_info and self.controller.capital_panel.view.get('freighter'):
+                target.setText(value)
+            elif str(source.cget('textvariable')) == str(self.controller.scan_status):
                 # The dot conveys actual connection state, not a decorative "connected" claim.
                 color = '#51b77f' if value.startswith('Canlı: bağlı ve güncel') else '#e5a16d'
                 target.setText(f'<span style="color:{color}">●</span> &nbsp;{html.escape(self.t(value))}')
@@ -559,6 +593,7 @@ class Window(Q.QMainWindow):
             if alive:
                 event.ignore()
                 return
+        self.toggle_overlay(False)
         event.accept()
 
 
@@ -614,10 +649,13 @@ class InventoryCanvas(Q.QGraphicsView):
         super().mousePressEvent(event)
 
 
-def main(inventory=True, fleet=False, weapons=False, catalog=False, settings=False):
+def main(inventory=True, fleet=False, weapons=False, catalog=False, settings=False, capital=False):
     app = Q.QApplication(sys.argv)
     app.setStyle('Fusion')
     window = Window(inventory, fleet, weapons, catalog)
+    if capital:
+        window.controller.book.select(7)
+        window.tick()
     if settings:
         window.main_book.setCurrentIndex(window.settings_index)
     window.show()

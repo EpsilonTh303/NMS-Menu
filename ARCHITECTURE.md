@@ -1,5 +1,18 @@
 # Modüler tasarım
 
+## v0.10 yük gemisi, fırkateyn ve oyun üstü panel
+
+`capital.py` kimlik/sefer doğrulaması ve semantik izin listesiyle saf veri
+dönüşümü yapar. `capital_ui.py` ortak taramadaki görünümü kullanır; komutlar
+mevcut CatalogCart üzerinden işlem motoruna gider. Ayrı codec taraması veya
+canlı sahiplik yazımı yoktur. Genişletme bütün açık koordinatları ve özel
+yuvaları korur; kaldırmada tam fırkateyn işlem dışa aktarımında saklanır.
+
+`overlay.py` mevcut LivePanel/LiveFleetPanel modelini okur; yeni bellek
+erişimi açmaz. Ayrı Qt araç penceresi ve yalnız kayıtlı Ctrl+Shift+F8 mesajını
+işleyen native event filter kullanılır. Kapatmada hotkey kaydı bırakılır.
+Pencere/kenarlıksız mod hedeflenir; render/DLL enjeksiyonu yapılmaz.
+
 ## v0.8 envanter ve koleksiyon
 
 Envanter, donanım, arşiv ve tarif eylemleri aynı CatalogCart üzerinden hazırlanır.

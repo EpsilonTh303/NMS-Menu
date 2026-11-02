@@ -19,8 +19,8 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 | Tarif / teknoloji | 149 sabit teknolojiyi uygun hedefe kurma | v0.8 hazır; seçili teknoloji/ürün tarifi de öğrenilir |
 | Çok amaçlı alet | Kaynak donanımla ekle / kaldır; 49 model/tohum seçeneği | v0.7; oyun kapalı, 12 benzersiz model yolu |
 | İstasyon savaş kontrolü | Silah çıkarma / ateş etme aç-kapat, NPC hasarı | Araştırma; çalıştırılamaz |
-| Yük gemisi | Model, sınıf, envanter | Aktif gemi ve üs bağımlılıkları araştırılacak |
-| Fırkateyn | Filo ve sefer | Aktif görev ve zaman tutarlılığı araştırılacak |
+| Yük gemisi | Mevcut geminin adı, sınıfı, onarım/şarj, S sınıfında 120/60 yuva ve envanter | v0.10; oyun kapalı; sahiplik/model/üs oluşturma yok |
+| Fırkateyn | Ad, beceriler, onarım, normal tür kopyalama ve kaldırma | v0.10; 30 sınırı; sefer/rapor korumaları |
 | Exocraft / evcil hayvan | Sahiplik, özellik ve envanter | Ayrı şema ve kimlik kuralları gerekli |
 | Karakter | Hız, jetpack itiş/dolum, dayanıklılık, yaşam desteği, kalkan yenilenmesi | v0.2 canlı; 12 yapılandırma alanı. Doğrudan sağlık / ölümsüzlük yok |
 | Zorluk | Tüketim, hasar, üretim / satın alma maliyeti | Önce yerleşik oyun seçenekleri incelenecek |
@@ -28,7 +28,8 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 | Seyahat | Koordinat, portal, istasyon | Güvenli spawn ve galaksi tutarlılığı gerekli |
 | Üs / yerleşim | Parçalar, enerji, kaynaklar | Konum ve sahiplik bağımlılıkları araştırılacak |
 | Canlı mod | Bellek üzerinden para / yapılandırma | v0.2 hazır; ayrı masaüstü penceresi |
-| Overlay / geniş canlı mod | Oyun içi arayüz, anlık yakıt, uçuş, zaman, ölümsüzlük | Araştırma; bu sürümde yok |
+| Oyun üstü panel | Canlı değerler ve işlem ekranı kısa yolları | v0.10; ayrı Qt penceresi, pencere/kenarlıksız mod |
+| Geniş canlı mod | Canlı sahiplik, anlık yakıt, uçuş, zaman, ölümsüzlük | Araştırma; bu sürümde yok |
 
 ## Aşamalar
 
@@ -49,7 +50,8 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 6. **v0.8 koleksiyon tamamlandı:** 18 gemi / 18 alet yerleşik arşivi; kargoyu önce ekzosuite
    ve tam gemiyi apply öncesi harici garaja koruma, boş aktif yuvaya geri alma.
 7. **Sonraki modüller:** yük gemisi/fırkateyn/squadron, Exocraft ve organik gemiler.
-8. **Araştırma:** seyahat, evcil hayvan, Corvette, istasyon/üs yönetimi, canlı sahiplik ve overlay.
+8. **v0.10 tamamlandı:** mevcut yük gemisi/fırkateyn yönetimi ve ayrı Qt oyun üstü paneli.
+9. **Araştırma:** seyahat, evcil hayvan, Corvette, istasyon/üs yönetimi, canlı sahiplik ve render enjeksiyonlu overlay.
    Teknik olarak doğrulanamayan kontroller çalışır gibi gösterilmez.
 
 [2 Kasım özellik araştırması ve öncelikler](NMS-Research/next-features-179666.md)

@@ -78,6 +78,11 @@ class DiskScanner:
                 except Exception as exc:
                     entry.update(multitools=[], weapons_error=str(exc))
                 try:
+                    from . import capital
+                    entry['capital'] = capital.snapshot(p)
+                except Exception as exc:
+                    entry.update(capital={'freighter': None, 'frigates': [], 'missions': 0}, capital_error=str(exc))
+                try:
                     from . import inventory, archives
                     entry['inventories'] = inventory.snapshot(p, self.fleet)
                     entry['archives'] = archives.snapshot(p, self.fleet)

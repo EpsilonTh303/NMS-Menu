@@ -23,11 +23,11 @@ MODULES = (
     Module('loadouts', 'Donanım setleri ve tarifler', 'Hazır / oyun kapalı', '5 hazır set, kişisel sabit teknoloji setleri, seçili teknoloji/ürün tarifini öğrenme; mevcut donanım sökülmez.'),
     Module('archives', 'Yerleşik arşiv', 'Hazır / oyun kapalı', '18 gemi / 18 alet; kargoyu ekzosuite koruyarak taşı, geminin tam kopyasını apply öncesi harici garaja al; boş aktif yuvaya geri getir.'),
     Module('station_combat', 'İstasyon silah / NPC hasarı', 'Araştırma', 'Silahı çıkarma / ateş etme ve NPC hasarı için doğrulanmış kontrol bulunmadı. Bu seçenekler pasif.'),
-    Module('freighter', 'Yük gemisi ve fırkateyn', 'Planlandı', 'Envanter, filo ve seferler; görev durumlarını koruyan ayrı işlem motoru gerekir.'),
+    Module('freighter', 'Yük gemisi ve fırkateyn', 'Hazır / oyun kapalı', 'Mevcut yük gemisinin adı, sınıfı, onarımı ve S sınıfı 120/60 yuvası; fırkateyn adı, beceriler, onarım, normal tür kopyalama ve sefer korumalı kaldırma.'),
     Module('player', 'Canlı karakter ayarları', 'Hazır / 179666', 'Hız, jetpack itiş / dolum, dayanıklılık / yaşam desteği tüketimi ve kalkan yenilenmesi. Sağlık ve inşa maliyeti araştırma aşamasında.'),
     Module('travel', 'Keşif ve seyahat', 'Araştırma', 'Koordinat, itibar, kelimeler ve keşif; görev / konum tutarlılığı doğrulanmalı.'),
     Module('base', 'Üs ve yerleşim', 'Araştırma', 'Üs parçaları, enerji ve yerleşim; sahiplik / konum verileri araştırılmalı.'),
-    Module('runtime', 'Canlı bağlantı', 'Hazır / 179666', 'Ayrı masaüstü penceresinden bellek verisi düzenleme. Oyun içi overlay, kod yaması ve ölümsüzlük uygulanmadı.'),
+    Module('runtime', 'Canlı bağlantı', 'Hazır / 179666', 'Canlı kontroller ve Ctrl+Shift+F8 oyun üstü paneli. Overlay mevcut değerleri gösterir; DLL enjeksiyonu, kod yaması ve canlı gemi ekleme uygulanmadı.'),
 )
 
 OPERATIONS = {

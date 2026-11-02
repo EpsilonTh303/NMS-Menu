@@ -57,6 +57,7 @@ def icon(name):
 def for_text(text):
     text = text.lower()
     for words, name in [
+        (('yük gemisi', 'fırkateyn'), 'ship'),
         (('envanter / donanım',), 'folder'),
         (('canlı kontroller',), 'signal'), (('canlı filo',), 'ship'),
         (('silah', 'aletin'), 'weapon'), (('filo ve', 'envanter'), 'box'),

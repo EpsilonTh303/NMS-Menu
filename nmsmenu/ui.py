@@ -14,6 +14,7 @@ from .live_fleet_ui import LiveFleetPanel
 from .weapon_ui import WeaponPanel
 from .shared_scan import SharedScan
 from .catalog_ui import CatalogPanel
+from .capital_ui import CapitalPanel
 
 
 def formatted(value):
@@ -72,6 +73,7 @@ class MenuApp:
         history = ttk.Frame(book, padding=12)
         roadmap = ttk.Frame(book, padding=12)
         catalog = ttk.Frame(book, padding=12)
+        capital = ttk.Frame(book, padding=12)
         book.add(live, text='Canlı kontroller')
         book.add(live_fleet, text='Canlı filo')
         book.add(fleet, text='Filo ve envanter')
@@ -79,11 +81,13 @@ class MenuApp:
         book.add(history, text='Yedek / geri alma')
         book.add(roadmap, text='Özellikler ve yol haritası')
         book.add(catalog, text='Katalog / toplu ekle')
+        book.add(capital, text='Yük gemisi / fırkateyn')
         self.make_fleet(fleet)
         self.live_panel = LivePanel(live, self)
         self.live_fleet_panel = LiveFleetPanel(live_fleet, self, self.live_panel.backend)
         self.weapon_panel = WeaponPanel(weapons, self)
         self.catalog_panel = CatalogPanel(catalog, self)
+        self.capital_panel = CapitalPanel(capital, self)
         self.shared = SharedScan(self.live_panel.backend, self.live_fleet_panel.backend)
         self.make_history(history)
         self.make_roadmap(roadmap)
@@ -143,6 +147,7 @@ class MenuApp:
                     self.loaded(result['saves'])
                     self.weapon_panel.load_saves(result['saves'])
                     self.catalog_panel.load_snapshot(result['saves'], result['garage'])
+                    self.capital_panel.load_saves(result['saves'])
                     self.load_garage(result['garage'])
                     self.load_history(result['history'])
                     self.disk_signature = self.requested_disk_signature
@@ -422,12 +427,14 @@ class MenuApp:
         text.configure(state='disabled')
 
 
-def main(connect=False, fleet=False, weapons=False, catalog=False, inventory=False):
+def main(connect=False, fleet=False, weapons=False, catalog=False, inventory=False, capital=False):
     root = tk.Tk()
     try:
         app = MenuApp(root)
         if fleet:
             app.book.select(1)
+        if capital:
+            app.book.select(7)
         if weapons:
             app.book.select(3)
         if catalog:

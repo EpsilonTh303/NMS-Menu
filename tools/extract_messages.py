@@ -6,6 +6,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXTRA = [
+    'Bağlı ve kayıt yüklü', 'Canlı bağlantı / kayıt bekleniyor',
+    'Oyun üstü paneli etkinleştir',
+    'Ctrl+Shift+F8 ile gizle/göster. Pencere veya kenarlıksız mod gerekir; panel oyun belleğine yazmaz.',
+    'Sanayi', 'Ticaret', 'Hasar', 'Sefer', 'Combat', 'Exploration', 'Mining', 'Diplomacy', 'Support',
     'Aktif', 'Ekzosuit', 'Favoriler', 'Filo rehberi', 'Garaj', 'Gemi', 'Gemi rehberi',
     'Kargo', 'Silah rehberi', 'Teknoloji rehberi', 'Yuva', 'Ad', 'Tip',
     'Alien', 'AlienShip', 'AllShips', 'AllShipsExceptAlien', 'Atlantid', 'Catalyst',
@@ -30,7 +34,7 @@ def extract():
         if path.stem in ('icons', 'i18n'):
             continue
         tree = ast.parse(path.read_text(encoding='utf-8-sig'))
-        if path.stem == 'qt_ui':
+        if path.stem in ('qt_ui', 'overlay'):
             # Qt presentation strings are explicitly marked with t("...").
             # Avoid treating stylesheets, SVG, or HTML markup as messages.
             for node in ast.walk(tree):

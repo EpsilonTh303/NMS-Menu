@@ -50,7 +50,7 @@
       "title": "Freighter / Pirate Dreadnought / Frigate",
       "family": "Filo rehberi",
       "summary": "Yük gemisi ve fırkateynler kişisel gemi profillerinden ayrıdır.",
-      "status": "Bu katalog kişisel gemi ekler. Yük gemisi, fırkateyn ve sefer düzenleme adaptörü henüz yok.",
+      "status": "Mevcut yük gemisi ve fırkateynler Yük gemisi / fırkateyn sekmesinden yönetilir. Bu katalog yeni yük gemisi sahipliği oluşturmaz; aktif seferler korunur.",
       "sources": [
         "https://www.nomanssky.com/omega-update/",
         "https://www.nomanssky.com/echoes-update/"

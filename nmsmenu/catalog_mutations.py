@@ -54,7 +54,13 @@ def mutate(original, plan, catalog, fleet, native_mutate):
     data = copy.deepcopy(original)
     events, allowed, exports = [], [], []
     for action in plan['actions']:
-        if action['op'] == 'learn_recipe':
+        if action['op'] in ('freighter_edit', 'freighter_expand', 'freighter_repair',
+                            'frigate_edit', 'frigate_repair', 'frigate_clone', 'frigate_remove'):
+            from . import capital
+            data, event, paths, exported = capital.mutate(data, action, fleet)
+            events.append(event)
+            exports += exported
+        elif action['op'] == 'learn_recipe':
             from . import knowledge
             data, event, paths = knowledge.mutate(data, action, fleet)
             events.append(event)

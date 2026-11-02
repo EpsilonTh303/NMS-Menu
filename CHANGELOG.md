@@ -1,5 +1,14 @@
 # Değişiklikler
 
+## 0.10.0 — 2 Kasım 2026
+
+- Yük gemisi/fırkateyn sekmesi ve ortak sepete bağlanan çevrimdışı işlemler.
+- Yük gemisi adı/sınıfı, onarım/şarj ve S sınıfında 120/60 yuva; mevcut envanter ızgarasına yük gemisi ekleme.
+- Fırkateyn adı, dört beceri, onarım, normal türleri 30 sınırıyla kopyalama ve tam yedekli kaldırma.
+- Sefer/rapor durumunda düzenleme, sefer listesi doluyken kaldırma engeli; görev indeksleri korunur.
+- Dört dilde yeni metinler ve Ctrl+Shift+F8 ile ayrı Qt overlay paneli; enjeksiyon veya canlı sahiplik yazımı yok.
+- Güncel kayıt kopyasında fırkateyn ve sentetik yük gemisi için iki codec round-trip eşitliği; canlı kayıt değişmedi.
+
 ## 0.9.0 — 2 Kasım 2026
 
 - FleetManager motoru ve katalogları Menu köküne entegre edildi; ayrı klasör bağımlılığı kaldırıldı.
