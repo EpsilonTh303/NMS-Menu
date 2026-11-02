@@ -12,5 +12,6 @@ if __name__ == '__main__':
     tabs = parser.add_mutually_exclusive_group()
     tabs.add_argument('--fleet', action='store_true', help='Canlı filo sekmesini aç')
     tabs.add_argument('--weapons', action='store_true', help='Silah koleksiyonu sekmesini aç')
+    tabs.add_argument('--catalog', action='store_true', help='Ortak ekleme kataloğunu aç')
     args = parser.parse_args()
-    main(connect=args.connect, fleet=args.fleet, weapons=args.weapons)
+    main(connect=args.connect, fleet=args.fleet, weapons=args.weapons, catalog=args.catalog)

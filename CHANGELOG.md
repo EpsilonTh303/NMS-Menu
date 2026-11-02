@@ -1,5 +1,13 @@
 # Değişiklikler
 
+## 0.6.0 — 2 Kasım 2026
+
+- 149 teknoloji, 7 alet modeli, 10 gemi profili ve dinamik garaj için arama / filtre / çoklu seçim.
+- Ortak kayıt taramasından beslenen, hedef kimliği doğrulanan toplu ekleme sepeti.
+- Teknoloji uygunluğu, boş yuva, aktif alet senkronizasyonu ve değişmeyen kaynak denetimi.
+- UI bağımsız katalog / sepet servisleri; sepet değişince eski hazırlama raporu geçersizleşir.
+- Taze kayıt kopyasında dört işlemlik karma sepet codec round-trip doğrulaması; canlı kayda yazılmadı.
+
 ## 0.5.0 — 2 Kasım 2026
 
 - Açılışta otomatik süreç bağlantısı, ortak canlı yenileme ve yeniden bağlanma.

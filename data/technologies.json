@@ -1,0 +1,1498 @@
+{
+  "schema": 1,
+  "game_build": "179666",
+  "source_sha256": "f55265017571d016ae9eabf3b352a3cfb84d7ec8dd11466d64b0eb4d3156b865",
+  "validation": "local-game-table; installation needs transaction and codec validation",
+  "technologies": [
+    {
+      "id": "PROTECT",
+      "title": "HAZARD PROTECTION",
+      "name_key": "PROTECT_NAME",
+      "category": "Suit",
+      "charge": 80,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_PROTECT",
+      "title": "SHIELD LATTICE",
+      "name_key": "UT_PROTECT_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "ENERGY",
+      "title": "LIFE SUPPORT",
+      "name_key": "ENERGY_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_ENERGY",
+      "title": "OXYGEN RECYCLER",
+      "name_key": "UT_ENERGY_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "JET1",
+      "title": "JETPACK",
+      "name_key": "JET1_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_JET",
+      "title": "NEURAL STIMULATOR",
+      "name_key": "UT_JET_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_JUMP",
+      "title": "ROCKET BOOTS",
+      "name_key": "UT_JUMP_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_MIDAIR",
+      "title": "AIRBURST ENGINE",
+      "name_key": "UT_MIDAIR_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_HOT",
+      "title": "COOLANT NETWORK",
+      "name_key": "UT_HOT_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_COLD",
+      "title": "THERMIC LAYER",
+      "name_key": "UT_COLD_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_TOX",
+      "title": "TOXIN SUPPRESSOR",
+      "name_key": "UT_TOX_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_RAD",
+      "title": "RADIATION DEFLECTOR",
+      "name_key": "UT_RAD_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_WATER",
+      "title": "AERATION MEMBRANE",
+      "name_key": "UT_WATER_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "PRESSURE_SUIT",
+      "title": "PRESSURE MEMBRANE",
+      "name_key": "UI_PRESSURE_SUIT_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SUMMON_SUIT",
+      "title": "EXOCRAFT SUMMONING UNIT",
+      "name_key": "UI_SUMMON_SUIT_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SUIT_REFINER",
+      "title": "PERSONAL REFINER",
+      "name_key": "UI_SUIT_REFINER_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SUIT_REFINER2",
+      "title": "PERSONAL REFINER MK 2",
+      "name_key": "UI_SUIT_REFINER2_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "POWERGLOVE",
+      "title": "HAZ-MAT GAUNTLET",
+      "name_key": "POWERGLOVE_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "ATLASSUIT",
+      "title": "REMEMBRANCE",
+      "name_key": "RESTART_ITEM_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "STARSUIT",
+      "title": "STAR SEED",
+      "name_key": "STARBIRTH_ITEM_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "DENYSUIT",
+      "title": "MARK OF THE DENIER",
+      "name_key": "DENIER_ITEM_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "OBSOLETE",
+      "title": "OBSOLETE TECHNOLOGY",
+      "name_key": "UI_OBSOLETE_TECH_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_WATERJET",
+      "title": "EFFICIENT WATER JETS",
+      "name_key": "UT_WATERJET_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_WATERENERGY",
+      "title": "OXYGEN REROUTER",
+      "name_key": "UT_WATERENERGY_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_TRANSLATE1",
+      "title": "SIMPLE TRANSLATOR",
+      "name_key": "UT_TRANSLATE1_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_TRANSLATE2",
+      "title": "SUPERIOR TRANSLATOR",
+      "name_key": "UT_TRANSLATE2_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_TRANSLATE3",
+      "title": "ADVANCED TRANSLATOR",
+      "name_key": "UT_TRANSLATE3_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "STORY_TRANSLATE",
+      "title": "ARTEMIS' TRANSLATOR",
+      "name_key": "UT_TRANSLATESTORY_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "WORMTECH",
+      "title": "VISCERAL SYNTHESISER",
+      "name_key": "UI_WORMTECH_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "WORMREADER",
+      "title": "ARCHIVE BYPASS IMPLANT",
+      "name_key": "UI_WORMREADER_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SUIT_ROCKET",
+      "title": "TRADE ROCKET",
+      "name_key": "UI_SUIT_ROCKET_NAME",
+      "category": "Suit",
+      "charge": 50,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "FISH_SKIFF",
+      "title": "EXO-SKIFF",
+      "name_key": "UI_FISH_SKIFF_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SPIDERBRAIN",
+      "title": "SPIDERBRAIN",
+      "name_key": "UI_SPIDERBRAIN_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "FOOD_UNIT",
+      "title": "NUTRIENT INGESTOR",
+      "name_key": "UI_FOOD_UNIT_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SPOOK_PACK",
+      "title": "ANOMALY SUPPRESSOR",
+      "name_key": "UI_SPOOK_PACK_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "S22_LINK",
+      "title": "LIVING LENS",
+      "name_key": "UI_S22_LINK_NAME",
+      "category": "Suit",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPJUMP1",
+      "title": "PULSE ENGINE",
+      "name_key": "SHIPJUMP_NAME",
+      "category": "Ship",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_PULSEFUEL",
+      "title": "INSTABILITY DRIVE",
+      "name_key": "UT_PULSEFUEL_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_PULSESPEED",
+      "title": "SUB-LIGHT AMPLIFIER",
+      "name_key": "UT_PULSESPEED_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_SHIPDRIFT",
+      "title": "FLIGHT ASSIST OVERRIDE",
+      "name_key": "UT_SHIPDRIFT_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "PHOTONIX_CORE",
+      "title": "PHOTONIX CORE",
+      "name_key": "PHOTONIX_CORE_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "LAUNCHER",
+      "title": "LAUNCH THRUSTER",
+      "name_key": "LAUNCHER_NAME",
+      "category": "Ship",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_LAUNCHER",
+      "title": "EFFICIENT THRUSTERS",
+      "name_key": "UT_LAUNCHER_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_LAUNCHCHARGE",
+      "title": "LAUNCH AUTO-CHARGER",
+      "name_key": "UT_LAUNCHCHARGE_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "WATER_LANDER",
+      "title": "AQUA-JETS",
+      "name_key": "UI_WATER_LANDER_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIP_TELEPORT",
+      "title": "TELEPORT RECEIVER",
+      "name_key": "SHIP_TELEPORT_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "HYPERDRIVE",
+      "title": "HYPERDRIVE",
+      "name_key": "ION1_NAME",
+      "category": "Ship",
+      "charge": 120,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "HDRIVEBOOST1",
+      "title": "CADMIUM DRIVE",
+      "name_key": "HYP_ACCESS1_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "HDRIVEBOOST2",
+      "title": "EMERIL DRIVE",
+      "name_key": "HYP_ACCESS2_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "HDRIVEBOOST3",
+      "title": "INDIUM DRIVE",
+      "name_key": "HYP_ACCESS3_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "HDRIVEBOOST4",
+      "title": "ATLANTID DRIVE",
+      "name_key": "HYP_ACCESS4_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_QUICKWARP",
+      "title": "EMERGENCY WARP UNIT",
+      "name_key": "UT_QUICKWARP_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "CARGOSHIELD",
+      "title": "CARGO SCAN DEFLECTOR",
+      "name_key": "UI_SCAN_BLOCKER_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPSHIELD",
+      "title": "DEFLECTOR SHIELD",
+      "name_key": "SHIPSHIELD_NAME",
+      "category": "Ship",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SHIPSHIELD",
+      "title": "ABLATIVE ARMOUR",
+      "name_key": "UT_SHIPSHIELD_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHIPROCKETS",
+      "title": "ROCKET LAUNCHER",
+      "name_key": "SHIP_ROCKETS_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_ROCKETS",
+      "title": "LARGE ROCKET TUBES",
+      "name_key": "UT_ROCKETS_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHIPGUN1",
+      "title": "PHOTON CANNON",
+      "name_key": "SHIPGUN1_NAME",
+      "category": "Ship",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SHIPGUN",
+      "title": "NONLINEAR OPTICS",
+      "name_key": "UT_SHIPGUN_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHIPSCAN_ECON",
+      "title": "ECONOMY SCANNER",
+      "name_key": "SHIPSCAN_ECON_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPSCAN_COMBAT",
+      "title": "CONFLICT SCANNER",
+      "name_key": "SHIPSCAN_COMBAT_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPLAS1",
+      "title": "PHASE BEAM",
+      "name_key": "SHIPLAS1_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SHIPLAS",
+      "title": "FOURIER DE-LIMITER",
+      "name_key": "UT_SHIPLAS_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHIPSHOTGUN",
+      "title": "POSITRON EJECTOR",
+      "name_key": "SHIPSHOTGUN_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SHIPSHOT",
+      "title": "FRAGMENT SUPERCHARGER",
+      "name_key": "UT_SHIPSHOT_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHIPMINIGUN",
+      "title": "INFRA-KNIFE ACCELERATOR",
+      "name_key": "SHIPMINIGUN_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SHIPMINI",
+      "title": "Q-RESONATOR",
+      "name_key": "UT_SHIPMINI_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHIPPLASMA",
+      "title": "CYCLOTRON BALLISTA",
+      "name_key": "SHIPBLOB_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SHIPBLOB",
+      "title": "DYSON PUMP",
+      "name_key": "UT_SHIPBLOB_NAME",
+      "category": "AllShipsExceptAlien",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHIPJUMP_ALIEN",
+      "title": "PULSING HEART",
+      "name_key": "SHIPJUMP_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "LAUNCHER_ALIEN",
+      "title": "NEURAL ASSEMBLY",
+      "name_key": "LAUNCHER_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "WARP_ALIEN",
+      "title": "SINGULARITY CORTEX",
+      "name_key": "ION1_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 120,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIELD_ALIEN",
+      "title": "SCREAM SUPPRESSOR",
+      "name_key": "SHIPSHIELD_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPGUN_ALIEN",
+      "title": "SPEWING VENTS",
+      "name_key": "SHIPGUN1_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPLAS_ALIEN",
+      "title": "GRAFTED EYES",
+      "name_key": "SHIPLAS1_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "CARGO_S_ALIEN",
+      "title": "NEURAL SHIELDING",
+      "name_key": "UI_CARGO_S_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "CHARGER_ALIEN",
+      "title": "CHLOROPLAST MEMBRANE",
+      "name_key": "UI_CHARGER_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPSCAN_ALIEN",
+      "title": "WORMHOLE BRAIN",
+      "name_key": "UI_SHIPSCAN_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "WATERLAND_ALIEN",
+      "title": "SALINE CARAPACE",
+      "name_key": "UI_WATERLAND_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "TELEPORT_ALIEN",
+      "title": "GRASPING TENDRILS",
+      "name_key": "UI_TELEPORT_ALIEN_NAME",
+      "category": "AlienShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_APOLLO",
+      "title": "APOLLO FIGURINE",
+      "name_key": "UI_BOBBLE_APOLLO_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_ART",
+      "title": "ARTEMIS FIGURINE",
+      "name_key": "UI_BOBBLE_ARTEMIS_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_ATLAS",
+      "title": "ATLAS FIGURINE",
+      "name_key": "UI_BOBBLE_ATLAS_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_NADA",
+      "title": "NADA FIGURINE",
+      "name_key": "UI_BOBBLE_NADA_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_NULL",
+      "title": "-NULL- FIGURINE",
+      "name_key": "UI_BOBBLE_NULL_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_POLO",
+      "title": "POLO FIGURINE",
+      "name_key": "UI_BOBBLE_POLO_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_OCTO",
+      "title": "TENTACLED FIGURINE",
+      "name_key": "UI_S15_FISH_BOBBLE",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_BOBBLE_ASTRO",
+      "title": "ASTRONAUT FIGURINE",
+      "name_key": "UI_BOBBLE_ASTRO_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_RAINBOW",
+      "title": "CHROMATIC STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_RAINBOW_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_DARK",
+      "title": "STEALTH STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_DARK_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_RED",
+      "title": "CADMIUM STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_RED_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_GREEN",
+      "title": "EMERIL STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_GREEN_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_GOLD",
+      "title": "GOLDEN STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_GOLD_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_PIRATE",
+      "title": "SPUTTERING STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_PIRATE_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_ROGUE",
+      "title": "TEMPORAL STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_ROGUE_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_PLASMA",
+      "title": "PLASMA STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_PLASMA_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "T_SHIP_ATLAS",
+      "title": "AERON STARSHIP TRAIL",
+      "name_key": "UI_SHIPTRAIL_ATLAS_NAME",
+      "category": "AllShips",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "LAUNCHER_SPEC",
+      "title": "ADVANCED LAUNCH SYSTEM",
+      "name_key": "LAUNCHER_SPEC_NAME",
+      "category": "Ship",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPJUMP_SPEC",
+      "title": "WAVEFORM ENGINE",
+      "name_key": "SHIPJUMP_SPEC_NAME",
+      "category": "Ship",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "HYPERDRIVE_SPEC",
+      "title": "FRAMESHIFT CATAPULT",
+      "name_key": "ION1_SPEC_NAME",
+      "category": "Ship",
+      "charge": 120,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SOLAR_SAIL",
+      "title": "VESPER SAIL",
+      "name_key": "UI_SOLAR_SAIL_NAME",
+      "category": "Ship",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "LAUNCHER_ROBO",
+      "title": "ANTI-GRAVITY WELL",
+      "name_key": "UI_LAUNCHER_ROBO_NAME",
+      "category": "RobotShip",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPJUMP_ROBO",
+      "title": "LUMINANCE ENGINE",
+      "name_key": "UI_SHIPJUMP_ROBO_NAME",
+      "category": "RobotShip",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "HYPERDRIVE_ROBO",
+      "title": "CRIMSON CORE",
+      "name_key": "UI_HYPERDRIVE_ROBO_NAME",
+      "category": "RobotShip",
+      "charge": 120,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPSHIELD_ROBO",
+      "title": "AERON SHIELD",
+      "name_key": "UI_SHIPSHIELD_ROBO_NAME",
+      "category": "RobotShip",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SHIPGUN_ROBO",
+      "title": "SENTINEL CANNON",
+      "name_key": "UI_SHIPGUN_ROBO_NAME",
+      "category": "RobotShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "LIFESUP_ROBO",
+      "title": "PILOT INTERFACE",
+      "name_key": "UI_LIFESUP_ROBO_NAME",
+      "category": "RobotShip",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SCANBINOC1",
+      "title": "ANALYSIS VISOR",
+      "name_key": "SCANBINOC1_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SCAN1",
+      "title": "SCANNER",
+      "name_key": "SCAN1_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SCAN",
+      "title": "WAVEFORM RECYCLER",
+      "name_key": "UT_SCAN_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_SURVEY",
+      "title": "SURVEY DEVICE",
+      "name_key": "UT_SURVEY_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_BUI_SCAN",
+      "title": "SCAN HARMONISER",
+      "name_key": "UI_BUI_SCAN_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_BUI_SCAN2",
+      "title": "POLYPHONIC CORE",
+      "name_key": "UI_BUI_SCAN2_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_S10_SCAN",
+      "title": "RESONANCE AMPLIFIER",
+      "name_key": "UI_UT_S10_SCAN_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "TERRAINEDITOR",
+      "title": "TERRAIN MANIPULATOR",
+      "name_key": "UI_TERRAIN_EDIT_NAME",
+      "category": "Weapon",
+      "charge": 600,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "GROUND_SHIELD",
+      "title": "PERSONAL FORCEFIELD",
+      "name_key": "GROUND_SHIELD_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "STEALTH",
+      "title": "CLOAKING DEVICE",
+      "name_key": "UI_STEALTH_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SCOPE",
+      "title": "COMBAT SCOPE",
+      "name_key": "SCOPE_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "LASER",
+      "title": "MINING BEAM",
+      "name_key": "LASER_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "STRONGLASER",
+      "title": "ADVANCED MINING LASER",
+      "name_key": "STRONGLASER_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_MINER",
+      "title": "OPTICAL DRILL",
+      "name_key": "UT_MINER_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "FISHLASER",
+      "title": "FISHING RIG",
+      "name_key": "UI_FISHLASER_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "S15_FISHLASER",
+      "title": "LOST ANGLER'S RIG",
+      "name_key": "UI_S15_FISHLASER_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "GRAVITYGUN",
+      "title": "GRAVITINO COIL",
+      "name_key": "UI_GRAVGUN_NAME",
+      "category": "Weapon",
+      "charge": 600,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "BOLT",
+      "title": "BOLTCASTER",
+      "name_key": "BOLT_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": false,
+      "uses_ammo": true,
+      "upgrade": false
+    },
+    {
+      "id": "UT_BOLT",
+      "title": "BARREL IONISER",
+      "name_key": "UT_BOLT_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_BOLTBOUNCE",
+      "title": "BOLTCASTER RICOCHET MODULE",
+      "name_key": "UT_BOLTBOUNCE_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "BOLT_SM",
+      "title": "BOLTCASTER SM",
+      "name_key": "BOLT_SM_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "LASER_XO",
+      "title": "PLASMA RESONATOR",
+      "name_key": "LASER_XO_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "GRENADE",
+      "title": "PLASMA LAUNCHER",
+      "name_key": "GRENADE_NAME",
+      "category": "Weapon",
+      "charge": 20,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "TERRAIN_GREN",
+      "title": "GEOLOGY CANNON",
+      "name_key": "T_GRENADE_NAME",
+      "category": "Weapon",
+      "charge": 20,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "STUN_GREN",
+      "title": "PARALYSIS MORTAR",
+      "name_key": "STUN_GRENADE_NAME",
+      "category": "Weapon",
+      "charge": 20,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "RAILGUN",
+      "title": "BLAZE JAVELIN",
+      "name_key": "RAILGUN1_NAME",
+      "category": "Weapon",
+      "charge": 50,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_RAIL",
+      "title": "MASS ACCELERATOR",
+      "name_key": "UT_RAIL_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_RAIL_STUN",
+      "title": "WAVEFORM OSCILLATOR",
+      "name_key": "UT_RAIL_STUN_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SHOTGUN",
+      "title": "SCATTER BLASTER",
+      "name_key": "BOLTSHOTGUN_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": false,
+      "uses_ammo": true,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SHOT",
+      "title": "SHELL GREASER",
+      "name_key": "UT_SHOT_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SMG",
+      "title": "PULSE SPITTER",
+      "name_key": "BOLTSMG_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": false,
+      "uses_ammo": true,
+      "upgrade": false
+    },
+    {
+      "id": "UT_SMG",
+      "title": "AMPLIFIED CARTRIDGES",
+      "name_key": "UT_SMG_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_SMGBOUNCE",
+      "title": "PULSE SPITTER RICOCHET MODULE",
+      "name_key": "UT_SMGBOUNCE_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_SMG_DOT",
+      "title": "IMPACT IGNITER",
+      "name_key": "UT_SMG_DOT_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "FLAME",
+      "title": "INCINERATOR",
+      "name_key": "FLAMETHROW_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": false,
+      "uses_ammo": true,
+      "upgrade": false
+    },
+    {
+      "id": "CANNON",
+      "title": "NEUTRON CANNON",
+      "name_key": "CANNON_NAME",
+      "category": "Weapon",
+      "charge": 500,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "UT_CANNON",
+      "title": "P-FIELD COMPRESSOR",
+      "name_key": "UT_CANNON_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "UT_STUNDMG",
+      "title": "VOLTAIC AMPLIFIER",
+      "name_key": "UT_STUNDMG_NAME",
+      "category": "Weapon",
+      "charge": 100,
+      "chargeable": false,
+      "uses_ammo": false,
+      "upgrade": true
+    },
+    {
+      "id": "SUN_LASER",
+      "title": "SOLAR RAY",
+      "name_key": "UI_SUN_LASER_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SOUL_LASER",
+      "title": "ANIMUS BEAM",
+      "name_key": "UI_SOUL_LASER_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "SENT_LASER",
+      "title": "HIJACKED LASER",
+      "name_key": "UI_SENT_LASER_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    },
+    {
+      "id": "ATLAS_LASER",
+      "title": "RUNIC LENS",
+      "name_key": "UI_ATLAS_LASER_NAME",
+      "category": "Weapon",
+      "charge": 200,
+      "chargeable": true,
+      "uses_ammo": false,
+      "upgrade": false
+    }
+  ]
+}

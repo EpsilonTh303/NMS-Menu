@@ -82,10 +82,18 @@ def mutate(original, plan, unused_catalog, fleet):
             tool['Layout'] = copy.deepcopy(p['WeaponLayout'])
         tool['Seed'] = [True, f'0x{number:016X}']
         tool['Name'] = name
+        if action.get('profile'):
+            from .catalog_data import tool_models
+            profiles = tool_models()
+            if action['profile'] not in profiles:
+                raise ValueError('Bilinmeyen çok amaçlı alet profili.')
+            tool['Resource']['Filename'] = profiles[action['profile']]['model']
+            tool['CustomisationData'].update(DescriptorGroups=[], PaletteID='^', Colours=[], TextureOptions=[], BoneScales=[], Scale=1.0)
         tools[empty] = tool
         allowed.append(PREFIX + f'Multitools/{empty}')
         event = {'op': op, 'source_slot': index + 1, 'new_slot': empty + 1, 'name': name,
-                 'seed': tool['Seed'][1], 'note': 'Kaynak aletin modeli, sınıfı ve donanımı kopyalandı; görünüm tohumu yeni.'}
+                 'seed': tool['Seed'][1], 'note': ('Seçilen katalog modeli kullanıldı; kaynak sınıf/donanım korundu, görünüm tohumu yeni.'
+                     if action.get('profile') else 'Kaynak aletin modeli, sınıfı ve donanımı kopyalandı; görünüm tohumu yeni.')}
     elif op == 'tool_remove':
         if len(owned(p)) <= 1:
             raise ValueError('Son çok amaçlı alet silinemez.')

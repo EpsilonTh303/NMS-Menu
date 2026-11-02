@@ -1,6 +1,6 @@
 # No Man’s Sky — Menu
 
-Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.5 oyun açıkken
+Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.6 oyun açıkken
 çalışan canlı veri kontrolleri içerir; ayrı masaüstü penceresidir.** Python 3.12
 ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekmez.
 
@@ -36,6 +36,29 @@ Menu açılınca bağlantı kendiliğinden kurulur; `--connect` artık gerekli d
 İşlem hazırlama yine her istek için yeni kaynak / plan / codec doğrulaması yapar.
 Ortak görüntü cache'i yazma sırasında doğrulama veya yedek yerine kullanılmaz.
 
+## Katalog ve toplu ekleme (0.6)
+
+**Katalog / toplu ekle** sekmesi: 149 teknoloji, 7 çok amaçlı alet modeli,
+10 gemi profili ve ortak taramadan gelen harici garaj. `python main.py --catalog`
+ile doğrudan açılır. Utopia Speeder öne çıkar; Squid varsayılan olarak gizlidir.
+
+1. Disk kaydını, içerik türünü ve teknoloji hedefini seçin. Arama isim veya ID ile çalışır.
+2. Birden çok satır seçip sepete ekleyin. Uygunluk filtresi hedef dışındaki teknolojileri eler.
+3. Sepeti inceleyin, oyunda kaydedip oyunu tamamen kapatın ve yeni plan hazırlayın.
+4. Semantik raporu inceleyip uygulayın. Kaynak hash, yedek ve codec round-trip kontrolü zorunludur.
+
+Alet modelleri kaynak aletin sınıfını, donanımını ve yuvalarını kullanır; yeni model/tohum
+atanır. Kaynak ve aktif alet korunur. Gemi profilleri boş yer ister; yeni tohum seçeneği
+aynı profilden farklı tohumlu kopya oluşturabilir. Görünümün benzersizliği garanti edilmez.
+Teknolojiler ilk boş geçerli yuvaya kurulur, mevcut teknoloji tekrar kurulmaz; yeterli yer
+yoksa hazırlama durur. Bu işlem kendiliğinden yuva açmaz. 12 gemi ve 6 alet sınırı korunur.
+
+Katalog oyun açıkken görüntülenebilir; sahiplik ve teknoloji kurulumu **oyun kapalıyken**
+uygulanır. Liste ortak taramayı kullanır. Bütün 149 teknoloji için tek tek oyun içi test
+yapılmadı; katalog yerel tablodan türetilir ve uyumluluk kuralları uygulanır.
+
+Yeni arayüz için [servis sınırları](UI_MIGRATION.md) ve [veri kaynağı](data/README.md).
+
 ## Silah koleksiyonu: çok amaçlı alet ekle / kaldır
 
 **Bu bölüm oyun kapalıyken çalışır.** Canlı silah sahipliği ve istasyon savaş
@@ -46,7 +69,7 @@ modu henüz desteklenmiyor. Liste oyun açıkken salt okunur görüntülenebilir
 2. Yeni alet için mevcut bir aleti kaynak seçin, ad girin ve **Seçili aletin
    donanımıyla yeni alet** planını hazırlayın. Kaynağın model ailesi, sınıfı,
    teknolojileri ve yuvaları kopyalanır; farklı prosedürel tohum kullanılır.
-   Aktif alet değişmez. Bu sürüm ayrı bir nadir model kataloğu sunmaz.
+   Aktif alet değişmez. Ayrı model seçimi için yeni Katalog bölümünü kullanın.
 3. Kaldırmak için tam kimliği doğrulanmış aleti seçip kaldırma planını hazırlayın.
    Tüm veri / donanım işlem klasöründe `*-removed-multitools.json` olarak saklanır.
    Motorun uyumluluk amaçlı `*-removed-ships.json` kopyası da aynı dışa aktarımı içerir.

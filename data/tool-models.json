@@ -1,0 +1,9 @@
+{
+  "standard": {"title": "Standart çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/MULTITOOL.SCENE.MBIN"},
+  "royal": {"title": "Royal çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/ROYALMULTITOOL.SCENE.MBIN"},
+  "sentinel": {"title": "Sentinel çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOL.SCENE.MBIN"},
+  "sentinel_b": {"title": "Sentinel B çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOLB.SCENE.MBIN"},
+  "atlantid": {"title": "Atlantid çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN"},
+  "swarm": {"title": "Direwasp çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/SWARMMULTITOOL.SCENE.MBIN"},
+  "retro": {"title": "Starbound çok amaçlı alet", "model": "MODELS/COMMON/WEAPONS/MULTITOOL/RETROMULTITOOL.SCENE.MBIN"}
+}

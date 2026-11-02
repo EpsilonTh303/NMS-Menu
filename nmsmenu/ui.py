@@ -13,6 +13,7 @@ from .live_ui import LivePanel
 from .live_fleet_ui import LiveFleetPanel
 from .weapon_ui import WeaponPanel
 from .shared_scan import SharedScan
+from .catalog_ui import CatalogPanel
 
 
 def formatted(value):
@@ -42,7 +43,7 @@ class MenuApp:
         self.transactions = []
         self.catalog = self.backend.catalog()
         self.loadouts = self.backend.loadouts()
-        root.title("No Man's Sky • Menu 0.5 • Ortak Canlı Bağlantı")
+        root.title("No Man's Sky • Menu 0.6 • Ekleme Kataloğu")
         root.geometry('1160x810')
         root.minsize(920, 680)
         style = ttk.Style(root)
@@ -70,16 +71,19 @@ class MenuApp:
         weapons = ttk.Frame(book, padding=12)
         history = ttk.Frame(book, padding=12)
         roadmap = ttk.Frame(book, padding=12)
+        catalog = ttk.Frame(book, padding=12)
         book.add(live, text='Canlı kontroller')
         book.add(live_fleet, text='Canlı filo')
         book.add(fleet, text='Filo ve envanter')
         book.add(weapons, text='Silah koleksiyonu')
         book.add(history, text='Yedek / geri alma')
         book.add(roadmap, text='Özellikler ve yol haritası')
+        book.add(catalog, text='Katalog / toplu ekle')
         self.make_fleet(fleet)
         self.live_panel = LivePanel(live, self)
         self.live_fleet_panel = LiveFleetPanel(live_fleet, self, self.live_panel.backend)
         self.weapon_panel = WeaponPanel(weapons, self)
+        self.catalog_panel = CatalogPanel(catalog, self)
         self.shared = SharedScan(self.live_panel.backend, self.live_fleet_panel.backend)
         self.make_history(history)
         self.make_roadmap(roadmap)
@@ -138,6 +142,7 @@ class MenuApp:
                     result = future.result()
                     self.loaded(result['saves'])
                     self.weapon_panel.load_saves(result['saves'])
+                    self.catalog_panel.load_snapshot(result['saves'], result['garage'])
                     self.load_garage(result['garage'])
                     self.load_history(result['history'])
                     self.disk_signature = self.requested_disk_signature
@@ -417,7 +422,7 @@ class MenuApp:
         text.configure(state='disabled')
 
 
-def main(connect=False, fleet=False, weapons=False):
+def main(connect=False, fleet=False, weapons=False, catalog=False):
     root = tk.Tk()
     try:
         app = MenuApp(root)
@@ -425,6 +430,8 @@ def main(connect=False, fleet=False, weapons=False):
             app.book.select(1)
         if weapons:
             app.book.select(3)
+        if catalog:
+            app.book.select(6)
         app.start_shared_scan()
     except Exception as exc:
         messagebox.showerror('Menu başlatılamadı', str(exc))

@@ -11,6 +11,7 @@ class Module:
 
 
 MODULES = (
+    Module('catalog', 'Toplu ekleme kataloğu', 'Hazır / oyun kapalı', '149 teknoloji, 7 alet modeli, 10 gemi profili ve garaj; arama, hedef uygunluğu ve işlem sepeti.'),
     Module('fleet', 'Gemi filosu', 'Hazır', 'Katalogdan ekle, kesin kimlikle kaldır, onar, donanım paketi kur.'),
     Module('live_fleet', 'Canlı filo envanteri', 'Hazır / 179666', 'Oyun açık ve Esc ile duraklatılmışken mevcut gemiyi onar / şarj et; tüm gemilere maksimum yuva planı. Ekleme / silme / model değişimi kapalı.'),
     Module('inventory', 'Envanter ve kalkış', 'Hazır', 'Karakter / gemi yuvalarını aç, normal kalkış otomatik şarj teknolojisi ekle.'),
