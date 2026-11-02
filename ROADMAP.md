@@ -14,8 +14,8 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 | Yedek | Hazırla, fark incele, uygula, geri al | v0.1 hazır; tam kayıt geri alma |
 | Ekonomi | Units, nanit, quicksilver miktarı | v0.2 canlı; doğrulanmış 179666 GOG build'i |
 | Eşya | Arama, miktar, malzeme ve yakıt | Kimlik kataloğu, yığın sınırları ve boş yuva kuralları |
-| Tarif / teknoloji | Tarif açma, teknoloji kurulumu | Kilit ve ön koşullar araştırılacak |
-| Çok amaçlı alet | Kaynak alet donanımıyla ekle, kesin kimlikle kaldır | v0.4; oyun kapalı. Bağımsız nadir model kataloğu henüz yok |
+| Tarif / teknoloji | 149 sabit teknolojiyi uygun hedefe kurma | v0.6–0.7 hazır; tarif öğrenme ayrı aday |
+| Çok amaçlı alet | Kaynak donanımla ekle / kaldır; 49 model/tohum seçeneği | v0.7; oyun kapalı, 12 benzersiz model yolu |
 | İstasyon savaş kontrolü | Silah çıkarma / ateş etme aç-kapat, NPC hasarı | Araştırma; çalıştırılamaz |
 | Yük gemisi | Model, sınıf, envanter | Aktif gemi ve üs bağımlılıkları araştırılacak |
 | Fırkateyn | Filo ve sefer | Aktif görev ve zaman tutarlılığı araştırılacak |
@@ -39,11 +39,18 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 3. **v0.3 tamamlandı:** mevcut gemilere canlı envanter projeksiyonu, FleetManager
    kuralları / codec kontrolü, duraklatma doğrulaması ve koşullu alan bazlı geri alma.
    Sahiplik ekleme / silme ve model değiştirme henüz canlı desteklenmiyor.
-4. **Sonraki aday:** arama yapılabilir eşya / teknoloji kataloğu ve envanter
-   hedefi. Mevcut eşya ve teknolojileri koruyan işlemler geliştir.
-5. **Sonraki:** çok amaçlı alet, yük gemisi, fırkateyn; her biri kendi test
-   fixture'ları ve ön koşullarıyla bağımsız modül olarak eklenir.
-6. **Araştırma:** seyahat, üs, ilerleme, canlı sahiplik işlemleri ve overlay. Teknik olarak
-   doğrulanamayan kontroller arayüzde çalışır gibi gösterilmez.
+4. **v0.4–v0.7 tamamlandı:** alet sahipliği, ortak otomatik tarama, UI bağımsız
+   katalog/sepet, 80 gemi profili/tohum seçeneği, 49 alet seçeneği, 149 teknoloji.
+   Bunlar oyundaki toplam tür sayıları değildir. Ayrıntılar / aile filtresi / rehber bulunur.
+5. **Önerilen sonraki paket:** eşya/malzeme kataloğu ve miktar → envanter ızgarası →
+   donanım profilleri. Henüz uygulanmadı. Yerel ürün/madde tabloları kaynak olarak bulundu.
+6. **Koleksiyon:** silah envanteri ve yerleşik gemi/alet arşivi. Resmî oyunda ek 18'er
+   arşiv girişi var; gemi arşivinde kargo korunmadığı için mevcut tam garajdan farklıdır.
+7. **Sonraki modüller:** tarif bilgisi, yük gemisi/fırkateyn/squadron, Exocraft, organik gemiler.
+8. **Araştırma:** seyahat, evcil hayvan, Corvette, istasyon/üs yönetimi, canlı sahiplik ve overlay.
+   Teknik olarak doğrulanamayan kontroller çalışır gibi gösterilmez.
+
+[2 Kasım özellik araştırması ve öncelikler](NMS-Research/next-features-179666.md)
+kaynakları, adayların bağımlılıklarını ve yeni UI için önerileri içerir.
 
 Hiçbir aşama mevcut CapsLockFix başlatıcısını değiştirmeyi gerektirmez.
