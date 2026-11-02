@@ -1,5 +1,14 @@
 # Değişiklikler
 
+## 0.9.0 — 2 Kasım 2026
+
+- Referansa göre Qt masaüstü görünümü, yerel vektör simgeleri ve envanter çizimi.
+- Ayarlar sekmesi; anlık ve kalıcı Türkçe, İngilizce, Rusça ve Almanca seçimi.
+- Dil başına ayrı JSON, 525 kaynak metin, dosyadan dil keşfi ve Türkçe yedek metinler.
+- Yeni metin/dil ekleme, dosya yenileme ve değişken/eksik çeviri kontrol araçları.
+- Mevcut Tk denetleyicileri, işlem doğrulamaları ve `--classic` görünümü korunur.
+- Yerel bağımlılık kurulumu, temiz klonda test klasörü oluşturma; 113 geçen test.
+
 ## 0.8.0 — 2 Kasım 2026
 
 - Yerel ürün/madde tablolarından 1100 eşya ve zorluk/envanter grubuna göre gerçek yığın sınırları.

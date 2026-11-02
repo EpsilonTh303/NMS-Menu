@@ -3,3 +3,12 @@ __pycache__/
 .venv/
 runtime/
 *.log
+vendor/
+.env
+.env.*
+!.env.example
+.codex-remote-attachments/
+.pytest_cache/
+build/
+dist/
+*.egg-info/

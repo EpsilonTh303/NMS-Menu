@@ -2,3 +2,6 @@
 *.py text eol=lf
 *.md text eol=lf
 *.cmd text eol=crlf
+*.json text eol=lf
+*.svg text eol=lf
+*.png binary

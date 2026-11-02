@@ -1,8 +1,105 @@
 # No Man’s Sky — Menu
 
+## Kurulum ve doğrulama
+
+Windows x64 ve Python 3.12 (Tkinter dahil) gerekir. İlk kurulumda `setup.cmd`
+çalıştırın; PySide6 bağımlılıkları yalnız yerel `vendor/` klasörüne indirilir.
+Ardından `start.cmd` ile açın. Kurulumdan sonra internet gerekmez.
+
+Bu depo kontrol panelidir; mevcut işlem motoru kardeş klasörde bulunmalıdır:
+
+```text
+oyun-klasörü/
+  Menu/           # bu depo
+  FleetManager/  # fleet.py, catalog.json, loadouts.json, preferences.json ve codec
+  Binaries/      # NMS.exe; yalnız canlı kontroller için
+```
+
+FleetManager ve codec kurulumunu kendi README'sine göre tamamlayın. Oyun,
+codec ikilileri, kullanıcı kayıtları, `runtime/` ve `vendor/` bu depoya dahil
+edilmez. Testler de mevcut FleetManager modülünü kullanır; yalnız bu deponun
+klonlanması işlem motorunu kurmaz.
+
+Menu klasöründe son kontroller:
+
+```powershell
+python -m nmsmenu.i18n check
+python -m unittest discover -s tests
+git diff --check
+```
+
+113 test; dil dosyaları, sunum bağlamaları ve işlem korumaları doğrulandı.
+Bu testler oyun kayıtlarına yazmaz. Qt üzerinden canlı yazımın oyun içi
+uçtan uca doğrulaması bu sürüm için yapılmadı.
+
+## Ayarlar ve dil dosyaları
+
+Qt görünümündeki **Ayarlar → Arayüz dili** seçimi anında uygulanır. Türkçe,
+English, Русский ve Deutsch desteklenir. Seçim `runtime/ui-settings.json`
+dosyasında hatırlanır; oyun kayıtları ve oyun dili değiştirilmez.
+Doğrudan açmak için `python main.py --settings` kullanın.
+
+Bütün çeviriler **her dil için ayrı** UTF-8 JSON dosyasında, `locales/`
+klasöründedir: `tr.json`, `en.json`, `ru.json`, `de.json`. Türkçe kaynak cümle
+sabit anahtardır; sağındaki değer ekranda gösterilir. Türkçe ifadeyi düzeltirken
+anahtarı koruyup yalnız değeri değiştirebilirsiniz. Çeviri dosyalarını Luna
+ajanları hazırladı; Türkçe metinler de Luna tarafından gözden geçirildi.
+
+Yeni dil için bir JSON ekleyin; kodda dil listesi değiştirmek gerekmez.
+Örneğin `python -m nmsmenu.i18n add fr --name Français` komutu `fr.json`
+dosyasını bütün anahtarlarıyla hazırlar. `"_meta": {"name": "Français"}`
+alanı dilin seçim listesindeki adıdır. Boş çevirileri doldurup Ayarlar'da
+**Dil dosyalarını yenile** düğmesine basın. Yeni dosyalar Ayarlar sekmesi
+açıldığında da listelenir. Eksik/boş çeviriler Türkçeye döner; durum, çeviri
+kapsamı sayacından görülebilir.
+
+Yeni metin ekleme akışı:
+
+1. Kaynak Türkçe metni UI'da kullanın. Yeni Qt metinlerini `self.t("Metin")`
+   veya `t("Metin")` ile işaretleyin. Mevcut Tk denetleyicilerindeki metinler
+   sunum katmanında çevrilir; seçimler özgün değer/indekslerle çalışır.
+2. `python -m nmsmenu.i18n sync` çalıştırın. Yeni anahtarlar `tr.json` içine,
+   diğer dillere de boş değerlerle eklenir. Mevcut çeviriler ve elle eklenen
+   anahtarlar korunur. İsterseniz JSON anahtarlarını elle de ekleyebilirsiniz.
+3. Dil JSON'larındaki değerleri doldurun. `{v0}`, `{v1}` gibi değişkenleri
+   aynen koruyun. `python -m nmsmenu.i18n check` eksik çevirileri ve değişken
+   hatalarını dosya/anahtar bazında listeler.
+
+Gemi/alet adları, tohumlar, eşya ID'leri, JSON raporları ve kayıt dosyası
+adları çeviri amacıyla değiştirilmez. Oyun kataloglarındaki özel adlar ayrıca
+oyun içi metinlerin tam yerelleştirmesi değildir. `--classic` eski Türkçe
+Tk görünümüdür; dil seçimi Qt sunumunda desteklenir.
+
+## Referans tasarımı / Qt arayüzü
+
+`start.cmd` artık PySide6/Qt görünümünü açar. Koyu uzay teması, referanstan
+alınan üst görsel, mercan sekmeler, yuvarlatılmış paneller ve çizilen envanter
+hücreleri kullanılır. Varsayılan ekran envanterdir. `--fleet`, `--weapons`,
+`--catalog` seçenekleri korunur. Dar ekranlarda bölüm kaydırılır.
+
+Sekme/düğme simgeleri ve sayaç kartları yerel `nmsmenu/icons.py` vektör
+çizimlerini kullanır; harici ikon fontu gerekmez. Otomatik bağlantı anahtarı
+gerçek checkbox durumunu, sayı okları özgün Spinbox sınırlarını kullanır.
+Bağlantı noktası yalnız denetleyici bağlı ve güncel dediğinde yeşildir.
+Boş açık yuvalar +, eşya listeleri renkli kaynak simgeleriyle gösterilir.
+
+`python main.py --classic` önceki Tk görünümünü açar. Qt sunumu, gizli Tk
+denetleyicilerinin değişkenlerini ve özgün komutlarını kullanır; kayıt ve bellek
+işlemlerini yeniden uygulamaz. Hazırlama, rapor inceleme, kilitli apply,
+hash/codec/yedek kontrolleri aynı denetleyicilerden geçer. Canlı yazım bu
+görünümde oyun içinde ayrıca denenmedi; görsel doğrulama ve bağlama testleri
+kayıt değişikliği yapmadan yürütülür.
+
+PySide6 yalnız `vendor/` içine kuruludur. Yeniden kurulum:
+`python -m pip install --target vendor -r requirements-qt.txt`.
+Görsel dosyası `assets/reference-banner.png`, kaynak `nmsmenu/qt_ui.py`.
+Arayüz adaptör testleri: `python -m unittest discover -s tests -p test_qt_ui.py`.
+
+
 Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.8 oyun açıkken
 çalışan canlı veri kontrolleri içerir; ayrı masaüstü penceresidir.** Python 3.12
-ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekmez.
+ve yerel PySide6/Qt görünümünü kullanır; işlem denetleyicileri Tk katmanında
+korunur. Kurulumdan sonra internet veya oyun enjeksiyonu gerekmez.
 
 ## Başlatma
 
