@@ -1,8 +1,11 @@
 """UI-independent catalog queries and command construction for future frontends."""
 from dataclasses import dataclass
 import secrets
+from pathlib import Path
+import json
+import os
 
-from .backend import FLEET, read_json
+from .backend import FLEET, ROOT, read_json
 from .catalog_data import compatible, technologies, tool_models, ship_profiles, reference_entries
 
 
@@ -19,12 +22,14 @@ class CatalogItem:
 
 
 class CatalogService:
-    def __init__(self):
+    def __init__(self, preferences_path=None):
         self.ships = {**read_json(FLEET / 'catalog.json'), **ship_profiles()}
         self.preferences = read_json(FLEET / 'preferences.json')
         self.garage = []
+        self.preferences_path = Path(preferences_path or ROOT / 'runtime' / 'catalog-preferences.json')
+        self.user = read_json(self.preferences_path) if self.preferences_path.exists() else {'favorites': [], 'recent': []}
 
-    def items(self, query='', kind='', target='', ship_type=None, include_hidden=False, family=''):
+    def items(self, query='', kind='', target='', ship_type=None, include_hidden=False, family='', favorites_only=False, recent_only=False):
         items = []
         for key, profile in self.ships.items():
             group = profile.get('family', {'blue_squid': 'exotic', 'golden_vector': 'fighter',
@@ -39,14 +44,30 @@ class CatalogService:
         items += [CatalogItem('garage:' + p['id'], 'garage', p['name'] or p['type'], p['type'] + ' • ' + p['seed']) for p in self.garage]
         items += [CatalogItem('reference:' + p['id'], 'reference', p['title'],
             p['family'] + ' • ' + p['summary'], addable=False, family=p['family']) for p in reference_entries()]
+        from .inventory import items as inventory_items
+        items += [CatalogItem('item:' + key, 'item', p['title'], key + ' • ' + p['aliases'], family=p['category'])
+                  for key, p in inventory_items().items()]
+        from dataclasses import replace
+        items = [replace(item, preferred=True) if item.key in self.user['favorites'] else item for item in items]
         words = query.casefold().split()
         result = [item for item in items if (not kind or item.kind == kind) and (not family or item.family == family)
-                  and (include_hidden or not item.hidden)
+                  and (include_hidden or not item.hidden) and (not favorites_only or item.key in self.user['favorites'])
+                  and (not recent_only or item.key in self.user['recent'])
                   and all(word in (item.title + ' ' + item.detail + ' ' + item.key + ' ' + item.family).casefold() for word in words)]
         return sorted(result, key=lambda item: (not item.preferred, item.kind, item.title.casefold()))
 
-    def command(self, key, target='', selector=None, name='Yeni Alet', new_ship_seed=False, random_tool_seed=False):
+    def command(self, key, target='', selector=None, name='Yeni Alet', new_ship_seed=False, random_tool_seed=False, amount=1):
         prefix, ident = key.split(':', 1)
+        if prefix == 'item':
+            from .inventory import items, amount as valid_amount
+            if ident not in items() or target not in ('exosuit', 'ship'):
+                raise ValueError('Eşya için ekzosuit veya gemi kargo hedefi seçin.')
+            spec = {'kind': target, 'section': 'cargo'}
+            if target == 'ship':
+                if not selector or set(selector) != {'slot', 'seed', 'type'}:
+                    raise ValueError('Kesin hedef gemi kimliği gerekli.')
+                spec['selector'] = dict(selector)
+            return {'op': 'add_item', 'id': ident, 'amount': valid_amount(amount), 'inventory': spec}
         if prefix == 'ship' and ident in self.ships:
             command = {'op': 'add', 'profile': ident}
             if new_ship_seed:
@@ -76,8 +97,28 @@ class CatalogService:
         raise ValueError('Katalog girdisi artık mevcut değil.')
 
     def counts(self):
+        from .inventory import items
         return {'ships': len(self.ships), 'tools': len(tool_models()), 'technologies': len(technologies()),
-                'garage': len(self.garage), 'reference': len(reference_entries())}
+                'garage': len(self.garage), 'reference': len(reference_entries()), 'items': len(items())}
+
+    def write_preferences(self):
+        self.preferences_path.parent.mkdir(parents=True, exist_ok=True)
+        temp = self.preferences_path.with_suffix('.tmp')
+        temp.write_text(json.dumps(self.user, ensure_ascii=False, indent=2), encoding='utf-8')
+        os.replace(temp, self.preferences_path)
+
+    def toggle_favorite(self, key):
+        self.detail(key)
+        values = self.user['favorites']
+        values.remove(key) if key in values else values.append(key)
+        self.write_preferences()
+
+    def remember(self, keys):
+        for key in keys:
+            self.detail(key)
+            self.user['recent'] = [key] + [p for p in self.user['recent'] if p != key]
+        self.user['recent'] = self.user['recent'][:50]
+        self.write_preferences()
 
     def detail(self, key):
         """Serializable metadata for every frontend; never generates a random command."""
@@ -89,6 +130,9 @@ class CatalogService:
             value = tool_models()[ident]
         elif prefix == 'tech':
             value = technologies()[ident]
+        elif prefix == 'item':
+            from .inventory import items
+            value = items()[ident]
         elif prefix == 'reference':
             value = next(p for p in reference_entries() if p['id'] == ident)
         elif prefix == 'garage':
@@ -125,6 +169,8 @@ class CatalogCart:
         CatalogService.plan(save_slot, [command])
         if command['op'] == 'install_technology' and command in self._commands:
             return False
+        if len(self._commands) >= 256:
+            raise ValueError('Tek sepet en fazla 256 işlem alabilir.')
         self.save_slot = save_slot
         self._commands.append(copy.deepcopy(command))
         self.revision += 1

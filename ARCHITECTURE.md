@@ -1,5 +1,18 @@
 # Modüler tasarım
 
+## v0.8 envanter ve koleksiyon
+
+Envanter, donanım, arşiv ve tarif eylemleri aynı CatalogCart üzerinden hazırlanır.
+UI adaptörleri ortak disk snapshot kullanır; hedefin kesin slot/tohum/model kimliği ve
+eşyanın bütün alanlarının SHA256 fingerprint'i mutasyonda tekrar kontrol edilir.
+
+Envanter mutasyonu yalnız Slots ve aktif aletin Store aynasını değiştirebilir. Kargo
+miktarları zorluk/grup tablosuyla sınırlandırılır; teknoloji taşınırken SpecialSlots
+korunur. Arşiv gemi kaldırmasını native FleetManager'a devreder; kargo ekzosuite
+taşınır ve tam gemi commit öncesi garaja gider. Bütün sabit diziler aynı uzunluktadır.
+
+Bölüm sözleşmeleri ve gelecekteki frontend için [UI geçişi](UI_MIGRATION.md).
+
 ## v0.5 ortak tarama
 
 SharedScan tek LiveBackend / ProcessMemory oturumunu para, ayar ve canlı filo

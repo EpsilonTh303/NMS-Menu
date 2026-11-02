@@ -30,3 +30,12 @@ kayıt zamanına döner ve daha yeni durumu ayrıca yedekler. Bu kontroller gör
 Sabit ödül tohumu varsayılandır; rastgele alet tohumu açık kullanıcı seçeneğidir.
 Yeni gemi referansları doğrudan FleetManager native mutasyonuna veri olarak iletilir;
 codec / hash / durdurulmuş süreç kontrolleri aynı motor üzerinden yürür.
+
+
+0.8: `inventory.py` saf envanter çözümleme, fingerprint, miktar ve taşıma kurallarıdır.
+`archives.py` native arşiv kimliği ve koruma kurallarını; `loadouts.py` setleri;
+`knowledge.py` seçili tarif bilgisini yönetir. Yeni frontend bunları yeniden yazmamalı.
+`DiskScanner` aynı çözümlemeden `inventories` ve `archives` snapshot'ı üretir.
+`inventory_ui.py` yalnız Tk adaptörüdür; mutasyonlar ortak `catalog_mutations` / CLI
+üzerinden mevcut FleetManager hazırlama/codec/hash/commit motoruna gider. Favori ve set
+tercihleri yerel runtime dosyalarıdır. UI sekmeleri ayrı disk/process taraması yapmaz.

@@ -1,5 +1,15 @@
 # Değişiklikler
 
+## 0.8.0 — 2 Kasım 2026
+
+- Yerel ürün/madde tablolarından 1100 eşya ve zorluk/envanter grubuna göre gerçek yığın sınırları.
+- Ortak snapshot ile envanter ızgarası, miktar, taşıma, bölme ve birleştirme; kesin eşya fingerprint'i.
+- 5 hazır donanım seti ve kişisel sabit teknoloji setleri; mevcut donanımı koruyarak eksikleri kurma.
+- 18 gemi / 18 alet yerleşik arşivi; kargoyu koruma, tam gemi garaj dışa aktarımı ve boş aktif yuvaya geri getirme.
+- Seçili tarif öğrenme, favoriler ve son kullanılanlar; UI bağımsız servisler ve ortak işlem sepeti.
+- 12 aktif gemi doluyken boş arşiv şablonundan aynı şemayla kaldırmayı destekleyen FleetManager düzeltmesi.
+- 99 Menu + 13 FleetManager testi; güncel kayıt kopyasında arşivlenmiş/geri getirilmiş iki tam codec eşitliği.
+
 ## 0.7.0 — 2 Kasım 2026
 
 - Resmî güncelleme sayfaları ve NMSE kaynaklarıyla gemi / alet ailelerinin araştırılması.

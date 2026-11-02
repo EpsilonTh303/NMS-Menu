@@ -29,3 +29,15 @@ ve her dil tablosu için `--localisation LOC.MXML`. Kaynak SHA256 çıktı için
 `reference-catalog.json`: kaynak bağlantıları ve destek durumu bulunan salt okunur
 Tür rehberi. Referans kaydı `command()` tarafından reddedilir. Bu kayıtların varlığı
 oyuna ekleme işleminin desteklendiği anlamına gelmez.
+
+
+`items.json` (0.8): yerel product/substance/difficultyconfig tablolarından 1100 normal
+ürün/madde, yerelleştirilmiş ad/açıklama, stack multiplier, üretilebilirlik ve gereksinimler.
+High/Normal/Low zorluğundaki her envanter grubunun yığın tabanı ve global sınırı dahil.
+Yığın limiti = min(global sınır, envanter tabanı × eşya çarpanı). Mevcut yığının MaxAmount
+alanı da aşılmaz. `tools/build_item_catalog.py SOURCE_DIR data/items.json --localisation LOC.MXML`
+ile yeniden üretilir; kullanılan MXML dosyalarının SHA256'ları çıktı içindedir.
+
+Görev, yumurta, görünüm ve inşa parçası kategorileri genel eşya ekleme için dahil edilmez;
+seçilmiş normal yükseltme/veri ürünleri whitelist ile eklenir. Bütün 1100 eşya tek tek oyun
+içinde denenmedi. Eşya eklemek görev veya platform ödülü bayraklarını değiştirmez.

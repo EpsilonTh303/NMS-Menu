@@ -13,5 +13,6 @@ if __name__ == '__main__':
     tabs.add_argument('--fleet', action='store_true', help='Canlı filo sekmesini aç')
     tabs.add_argument('--weapons', action='store_true', help='Silah koleksiyonu sekmesini aç')
     tabs.add_argument('--catalog', action='store_true', help='Ortak ekleme kataloğunu aç')
+    tabs.add_argument('--inventory', action='store_true', help='Envanter, donanım ve arşiv ekranını aç')
     args = parser.parse_args()
-    main(connect=args.connect, fleet=args.fleet, weapons=args.weapons, catalog=args.catalog)
+    main(connect=args.connect, fleet=args.fleet, weapons=args.weapons, catalog=args.catalog, inventory=args.inventory)

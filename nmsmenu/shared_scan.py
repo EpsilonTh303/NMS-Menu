@@ -77,6 +77,12 @@ class DiskScanner:
                     entry['multitools'] = weapons.summary(p)
                 except Exception as exc:
                     entry.update(multitools=[], weapons_error=str(exc))
+                try:
+                    from . import inventory, archives
+                    entry['inventories'] = inventory.snapshot(p, self.fleet)
+                    entry['archives'] = archives.snapshot(p, self.fleet)
+                except Exception as exc:
+                    entry.update(inventories=[], archives=[], inventory_error=str(exc))
                 self.cache[file.name] = (signature, entry)
                 result.append(copy.deepcopy(entry))
             except Exception as exc:

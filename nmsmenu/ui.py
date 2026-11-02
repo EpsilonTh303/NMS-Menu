@@ -43,7 +43,7 @@ class MenuApp:
         self.transactions = []
         self.catalog = self.backend.catalog()
         self.loadouts = self.backend.loadouts()
-        root.title("No Man's Sky • Menu 0.7 • Ekleme Kataloğu")
+        root.title("No Man's Sky • Menu 0.8 • Envanter ve Koleksiyon")
         root.geometry('1160x810')
         root.minsize(920, 680)
         style = ttk.Style(root)
@@ -415,14 +415,14 @@ class MenuApp:
         for module in MODULES:
             text.insert('end', f'{module.title}  —  {module.status}\n{module.features}\n\n')
         text.insert('end', 'AKIŞ\nOyunu kaydet ve kapat → kayıtları yenile → yeni plan hazırla → raporu incele → uygula.\n\n'
-                    'Canlı para ve yapılandırma kontrolleri ilk sekmededir. Eşya / görev / overlay kontrolleri uygulanmadı. '
+                    'Canlı para ve yapılandırma kontrolleri ilk sekmededir. Eşya, donanım setleri ve arşiv Katalog bölümündedir. Görev ve overlay kontrolleri uygulanmadı. '
                     'Oyunda yapılabilen her eylemin kayıt dosyasından kontrolü garanti edilmez.\n'
                     'Kalkış otomatik şarjı normal oyun teknolojisidir; anlık sınırsız yakıt değildir.\n'
                     'Harici garaj arşivdir; aktif gemi sınırını artırmaz.')
         text.configure(state='disabled')
 
 
-def main(connect=False, fleet=False, weapons=False, catalog=False):
+def main(connect=False, fleet=False, weapons=False, catalog=False, inventory=False):
     root = tk.Tk()
     try:
         app = MenuApp(root)
@@ -432,6 +432,9 @@ def main(connect=False, fleet=False, weapons=False, catalog=False):
             app.book.select(3)
         if catalog:
             app.book.select(6)
+        if inventory:
+            app.book.select(6)
+            app.catalog_panel.book.select(2)
         app.start_shared_scan()
     except Exception as exc:
         messagebox.showerror('Menu başlatılamadı', str(exc))

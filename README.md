@@ -1,6 +1,6 @@
 # No Man’s Sky — Menu
 
-Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.7 oyun açıkken
+Offline GOG kurulumu için Türkçe masaüstü kontrol paneli. **v0.8 oyun açıkken
 çalışan canlı veri kontrolleri içerir; ayrı masaüstü penceresidir.** Python 3.12
 ve standart Tkinter kullanır; pip paketi, internet veya oyun enjeksiyonu gerekmez.
 
@@ -70,6 +70,40 @@ uygulanır. Liste ortak taramayı kullanır. Bütün 149 teknoloji için tek tek
 yapılmadı; katalog yerel tablodan türetilir ve uyumluluk kuralları uygulanır.
 
 Yeni arayüz için [servis sınırları](UI_MIGRATION.md) ve [veri kaynağı](data/README.md).
+
+## Envanter, donanım ve yerleşik arşiv (0.8)
+
+Doğrudan `python main.py --inventory` veya **Katalog / toplu ekle → Envanter / donanım / arşiv**.
+Bütün listeler aynı ortak taramanın disk görüntüsünü kullanır. Oyun açıkken görüntüleme,
+oyun kapalıyken yeni plan / uygulama akışı korunur.
+
+- **1100 eşya / madde:** katalogda isim, ID veya bazı yaygın Türkçe adlarla ara; miktar ve
+  ekzosuit/gemi hedefi seç. Önce uyumlu yığınlar doldurulur, kalanı boş yuvalara bölünür.
+  Yığın sınırı yerel High/Normal/Low zorluk, envanter grubu ve eşya çarpanından hesaplanır.
+  Görev, yaratık yumurtası, görünüm hakkı ve inşa parçası sınıfları genel ekleme listesi değildir.
+- **Envanter ızgarası:** eşya seç, hedef envanter ve 1 tabanlı X/Y koordinatı seç;
+  taşı, yığını böl, miktarı ayarla veya yığınları birleştir. Dolu/kapalı yuvanın üzerine yazılmaz.
+  Teknoloji aynı envanter içinde taşınabilir; süperşarjlı yuvaların yerleri korunur.
+  Hedefler arasında yalnız desteklenen normal kargo taşınır. Miktar sıfırlama / silme yoktur.
+- **5 hazır donanım seti:** ekzosuit keşif, alet madencilik/tarama, alet Neutron Cannon,
+  gemi keşif ve gemi Infra-Knife. Mevcut teknoloji sökülmez; eksikler kurulur.
+  Kendi sabit teknoloji setini de yerel menüye kaydet. Prosedürel yükseltmeler setlere aktarılmaz.
+- **Yerleşik arşiv:** 18 gemi ve 18 alet. Gemi kargosu ekzosuite taşınır, yer yoksa işlem durur;
+  outgoing tam gemi apply öncesinde ayrıca harici garaja alınır. Son gemi/aleti korur.
+  Geri alma boş aktif yuva ister; 12 aktif gemi / 6 alet sınırı değişmez. Aktif gemi için
+  istasyonda kaydedilmiş olmalı. Ortak model aletin ailesi otomatik belirlenemiyorsa doğru
+  Pistol/Rifle/Alien/Pristine ailesini kullanıcı seçer; özel modeller otomatik tanınır.
+- **Tarif öğren:** katalogda seçili sabit teknoloji veya üretilebilir ürünü sepete ekler.
+  KnownTech/KnownProducts güncellenir; görev ve sefer bayrakları topluca değiştirilmez.
+- **Favoriler / son kullanılanlar:** yerel menü tercihleridir. Donanım setleriyle birlikte
+  `runtime` altında saklanır; Git'e veya oyun kaydına eklenmez.
+
+Her düğme önce **ortak sepete** işlem ekler. Ardından **Sepet ve işlem raporu → Yeni planı
+hazırla → raporu incele → uygula**. En fazla 256 işlem; sepet değişirse eski rapor geçersizdir.
+Liste değişmiş bir eşya/alet seçicisiyle yazma reddedilir. Tam kayıt geri alma işlem öncesinin
+bütün ilerlemesine döner; daha yeni durum ayrıca yedeklenir.
+
+[0.8 doğrulama ve veri kaynakları](NMS-Research/workbench-179666.md).
 
 ## Silah koleksiyonu: çok amaçlı alet ekle / kaldır
 
@@ -233,3 +267,7 @@ işlem yedekleri depoya alınmaz. Yerel `main` dalı kullanılır; remote kurulm
 0.7, kardeş `FleetManager/fleet.py` codec girişinde Unicode korumasını da düzeltir.
 Bu çalışma alanında uygulanmıştır. Ayrı bir kopyaya taşırken aynı düzeltmenin diff'i
 `patches/fleet-codec-unicode.patch` içindedir. Round-trip eşitliği yine zorunludur.
+
+0.8 yerleşik arşivi dolu 12 gemilik filoda da kullanabilmek için kardeş FleetManager'ın
+boş gemi şablonuna aynı şemadaki boş arşiv Ownership girişini yedek kaynak ekler.
+Düzeltme bu çalışma alanında uygulanmıştır; taşınabilir diff `patches/fleet-archive-template.patch`.

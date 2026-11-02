@@ -1,0 +1,12 @@
+--- a/FleetManager/fleet.py
++++ b/FleetManager/fleet.py
+@@ -140,2 +140,9 @@
+     template = next((s for s in p['ShipOwnership'] if kind(s) == 'empty'), None)
++    if template is None:
++        # Archiving must also work with all 12 active slots occupied. The game's
++        # empty archive Ownership uses the same schema; never grow either array.
++        template = next((a['Ownership'] for a in p.get('ArchivedShipOwnership', [])
++                         if kind(a['Ownership']) == 'empty'), None)
++        if template is not None and template.keys() != p['ShipOwnership'][0].keys():
++            raise ValueError('Empty archive ship schema differs from active ownership.')
+     if template is None:

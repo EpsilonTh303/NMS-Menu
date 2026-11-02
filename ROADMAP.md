@@ -13,8 +13,8 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 | Garaj | Arşiv, liste, içe aktar, değiştir | v0.1 hazır; 12 aktif gemi korunur |
 | Yedek | Hazırla, fark incele, uygula, geri al | v0.1 hazır; tam kayıt geri alma |
 | Ekonomi | Units, nanit, quicksilver miktarı | v0.2 canlı; doğrulanmış 179666 GOG build'i |
-| Eşya | Arama, miktar, malzeme ve yakıt | Kimlik kataloğu, yığın sınırları ve boş yuva kuralları |
-| Tarif / teknoloji | 149 sabit teknolojiyi uygun hedefe kurma | v0.6–0.7 hazır; tarif öğrenme ayrı aday |
+| Eşya | 1100 madde/ürün; miktar, taşıma, bölme/birleştirme, ızgara | v0.8 hazır; zorluk/grup yığın sınırları |
+| Tarif / teknoloji | 149 sabit teknolojiyi uygun hedefe kurma | v0.8 hazır; seçili teknoloji/ürün tarifi de öğrenilir |
 | Çok amaçlı alet | Kaynak donanımla ekle / kaldır; 49 model/tohum seçeneği | v0.7; oyun kapalı, 12 benzersiz model yolu |
 | İstasyon savaş kontrolü | Silah çıkarma / ateş etme aç-kapat, NPC hasarı | Araştırma; çalıştırılamaz |
 | Yük gemisi | Model, sınıf, envanter | Aktif gemi ve üs bağımlılıkları araştırılacak |
@@ -42,11 +42,11 @@ gerektiren özellikler farklı teknik altyapı ve sürüm doğrulaması ister.
 4. **v0.4–v0.7 tamamlandı:** alet sahipliği, ortak otomatik tarama, UI bağımsız
    katalog/sepet, 80 gemi profili/tohum seçeneği, 49 alet seçeneği, 149 teknoloji.
    Bunlar oyundaki toplam tür sayıları değildir. Ayrıntılar / aile filtresi / rehber bulunur.
-5. **Önerilen sonraki paket:** eşya/malzeme kataloğu ve miktar → envanter ızgarası →
-   donanım profilleri. Henüz uygulanmadı. Yerel ürün/madde tabloları kaynak olarak bulundu.
-6. **Koleksiyon:** silah envanteri ve yerleşik gemi/alet arşivi. Resmî oyunda ek 18'er
-   arşiv girişi var; gemi arşivinde kargo korunmadığı için mevcut tam garajdan farklıdır.
-7. **Sonraki modüller:** tarif bilgisi, yük gemisi/fırkateyn/squadron, Exocraft, organik gemiler.
+5. **v0.8 tamamlandı:** 1100 eşya/madde ve miktar, envanter ızgarası, taşıma/bölme/birleştirme,
+   5 hazır ve kişisel sabit teknoloji setleri, favoriler/son kullanılanlar ve seçili tarif öğrenme.
+6. **v0.8 koleksiyon tamamlandı:** 18 gemi / 18 alet yerleşik arşivi; kargoyu önce ekzosuite
+   ve tam gemiyi apply öncesi harici garaja koruma, boş aktif yuvaya geri alma.
+7. **Sonraki modüller:** yük gemisi/fırkateyn/squadron, Exocraft ve organik gemiler.
 8. **Araştırma:** seyahat, evcil hayvan, Corvette, istasyon/üs yönetimi, canlı sahiplik ve overlay.
    Teknik olarak doğrulanamayan kontroller çalışır gibi gösterilmez.
 

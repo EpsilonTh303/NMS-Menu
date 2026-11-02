@@ -54,7 +54,20 @@ def mutate(original, plan, catalog, fleet, native_mutate):
     data = copy.deepcopy(original)
     events, allowed, exports = [], [], []
     for action in plan['actions']:
-        if action['op'] == 'install_technology':
+        if action['op'] == 'learn_recipe':
+            from . import knowledge
+            data, event, paths = knowledge.mutate(data, action, fleet)
+            events.append(event)
+        elif action['op'] in ('add_item', 'set_item_amount', 'move_item', 'split_item', 'merge_stacks'):
+            from . import inventory
+            data, event, paths = inventory.mutate(data, action, fleet)
+            events.append(event)
+        elif action['op'] in ('archive_ship', 'restore_archived_ship', 'archive_tool', 'restore_archived_tool'):
+            from . import archives
+            data, event, paths, exported = archives.mutate(data, action, catalog, fleet, native_mutate)
+            events.append(event)
+            exports += exported
+        elif action['op'] == 'install_technology':
             data, event, paths = install(data, action, fleet)
             events.append(event)
         elif action['op'] == 'tool_add':
@@ -69,7 +82,7 @@ def mutate(original, plan, catalog, fleet, native_mutate):
             paths = report['changed_paths']
             exports += exported
         else:
-            raise ValueError('Katalog sepeti yalnız ekleme / kurma işlemlerini kabul eder.')
+            raise ValueError('Bilinmeyen katalog / envanter / arşiv işlemi.')
         allowed += paths
     paths = fleet.differences(original, data)
     if not all(any(path == prefix or path.startswith(prefix + '/') for prefix in allowed) for path in paths):
